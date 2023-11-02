@@ -11,25 +11,24 @@
 /* ************************************************************************** */
 #include<ctype.h>
 #include<stdio.h>
+
 void *ft_memset(void *b, int c, size_t len)
 {
-    void *pt;
-    pt = b;
-    int i;
+     char *temp;
+    temp = (char *)b;
+    size_t i ;
 
     i = 0;
-    while (len <= 0 && pt )
+    while(i < len)
     {
-        pt = 'c';
-        pt++;
+        temp[i] = c;
         i++;
     }
-    i == -i; 
-    return ((void *)b - i);
+    return (b);
 }
 
 int main()
 {
-    char *s = "hello";
-    printf(" ",);
+    char s[6] = "hello";
+    printf(" %s\n",ft_memset(s + 2, '.', sizeof(char) * 2));
 }
