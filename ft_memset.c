@@ -9,26 +9,29 @@
 /*   Updated: 2023/11/01 13:00:33 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include<ctype.h>
+#include "libft.h"
 #include<stdio.h>
-
 void *ft_memset(void *b, int c, size_t len)
 {
-     char *temp;
+    char *temp;
     temp = (char *)b;
     size_t i ;
 
     i = 0;
     while(i < len)
-    {
-        temp[i] = c;
-        i++;
-    }
-    return (b);
-}
+        temp[i++] = c;
 
-int main()
+    return (b);
+}   
+int main ()
 {
-    char s[6] = "hello";
-    printf(" %s\n",ft_memset(s + 2, '.', sizeof(char) * 2));
+    char arr[10];
+    char arr1[10];
+    memset(arr,'/190', sizeof(arr));
+    printf("before : %s\n",arr);
+    printf("before : %p\n",arr);
+    ft_memset(arr1,'/190', sizeof(arr1));
+    printf("after : %s\n", arr1);
+    printf("after : %p\n", arr1);
+    // printf("before : %s\n",arr1);
 }
