@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baouragh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/02 14:50:13 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/02 14:50:17 by baouragh         ###   ########.fr       */
+/*   Created: 2023/11/04 16:54:57 by baouragh          #+#    #+#             */
+/*   Updated: 2023/11/04 16:55:00 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include"libft.h"
-#include<ctype.h>
 #include<stdio.h>
-#include<strings.h>
-void *ft_bzero(void *b, size_t n)
+int ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-    char *str;
-    str = (char *) b;
-    size_t i;
+    const unsigned char *b1;
+    const unsigned char *b2;
 
-    i = 0;
-    while(i < n)
+    b1 = (const unsigned char *)s1;
+    b2 = (const unsigned char *)s2;
+    n -=1;
+    while(n-- > 0 && *b1 - *b2 == 0)
     {
-        ft_memset(&str[i],0,sizeof(char));
-        i++;
+        b1++;
+        b2++;
     }
-    return (str);
+    return(*b1 - *b2);
+}
+int main()
+{
+    const char a[6] = "bader";
+    const char a2[6] = "badef";
+    printf("%d\n",ft_memcmp(a,a2,5));
+    printf("%d\n",memcmp(a,a2,5));
 }

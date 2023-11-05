@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baouragh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/02 14:50:13 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/02 14:50:17 by baouragh         ###   ########.fr       */
+/*   Created: 2023/11/04 22:47:22 by baouragh          #+#    #+#             */
+/*   Updated: 2023/11/04 22:47:23 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include"libft.h"
-#include<ctype.h>
-#include<stdio.h>
-#include<strings.h>
-void *ft_bzero(void *b, size_t n)
-{
-    char *str;
-    str = (char *) b;
-    size_t i;
 
-    i = 0;
-    while(i < n)
+void *ft_memmove(void *dst, const void *src, size_t len)
+{
+    unsigned char *destination;
+    unsigned char *source;
+    destination = ((unsigned char *)dst) + len - 1;
+    source = ((unsigned char *)src) + len - 1;
+    while(len-- > 0)
     {
-        ft_memset(&str[i],0,sizeof(char));
-        i++;
+        *destination-- = *source--;
     }
-    return (str);
+    return(dst);
 }
+// int main()
+// {
+//     char s1[] = "ABCD";
+//     char *s2 = s1 + 2;
+//     ft_memmove(s2,s1,2);
+//     printf("%s",s2);
+// }

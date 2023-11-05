@@ -9,26 +9,17 @@
 /*   Updated: 2023/11/03 20:52:07 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include<stdio.h>
 #include"libft.h"
-void *ft_memchr(const void *s, int c)
-{
-    const char *initial;
-    const char *founded_p;
 
-    initial = s;
-    founded_p = ft_strchr(initial, c);
-    if(founded_p == NULL)
+void *ft_memchr(const void *s, int c, size_t n)
+{
+    char *ptr;
+    ptr = (char *) s;
+    while(n-- && ptr)
+    {
+        if(*ptr == c)
+        return(ptr);
+        ptr++;
+    }
     return (NULL);
-     return ((void*)s + (founded_p - initial));
-    
-}
-
-int main()
-{
-    memcpy(vo)
-    const char str[6] = "hello";
-    char *ret;
-    ret = ft_memchr(str, 'e');
-    printf("%s",ret);
 }
