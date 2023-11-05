@@ -9,8 +9,10 @@
 /*   Updated: 2023/11/01 13:00:33 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 #include<stdio.h>
+
 void *ft_memset(void *b, int c, size_t len)
 {
     char *temp;
@@ -20,6 +22,11 @@ void *ft_memset(void *b, int c, size_t len)
     i = 0;
     while(i < len)
         temp[i++] = c;
-
     return (b);
+}
+
+int main()
+{
+    int a;
+    printf("%d\n", *(int*)ft_memset(&a, 1, 2));
 }

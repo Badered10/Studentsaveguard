@@ -15,11 +15,25 @@
 size_t ft_strlcat(char * dst, const char *src, size_t dstsize)
 {
     char *source;
-    source = (char *)src;
+    size_t dst_lenth;
     size_t source_lenth;
+    size_t free_places;
 
+    source = (char *)src;
+    dst_lenth = ft_strlen(dst);
     source_lenth = ft_strlen(source);
-    // dst_size = ft_strlen(dst) + 1;
+    dst += dst_lenth;
+    free_places = dstsize - 1 - dst_lenth;
 
-    while(dstsize)
+    while(free_places-- > 0)
+        *dst++ = *source++;
+    *dst = '\0';
+    return(dst_lenth + source_lenth);
 }
+// int main()
+// {
+//     char str1[9]="hello";
+//     char str2[4]="abc";
+//     size_t x = ft_strlcat(str1,str2,9);
+//     printf("x is:%zu, \t string is:%s",x,str1);
+// }
