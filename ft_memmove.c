@@ -15,17 +15,31 @@ void *ft_memmove(void *dst, const void *src, size_t len)
 {
     unsigned char *destination;
     unsigned char *source;
+    size_t  to_move;
 
-    destination = ((unsigned char *)dst) + len - 1;
-    source = ((unsigned char *)src) + len - 1;
+    to_move = ft_strlen(dst) - 1;
+    if(src + len < dst)
+    {
+        ft_memcpy(dst,src,len);
+        return(dst);
+    }
+    destination = ((unsigned char *)dst);
+    source = ((unsigned char *)src);
+    destination += to_move;
+    source += to_move;
     while(len-- > 0)
+    {
         *destination-- = *source--;
+    }
     return(dst);
 }
 // int main()
 // {
-//     char s1[] = "ABCDE";
-//     char s2[3];
-//     memmove(s2,s1,3);
-//     printf("%s",s2);
+//     char source[] = "ABCD";
+//     char *dest = source + 2;
+//     //printf("before memove s2 is:%s\n",s2);
+
+
+//     ft_memmove(dest,source,2);
+//     printf("\n\ns2 is:%s\n",dest);
 // }

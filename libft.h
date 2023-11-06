@@ -17,6 +17,7 @@
 # include<stdlib.h>
 # include<stdio.h>
 
+void    *ft_memcpy(void *dst, const void *src, size_t _size);
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
@@ -28,5 +29,6 @@ char	*ft_strchr(const char *s, int c);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strrchr(const char *s, int c);
 void    *ft_memset(void *b, int c, size_t len);
+void    *ft_bzero(void *b, size_t n);
 
 #endif

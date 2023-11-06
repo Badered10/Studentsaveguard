@@ -25,8 +25,8 @@ void *ft_memset(void *b, int c, size_t len)
     return (b);
 }
 
-int main()
-{
-    int a;
-    printf("%d\n", *(int*)ft_memset(&a, 1, 2));
-}
+// int main()
+// {
+//     int a;
+//     printf("%d\n", *(int*)ft_memset(&a, 1, 2));
+// }

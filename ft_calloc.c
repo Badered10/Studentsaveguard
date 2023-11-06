@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baouragh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/02 14:50:13 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/02 14:50:17 by baouragh         ###   ########.fr       */
+/*   Created: 2023/11/06 18:15:36 by baouragh          #+#    #+#             */
+/*   Updated: 2023/11/06 18:15:37 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include"libft.h"
-void *ft_bzero(void *b, size_t n)
+void *ft_calloc(size_t count, size_t size)
 {
-    char *str;
-    str = (char *) b;
-    size_t i;
+    int total_bytes;
+    void *ptr;
 
-    i = 0;
-    while(i < n)
-    {
-        ft_memset(&str[i],0,sizeof(char));
-        i++;
-    }
-    return (str);
+    total_bytes = count * size;
+    ptr = malloc(total_bytes);
+    if(!ptr)
+    return(NULL);
+    ft_bzero(ptr,total_bytes);
+    return(ptr);
+}
+int main()
+{
+    int *arr;
+    int n = 5;
+    arr = calloc(n,sizeof(int));
+    printf("%lu",sizeof(arr));
 }
