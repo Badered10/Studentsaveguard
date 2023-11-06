@@ -17,6 +17,7 @@
 # include<stdlib.h>
 # include<stdio.h>
 
+size_t  ft_strlcpy(char *dst, const char *src, size_t dstsize);
 void    *ft_memcpy(void *dst, const void *src, size_t _size);
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);
