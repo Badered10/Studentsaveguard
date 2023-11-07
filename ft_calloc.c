@@ -22,10 +22,10 @@ void *ft_calloc(size_t count, size_t size)
     ft_bzero(ptr,total_bytes);
     return(ptr);
 }
-int main()
-{
-    int *arr;
-    int n = 5;
-    arr = calloc(n,sizeof(int));
-    printf("%lu",sizeof(arr));
-}
+// int main()
+// {
+//     int *arr;
+//     int n = 5;
+//     arr = calloc(n,sizeof(int));
+//     printf("%lu",sizeof(arr));
+// }
