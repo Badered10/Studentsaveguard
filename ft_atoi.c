@@ -9,25 +9,29 @@
 /*   Updated: 2023/11/06 17:53:21 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include"libft.h"
+#include "libft.h"
 
-int ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
-    char *var = (char *)str;
-    int res = 0;
-    int signe = 1;
-    if(*var == '-' || *var == '+')
-    {
-        if(*var == '-')
-        signe *=-1;
-        var++;
-    }
-    while(*var && *var >= '0' && *var <= '9')
-    {
-        res = res * 10 + (*var - '0');
-        var++;
-    }
-    return(res * signe);
+	char	*var;
+	int		res;
+	int		signe;
+
+	var = (char *)str;
+	res = 0;
+	signe = 1;
+	if (*var == '-' || *var == '+')
+	{
+		if (*var == '-')
+			signe *= -1;
+		var++;
+	}
+	while (*var && *var >= '0' && *var <= '9')
+	{
+		res = res * 10 + (*var - '0');
+		var++;
+	}
+	return (res * signe);
 }
 // int main()
 // {

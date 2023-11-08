@@ -9,18 +9,19 @@
 /*   Updated: 2023/11/06 18:15:37 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include"libft.h"
-void *ft_calloc(size_t count, size_t size)
-{
-    int total_bytes;
-    void *ptr;
+#include "libft.h"
 
-    total_bytes = count * size;
-    ptr = malloc(total_bytes);
-    if(!ptr)
-    return(NULL);
-    ft_bzero(ptr,total_bytes);
-    return(ptr);
+void	*ft_calloc(size_t count, size_t size)
+{
+	int		total_bytes;
+	void	*ptr;
+
+	total_bytes = count * size;
+	ptr = malloc(total_bytes);
+	if (!ptr)
+		return (NULL);
+	ft_bzero(ptr, total_bytes);
+	return (ptr);
 }
 // int main()
 // {

@@ -1,34 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/02 14:50:13 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/07 18:27:40 by baouragh         ###   ########.fr       */
+/*   Created: 2023/11/08 12:05:12 by baouragh          #+#    #+#             */
+/*   Updated: 2023/11/08 12:23:15 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include"libft.h"
 
-void	ft_bzero(void *b, size_t n)
+int ft_isascii(int c)
 {
-	char	*str;
-	size_t	i;
-
-	str = (char *)b;
-	i = 0;
-	while (i < n)
-	{
-		ft_memset(&str[i], 0, sizeof(char));
-		i++;
-	}
-	return (str);
+    return((c >= 0 && c <= 127));
 }
-
-void	ft_bzero(void *b, size_t n)
+/*
+int main()
 {
-	ft_memset(b, 0, n);
+    int x = -1;
+    printf("x is :%d\n",isascii(x));
+    printf("x is :%d",ft_isascii(x));
 }
-
+*/

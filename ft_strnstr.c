@@ -10,27 +10,27 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
 
-char *ft_strnstr(const char *haystack, const char *needle, size_t len)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-    char *ocean;
-    char *fish;
+	char	*ocean;
+	char	*fish;
 
-    ocean = (char *)haystack;
-    fish =  (char *)needle;
-    if (!needle)
-        return(ocean);
-    while(len-- > 0 && *ocean)
-    {
-        while((*fish && *ocean) && (*ocean == *fish))
-            ocean++, fish++;
-        if (!*fish)
-            return (ocean -= ft_strlen(needle), ocean) ;
-        fish = (char*)needle;
-        ocean ++;
-    }
-    return (NULL);
+	ocean = (char *)haystack;
+	fish = (char *)needle;
+	if (!needle)
+		return (ocean);
+	while (len-- > 0 && *ocean)
+	{
+		while ((*fish && *ocean) && (*ocean == *fish))
+			ocean++, fish++;
+		if (!*fish)
+			return (ocean -= ft_strlen(needle), ocean);
+		fish = (char *)needle;
+		ocean++;
+	}
+	return (NULL);
 }
 // int main()
 // {

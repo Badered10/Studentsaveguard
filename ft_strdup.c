@@ -9,18 +9,19 @@
 /*   Updated: 2023/11/06 21:07:55 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include"libft.h"
+#include "libft.h"
 
-char *ft_strdup(const char *s1)
+char	*ft_strdup(const char *s1)
 {
-    char *copy;
-    size_t lenth;
-    lenth = ft_strlen(s1);
-    copy = (char*) malloc (lenth + 1);
-    if (!copy)
-    return (NULL);
-    ft_strlcpy(copy,s1,lenth + 1);
-    return (copy);
+	char	*copy;
+	size_t	lenth;
+
+	lenth = ft_strlen(s1);
+	copy = (char *)malloc(lenth + 1);
+	if (!copy)
+		return (NULL);
+	ft_strlcpy(copy, s1, lenth + 1);
+	return (copy);
 }
 // int main()
 // {
