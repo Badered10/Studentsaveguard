@@ -3,13 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baouragh <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 17:53:19 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/06 17:53:21 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/09 21:56:21 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
+
+
+#include"libft.h"
 
 int	ft_atoi(const char *str)
 {
@@ -20,6 +22,8 @@ int	ft_atoi(const char *str)
 	var = (char *)str;
 	res = 0;
 	signe = 1;
+	while((*var >= 9 && *var <= 13) || *var == 32)
+	var++;
 	if (*var == '-' || *var == '+')
 	{
 		if (*var == '-')
@@ -31,11 +35,14 @@ int	ft_atoi(const char *str)
 		res = res * 10 + (*var - '0');
 		var++;
 	}
-	return (res * signe);
+	res *= signe;
+	return (res);
 }
-// int main()
-// {
-//     const char *str ="j";
-//     int x = ft_atoi(str);
-//     printf("%d",x);
-// }
+/*
+int main()
+{
+    const char *str ="2147483647";
+    int x = ft_atoi(str);
+    printf("%d",x);
+}
+*/

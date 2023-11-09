@@ -1,18 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/02 14:50:13 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/09 21:21:27 by baouragh         ###   ########.fr       */
+/*   Created: 2023/11/09 21:29:16 by baouragh          #+#    #+#             */
+/*   Updated: 2023/11/09 21:29:46 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	ft_bzero(void *b, size_t n)
+char *ft_strtrim(char const *s1, char const *set)
 {
-	ft_memset(b, 0, n);
+    
 }
