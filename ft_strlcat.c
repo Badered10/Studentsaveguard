@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baouragh <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 15:41:41 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/05 15:41:44 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/09 15:43:59 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,32 @@
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	char	*source;
-	size_t	dst_lenth;
-	size_t	source_lenth;
-	size_t	free_places;
+	size_t	dst_len;
+	size_t	src_len;
+	size_t	needed;
+	size_t	i;
+	size_t	limite;
 
-	source = (char *)src;
-	dst_lenth = ft_strlen(dst);
-	source_lenth = ft_strlen(source);
-	dst += dst_lenth;
-	free_places = dstsize - 1 - dst_lenth;
-	while (free_places-- > 0)
-		*dst++ = *source++;
-	*dst = '\0';
-	return (dst_lenth + source_lenth);
+	i = 0;
+	dst_len = ft_strlen(dst);
+	src_len = ft_strlen(src);
+	needed = src_len + dstsize;
+	if (dstsize <= dst_len)
+		return (needed);
+	limite = dstsize - 1;
+	while (src[i] && dst_len < limite--)
+	{
+		dst[dst_len + i] = src[i];
+		i++;
+	}
+	dst[dst_len + i] = '\0';
+	return (dst_len + src_len);
 }
+
 // int main()
 // {
-//     char str1[9]="hello";
-//     char str2[4]="abc";
-//     size_t x = ft_strlcat(str1,str2,9);
-//     printf("x is:%zu, \t string is:%s",x,str1);
+// 	char dest[21]= "ABCDEFGHJK";
+// 	char * src = (char *)"1234567890";
+// 	int x = ft_strlen(src);
+// 	printf("mine :%zu\t%s x is = %d\n",strlcat(dest, src, 10),dest,x);
 // }

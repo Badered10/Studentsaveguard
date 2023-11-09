@@ -10,17 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
 
-int ft_isascii(int c)
+int	ft_isascii(int c)
 {
-    return((c >= 0 && c <= 127));
+	return ((c >= 0 && c <= 127));
 }
 /*
-int main()
+int	main(void)
 {
-    int x = -1;
-    printf("x is :%d\n",isascii(x));
-    printf("x is :%d",ft_isascii(x));
+	int	x;
+
+	x = -1;
+	printf("x is :%d\n",isascii(x));
+	printf("x is :%d",ft_isascii(x));
 }
 */

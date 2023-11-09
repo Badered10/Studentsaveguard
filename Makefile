@@ -6,7 +6,7 @@
 #    By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/07 17:33:58 by baouragh          #+#    #+#              #
-#    Updated: 2023/11/08 14:12:54 by baouragh         ###   ########.fr        #
+#    Updated: 2023/11/08 14:27:35 by baouragh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,21 +32,21 @@ $(NAME): $(OBJS)
 all: $(NAME)
 
 clean:
-	@echo "$(PROCESS)remove objects files$(RESET)"
+	@echo "$(PROCESS)remove objects files...$(RESET)"
 	@sleep 1
 	@rm -f $(OBJS)
 	@echo "$(SUCCSSES)objects files removed$(RESET)"
 
 fclean: clean
-	@echo "$(PROCESS)remove libft.a ...$(RESET)"
+	@echo "$(PROCESS)remove libft.a...$(RESET)"
 	@sleep 1
 	@rm -rf $(NAME)
 	@echo "$(SUCCSSES)libft.a is removed$(RESET)"
 
 re: fclean all
-	@echo "$(PROCESS)rebuild is Done !$(RESET)"
+	@echo "$(PROCESS)rebuild...$(RESET)"
 	@sleep 1
-	@echo "$(SUCCSSES)rebuild is Done !$(RESET)"
+	@echo "$(SUCCSSES)rebuild is Done!$(RESET)"
 .PHONY: all re fclean 
 
 FAIL = \033[1;31m

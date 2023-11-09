@@ -3,17 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baouragh <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 09:09:27 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/01 10:05:49 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/09 15:44:42 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
 size_t	ft_strlen(const char *s)
 {
-	char *tmp = (char *)s;
+	char	*tmp;
+
+	tmp = (char *)s;
 	while (*s++)
 		;
 	s -= 1;
