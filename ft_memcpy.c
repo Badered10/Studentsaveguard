@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
 
 void	*ft_memcpy(void *dst, const void *src, size_t _size)
 {
@@ -19,17 +19,17 @@ void	*ft_memcpy(void *dst, const void *src, size_t _size)
 
 	source = (char *)src;
 	destination = (char *)dst;
-	if(!destination && !source)
+	if (!destination && !source)
 		return (dst);
-	while (_size-- )
+	while (_size--)
 		*destination++ = *source++;
-		return (dst);
+	return (dst);
 }
 // int main()
 // {
 // 	char ptr[]= "k";
 // 	char *str =NULL;
-// 	 ft_memcpy(ptr,str,1);
+// 		ft_memcpy(ptr,str,1);
 // 	printf("ptr =%p, \t str =%p",ptr,str);
-	
+
 // }

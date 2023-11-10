@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
-#include"libft.h"
+#include "libft.h"
 
 int	ft_atoi(const char *str)
 {
@@ -22,8 +21,8 @@ int	ft_atoi(const char *str)
 	var = (char *)str;
 	res = 0;
 	signe = 1;
-	while((*var >= 9 && *var <= 13) || *var == 32)
-	var++;
+	while ((*var >= 9 && *var <= 13) || *var == 32)
+		var++;
 	if (*var == '-' || *var == '+')
 	{
 		if (*var == '-')
@@ -39,10 +38,12 @@ int	ft_atoi(const char *str)
 	return (res);
 }
 /*
-int main()
+int	main(void)
 {
-    const char *str ="2147483647";
-    int x = ft_atoi(str);
-    printf("%d",x);
+	int	x;
+
+	const char *str ="2147483647";
+	x = ft_atoi(str);
+	printf("%d",x);
 }
 */

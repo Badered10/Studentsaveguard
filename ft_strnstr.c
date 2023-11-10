@@ -16,13 +16,13 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
 	char	*ocean;
 	char	*fish;
-	int	i;
+	int		i;
 
 	i = 0;
 	ocean = (char *)haystack;
 	fish = (char *)needle;
-	if(!*needle )
-	return(ocean);
+	if (!*needle)
+		return (ocean);
 	while (len-- && *ocean)
 	{
 		while ((*fish && *ocean) && (*ocean == *fish))
@@ -49,4 +49,3 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 // 	empty = ft_strnstr(haystack,needle,30);
 // 	printf("%s",empty);
 // }
-
