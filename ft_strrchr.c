@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 22:43:52 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/09 22:59:12 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/10 14:28:32 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ char	*ft_strrchr(const char *s, int c)
 		return (NULL);
 	return ((char *)(s + len));
 }
-int main()
-{
-	char *str;
-	str = ft_strrchr("testeaA",1121);
-	printf("%s",str);
-}
+// int main()
+// {
+// 	char *str;
+// 	str = ft_strrchr("testeaA",1121);
+// 	printf("%s",str);
+// }
