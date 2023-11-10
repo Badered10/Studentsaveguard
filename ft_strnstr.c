@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 11:28:45 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/10 14:27:27 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/10 17:11:13 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 
 // int	main(void)
 // {
-// char haystack[30] = "MZIRIBMZIRIBMZE123";
+// char haystack[30] = "";
 // 	char needle[10] = "MZIRIBMZE";
 // 	char * empty = (char*)"";
-// 	empty = ft_strnstr(haystack,needle,ft_strlen(haystack));
+// 	empty = ft_strnstr(haystack,needle,30);
 // 	printf("%s",empty);
 // }
 
