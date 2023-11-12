@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 11:28:45 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/11 13:14:26 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/12 14:47:08 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,42 +15,34 @@
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
 	char	*ocean;
-	char	*fish;
-	int		i;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
+	j = 0;
 	ocean = (char *)haystack;
-	fish = (char *)needle;
 	if (!*needle)
-		return (ocean);
-	while (len && *ocean)
+		return ((char *)haystack);
+	while (haystack[i] && len)
 	{
-		while ((*fish && *ocean) && (*ocean == *fish) && len)
-		{
-			ocean++;
-			fish++;
-			i++;
+		while ((haystack[i + j] == needle[j]) && (haystack[i] && needle[j])
+			&& j < len)
+			j++;
+		if (needle[j])
 			len--;
-		}
-		len += i;
-		ocean -= i;
-		i = 0;
-		len--;
-		if(!len && *fish)
-		return (NULL);
-		if (!*fish)
-			return (ocean);
-		ocean++;
-		fish = (char *)needle;
+		if (needle[j] == '\0')
+			return (ocean + i);
+		i++;
+		j = 0;
 	}
 	return (NULL);
 }
 
-// int	main(void)
+// int    main(void)
 // {
 // char *haystack = "MZIRIBMZIRIBMZE123";
-// 	char *needle = "MZIRIBMZE";
-// 	char * empty = (char*)"";
-// 	empty = ft_strnstr(haystack,needle,ft_strlen(needle));
-// 	printf("%s",empty);
+//     char *needle = "sd";
+//     char * empty = (char*)"";
+//     empty = ft_strnstr(haystack,needle,strlen(haystack));
+//     printf("%s",empty);
 // }

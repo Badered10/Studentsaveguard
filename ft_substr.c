@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 22:12:11 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/08 10:59:54 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/12 11:43:56 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (ft_strdup(""));
 	if (len > l_sub)
 		len = l_sub;
-	res = (char *)malloc(sizeof(char) * len + 1);
+	res = (char *)malloc(sizeof(char) * (len + 1));
 	if (!res)
 		return (NULL);
-	ft_strlcpy(res, s + start, len + 1);
+	ft_strlcpy(res, s + start, (len + 1));
 	return (res);
 }
 // int main()

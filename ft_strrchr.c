@@ -19,14 +19,14 @@ char	*ft_strrchr(const char *s, int c)
 	len = ft_strlen(s);
 	while (s[len] != (char)c && len >= 0)
 	{
-		if(len != 0)
-		len--;
-		else if(len == 0)
-		return NULL;
+		if (len != 0)
+			len--;
+		else if (len == 0)
+			return (NULL);
 	}
 	return ((char *)(s + len));
 }
-// int main() 
+// int main()
 // {
 // 	char *str;
 // 	str = ft_strrchr("teste",'x');

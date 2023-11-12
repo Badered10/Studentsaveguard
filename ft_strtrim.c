@@ -89,8 +89,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	if (!trim)
 		return (NULL);
 	ft_bzero(trim, total);
-	 if (total != 1)
+	if (total != 1)
 		ft_memcpy(trim, s1 + first, total - 1);
 	return (trim);
-	
 }
