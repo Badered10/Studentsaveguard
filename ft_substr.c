@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 22:12:11 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/12 11:43:56 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/13 08:31:18 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	l_total;
 	size_t	l_sub;
 
-	l_total = ft_strlen(s);
-	l_sub = l_total - start;
 	if (!s)
 		return (NULL);
+	l_total = ft_strlen(s);
+	l_sub = l_total - start;
 	if (start > l_total || !len)
 		return (ft_strdup(""));
 	if (len > l_sub)

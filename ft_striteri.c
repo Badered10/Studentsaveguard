@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/01 13:00:26 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/13 14:19:20 by baouragh         ###   ########.fr       */
+/*   Created: 2023/11/13 14:23:25 by baouragh          #+#    #+#             */
+/*   Updated: 2023/11/14 11:14:03 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
-void	*ft_memset(void *b, int c, size_t len)
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	char	*temp;
-	size_t	i;
+	unsigned int	i;
 
-	temp = (char *)b;
+	if (!s || !f)
+		return ;
 	i = 0;
-	while (i < len)
-		temp[i++] = c;
-	return (b);
+	while (s[i])
+	{
+		f(i, &s[i]);
+		i++;
+	}
 }
-
-// int main()
-// {
-// 	int arr[] = { 42,34,547,235};
-// 	ft_memset(&arr[2],5,2);
-// 	ft_memset(&arr[2],57,1);
-// 	printf("%d",arr[2]);
-// }

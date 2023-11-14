@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/01 13:00:26 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/13 14:19:20 by baouragh         ###   ########.fr       */
+/*   Created: 2023/11/13 11:12:32 by baouragh          #+#    #+#             */
+/*   Updated: 2023/11/14 11:20:34 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
-void	*ft_memset(void *b, int c, size_t len)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char	*temp;
-	size_t	i;
+	size_t			length;
+	unsigned int	i;
+	char			*b;
 
-	temp = (char *)b;
 	i = 0;
-	while (i < len)
-		temp[i++] = c;
+	if (!s || !f)
+		return (NULL);
+	length = ft_strlen(s);
+	b = malloc(sizeof(char) * (length + 1));
+	if (!b)
+		return (NULL);
+	while (s[i])
+	{
+		b[i] = f(i, s[i]);
+		i++;
+	}
+	b[i] = '\0';
 	return (b);
 }
-
-// int main()
-// {
-// 	int arr[] = { 42,34,547,235};
-// 	ft_memset(&arr[2],5,2);
-// 	ft_memset(&arr[2],57,1);
-// 	printf("%d",arr[2]);
-// }
