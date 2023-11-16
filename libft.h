@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 15:36:57 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/15 16:49:58 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/16 11:16:12 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdio.h>
 
 int					ft_atoi(const char *str);
 void				ft_bzero(void *b, size_t n);
