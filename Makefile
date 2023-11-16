@@ -6,7 +6,7 @@
 #    By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/07 17:33:58 by baouragh          #+#    #+#              #
-#    Updated: 2023/11/16 13:33:05 by baouragh         ###   ########.fr        #
+#    Updated: 2023/11/16 17:55:19 by baouragh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ SRCS =	ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_strle
 #ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c \
 		ft_putnbr_fd.c
 
-SRC_B = ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c
+SRC_B = ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c ft_lstlast_bonus.c ft_lstadd_back_bonus.c ft_lstdelone_bonus.c\
+		ft_lstclear_bonus.c
 OBJS = $(SRCS:.c=.o)
 BONUS = $(SRC_B:.c=.o)
 NAME = libft.a
@@ -28,14 +29,13 @@ NAME = libft.a
 $(NAME): $(OBJS)
 	ar -rc $(NAME) $(OBJS)
 
-all: $(NAME)
-
-
-$(BONUS):
+$(BONUS): 
+	$(CC) $(CFLAGS) -c $(SRC_B)
 	ar -rc $(NAME) $(BONUS)
 	
+bonus: all $(BONUS)
 
-bonus: $(BONUS)
+all: $(NAME)
 
 
 clean:

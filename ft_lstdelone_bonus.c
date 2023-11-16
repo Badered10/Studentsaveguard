@@ -1,21 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   ft_lstdelone_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 13:29:19 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/16 15:13:52 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/16 18:18:38 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"libft.h"
-
-// void delet(void *content)
-// {
-//     free(content);
-// }
 
 void ft_lstdelone(t_list *lst, void (*del)(void*))
 {
@@ -24,23 +19,32 @@ void ft_lstdelone(t_list *lst, void (*del)(void*))
     del(lst->content);
     free(lst); 
 }
-
+// void delet(void *content)
+// {
+//     free(content);
+//     content = NULL;
+// }
 // int main()
 // {
-//     t_list *head;
-//     t_list *node;
-//     t_list *tail;
-//     head = ft_lstnew("hello");
-//     node = ft_lstnew("okey");
-//     tail = ft_lstnew("last");
+//     t_list *first;
+//     t_list *oke;
+//     t_list *last;
 
-//     head->next = node;
-//     node->next = tail;
+//     char *k = "hello";
+//     char *i = "ok";
+//     char *j = "last";
+
     
-//     while(head)
-//     {
-//         printf("%s\n",(char*)head->content);
-//         head = head->next;
-//     }
-//     ft_lstdelone(tail,delet);
+//     first = ft_lstnew(k);
+//     oke = ft_lstnew(i);
+//     last = ft_lstnew(j);
+
+//     last->content = malloc(ft_strlen(j) + 1);
+//     ft_strlcpy(last->content,j,ft_strlen(j) + 1);
+
+//     first->content = oke;
+//     oke->content = last;
+
+//     printf("%s\n",last->content);
+//     ft_lstdelone(last,delet);
 // }
