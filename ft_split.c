@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 13:18:29 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/13 09:50:51 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/15 22:12:52 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,13 @@
 
 static char	**ft_free(char **res, int words)
 {
-	while (words > 0)
+	int	i;
+
+	i = 0;
+	while (i < words)
 	{
-		words--;
-		free(res[words]);
+		free(res[i]);
+		i++;
 	}
 	free(res);
 	return (NULL);
@@ -44,13 +47,13 @@ static int	ft_wcounter(const char *s, char c)
 	return (words);
 }
 
-static char	**realone(char **res, char const *s, char c, int words)
+static void	fill(char ***res, char const *s, char c, int words)
 {
 	char	*p;
 	char	*start;
-	int		initial;
+	int		count;
 
-	initial = ft_wcounter(s, c);
+	count = 0;
 	p = (char *)s;
 	while (words--)
 	{
@@ -59,12 +62,18 @@ static char	**realone(char **res, char const *s, char c, int words)
 		start = p;
 		while (*p != c && *p)
 			p++;
-		*res = ft_substr(start, 0, p - start);
-		if (!*res)
-			return (ft_free(res, (initial - words)));
-		res++;
+		*(*res) = ft_substr(start, 0, p - start);
+		if (!*(*res))
+		{
+			(*res) -= count;
+			(*res) = ft_free(*res, count);
+			return ;
+		}
+		count++;
+		(*res)++;
 	}
-	return (res);
+	*(*res) = NULL;
+	(*res) -= count;
 }
 
 char	**ft_split(char const *s, char c)
@@ -78,37 +87,6 @@ char	**ft_split(char const *s, char c)
 	res = (char **)malloc(sizeof(char *) * (words + 1));
 	if (!res)
 		return (NULL);
-	res = realone(res, s, c, words);
-	if (!res)
-		return (NULL);
-	*res = NULL;
-	words = ft_wcounter(s, c);
-	return (res - words);
+	fill(&res, s, c, words);
+	return (res);
 }
-
-// int	main(void)
-// {
-// 	const char	*s = "hello!";
-// 	char		c;
-// 	char		**k;
-// 	int			i;
-// 	int			words;
-
-// 	c = ' ';
-// 	k = ft_split(s, c);
-// 	i = 0;
-// 	words = ft_wcounter(s, c);
-// 	while (i < words)
-// 	{
-// 		printf("%s\n", k[i]);
-// 		i++;
-// 	}
-// }
-
-// if (*res == NULL)
-// {
-// 	while (words-- > 0)
-// 		free(res[words - 1]);
-// 	free(res);
-// 	return (NULL);
-// }

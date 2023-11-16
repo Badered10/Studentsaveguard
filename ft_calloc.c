@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 18:15:36 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/14 11:10:34 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/15 13:11:46 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	*ft_calloc(size_t count, size_t size)
 	void	*ptr;
 
 	if (!size || !count)
-		return (strdup(""));
+		return (ft_strdup(""));
 	if (size == SIZE_MAX || count == SIZE_MAX || (size * count) >= SIZE_MAX)
 		return (NULL);
 	total_bytes = count * size;
