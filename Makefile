@@ -6,7 +6,7 @@
 #    By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/07 17:33:58 by baouragh          #+#    #+#              #
-#    Updated: 2023/11/16 11:05:43 by baouragh         ###   ########.fr        #
+#    Updated: 2023/11/16 13:33:05 by baouragh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,8 +30,6 @@ $(NAME): $(OBJS)
 
 all: $(NAME)
 
-.c.o:
-	@$(CC) $(CFLAGS) -c $< -o $@ -I libft.h
 
 $(BONUS):
 	ar -rc $(NAME) $(BONUS)
