@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 21:34:23 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/15 22:24:17 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/16 12:53:31 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,32 +26,29 @@ int	ft_lstsize(t_list *lst)
 	}
 	return (res);
 }
-// int main()
-// {
+int main()
+{
 
-//     t_list *head;
-//     t_list *tail;
-//     t_list *to_up;
-//     t_list *i;
+    t_list *head;
+    t_list *tail;
+    t_list *to_up;
 
-//     int a = 1337;
-//     int b = 42;
-//     int c = 2004;
+    int a = 1;
+    int b = 2;
+    int c = 3;
 
-//     head = ft_lstnew(&a);
-//     tail = ft_lstnew(&b);
-//     to_up = ft_lstnew(&c);
+    head = ft_lstnew(&a);
+    tail = ft_lstnew(&b);
+    to_up = ft_lstnew(&c);
 
-//     head->next = tail;
+    head->next = tail;
 
-//     ft_lstadd_front(&head,to_up);
+    ft_lstadd_front(&head,to_up);
 
-//     i = head;
-
-//     printf("%d\n",ft_lstsize(i));
-//     while(i->next)
-//     {
-//         printf("%d\n",*(int *)i->content);
-//         i = i->next;
-//     }
-// }
+    printf("%d\n",ft_lstsize(head));
+    while(head->next)
+    {
+        printf("%d\n",*(int *)head->content);
+        head = head->next;
+    }
+}
