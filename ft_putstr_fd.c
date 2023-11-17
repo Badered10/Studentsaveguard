@@ -1,37 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/16 11:09:05 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/17 22:39:02 by baouragh         ###   ########.fr       */
+/*   Created: 2023/11/17 22:53:34 by baouragh          #+#    #+#             */
+/*   Updated: 2023/11/17 23:09:18 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include"libft.h"
 
-t_list	*ft_lstnew(void *content)
+void ft_putstr_fd(char *s, int fd)
 {
-	t_list	*new;
-
-	new = malloc(sizeof(t_list));
-	if (!new)
-		return (NULL);
-	new->content = content;
-	new->next = NULL;
-	return (new);
+    write(fd,s,ft_strlen(s));
 }
-
-/*
-int	main(void)
-{
-	t_list	*new;
-	int		arr[] = {1,23,2};
-
-	new = ft_lstnew(arr);
-	new->content = (int *)new->content + 0;
-	printf("%d",*((int*)new->content));
-}
-*/

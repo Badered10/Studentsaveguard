@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 11:50:37 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/15 12:53:42 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/17 22:37:22 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,12 +72,14 @@ char	*ft_itoa(int n)
 	fill(res, num, n);
 	return (res);
 }
+/*
+int	main(void)
+{
+	int		num;
+	char	*res;
 
-// int main()
-// {
-//     int num = -1234;
-
-//     char *res;
-//     res = ft_itoa(num);
-//     printf("%s",res);
-// }
+	num = -1234;
+	res = ft_itoa(num);
+	printf("%s",res);
+}
+*/

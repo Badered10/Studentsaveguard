@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 15:41:41 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/11 14:08:53 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/17 22:40:24 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,14 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	dst[dst_len + i] = '\0';
 	return (dst_len + src_len);
 }
+/*
+int	main(void)
+{
+	int	x;
 
-// int main()
-// {
-// 	char dest[12]= "0123456789";
-// 	char * src = (char *)"1";
-// 	int x = ft_strlen(src);
-// 	printf("mine :%zu\t%s x is = %d\n",ft_strlcat(dest, src, 11),dest,x);
-// }
+	char dest[12]= "0123456789";
+	char * src = (char *)"1";
+	x = ft_strlen(src);
+	printf("mine :%zu\t%s x is = %d\n",ft_strlcat(dest, src, 11),dest,x);
+}
+*/

@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 18:42:15 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/10 20:01:53 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/17 22:40:08 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,13 @@ char	*ft_strchr(const char *s, int c)
 		return ((char *)s + i);
 	return (NULL);
 }
-// int main()
-// {
-// 	char* str="teste";
-// 	char *ptr = ft_strchr(str,0);
-// 	printf("%p",ptr);
-// }
+/*
+int	main(void)
+{
+	char	*ptr;
+
+	char* str="teste";
+	ptr = ft_strchr(str,0);
+	printf("%p",ptr);
+}
+*/

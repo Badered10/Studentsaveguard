@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 17:31:16 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/09 16:06:50 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/17 22:36:44 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,12 @@ void	*ft_memcpy(void *dst, const void *src, size_t _size)
 		*destination++ = *source++;
 	return (dst);
 }
-// int main()
-// {
-// 	char ptr[]= "k";
-// 	char *str =NULL;
-// 		ft_memcpy(ptr,str,1);
-// 	printf("ptr =%p, \t str =%p",ptr,str);
-
-// }
+/*
+int	main(void)
+{
+	char ptr[]= "k";
+	char *str =NULL;
+		ft_memcpy(ptr,str,1);
+	printf("ptr =%p, \t str =%p",ptr,str);
+}
+*/

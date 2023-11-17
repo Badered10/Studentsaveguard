@@ -6,17 +6,11 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 22:12:11 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/13 08:31:18 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/17 23:09:52 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-// s|--------start------------len---->/0
-
-//     1) if len > l_sub; --> len = l_sub;  || ----> return (substring);
-
-//     2) if start > l_sub or len = 0 ---> return (empty substring);
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
@@ -38,10 +32,13 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	ft_strlcpy(res, s + start, (len + 1));
 	return (res);
 }
-// int main()
-// {
-//     char str[12] = "hello world";
-//     char *key;
-//     key = ft_substr(str,11,1);
-//     printf("%s",key);
-// }
+/*
+int	main(void)
+{
+	char	str[12] = "hello world";
+	char	*key;
+
+	key = ft_substr(str,11,1);
+	printf("%s",key);
+}
+*/
