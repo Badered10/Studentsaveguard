@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 15:36:57 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/16 17:40:25 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/17 14:38:11 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,6 @@ int					ft_lstsize(t_list *lst);
 t_list 				*ft_lstlast(t_list *lst);
 void 				ft_lstadd_back(t_list **lst, t_list *new);
 void 				ft_lstdelone(t_list *lst, void (*del)(void*));
+void 				ft_lstclear(t_list **lst, void (*del)(void*));
 
 #endif

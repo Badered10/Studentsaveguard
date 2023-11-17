@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 11:49:55 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/16 13:27:37 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/16 22:50:51 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,16 @@ void ft_lstadd_back(t_list **lst, t_list *new)
 {
     if (!lst || !new)
     return ;
-    (*lst) = ft_lstlast(*lst);
-    (*lst)->next = new;
-    new->next = NULL;
+    if(!*lst)
+    {
+        *lst = new;
+        return ;
+    }
+    t_list *tmp;
+    
+    tmp = (*lst);
+    tmp = ft_lstlast(tmp);
+    tmp->next = new;
 }
 // int main()
 // {
