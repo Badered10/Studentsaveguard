@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/17 23:04:56 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/17 23:19:45 by baouragh         ###   ########.fr       */
+/*   Created: 2023/11/17 23:20:30 by baouragh          #+#    #+#             */
+/*   Updated: 2023/11/17 23:48:40 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
-
-void ft_putendl_fd(char *s, int fd)
+void ft_putnbr_fd(int n, int fd)
 {
-    write(fd, s, ft_strlen(s));
-    write(fd, "\n", 1);
+    
+}
+int main()
+{
+    fd = open(test.txt, O_CREAT | O_RDWR);
 }

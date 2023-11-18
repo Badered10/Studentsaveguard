@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 15:36:57 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/17 23:09:34 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/17 23:22:44 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ char				*ft_itoa(int n);
 char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void				ft_striteri(char *s, void (*f)(unsigned int, char *));
 void 				ft_putchar_fd(char c, int fd);
+void 				ft_putstr_fd(char *s, int fd);
+void 				ft_putendl_fd(char *s, int fd);
 
 typedef struct s_list
 {
