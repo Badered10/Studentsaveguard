@@ -6,12 +6,11 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 15:41:41 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/18 17:25:06 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/18 18:22:53 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <string.h>
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
