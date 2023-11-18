@@ -6,31 +6,25 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 17:31:16 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/17 22:36:44 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/18 16:47:12 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <string.h>
 
-void	*ft_memcpy(void *dst, const void *src, size_t _size)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	char	*source;
-	char	*destination;
+	unsigned char	*source;
+	unsigned char	*destination;
 
-	source = (char *)src;
-	destination = (char *)dst;
+	source = (unsigned char *)src;
+	destination = (unsigned char *)dst;
 	if (!destination && !source)
+		return (NULL);
+	if ((destination == source) && n)
 		return (dst);
-	while (_size--)
+	while (n--)
 		*destination++ = *source++;
 	return (dst);
 }
-/*
-int	main(void)
-{
-	char ptr[]= "k";
-	char *str =NULL;
-		ft_memcpy(ptr,str,1);
-	printf("ptr =%p, \t str =%p",ptr,str);
-}
-*/

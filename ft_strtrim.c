@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 21:29:16 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/11 14:35:25 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/18 18:05:43 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	lenth;
 	size_t	total;
 
+	if (!s1 || !set)
+		return (NULL);
 	lenth = ft_strlen(s1);
 	first = first_wall(s1, set);
 	last = last_wall(s1, set, lenth);

@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 22:12:11 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/17 23:09:52 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/18 18:07:32 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,3 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	ft_strlcpy(res, s + start, (len + 1));
 	return (res);
 }
-/*
-int	main(void)
-{
-	char	str[12] = "hello world";
-	char	*key;
-
-	key = ft_substr(str,11,1);
-	printf("%s",key);
-}
-*/

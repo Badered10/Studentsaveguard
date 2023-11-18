@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 22:43:52 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/17 22:41:00 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/18 18:07:28 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,3 @@ char	*ft_strrchr(const char *s, int c)
 	}
 	return ((char *)(s + len));
 }
-/*
-int	main(void)
-{
-	char	*str;
-
-	str = ft_strrchr("teste",'x');
-	printf("%s",str);
-}
-*/

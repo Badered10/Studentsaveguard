@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 17:19:09 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/17 22:38:09 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/18 18:06:21 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
 	t_list	*tmp;
 
-	if (!lst || !del)
+	if (!lst || !del || !*lst)
 		return ;
 	while (*lst)
 	{
@@ -25,22 +25,3 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 		*lst = tmp;
 	}
 }
-/*
-void	delet(void *lst)
-{
-	free(lst);
-}
-int	main(void)
-{
-	t_list	*head;
-	t_list	*ok;
-	t_list	*dude;
-
-	head = ft_lstnew("hello");
-	ok = ft_lstnew("ok");
-	dude = ft_lstnew("haha");
-	head->next = ok;
-	ok->next = dude;
-	ft_lstclear(&head,delet);
-}
-*/

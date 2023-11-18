@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 20:52:05 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/08 18:16:23 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/18 16:01:20 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,9 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	while (n)
 	{
 		if (ptr[i] == (char)c)
-			return (ptr + i);
+			return ((void *)ptr + i);
 		i++;
 		n--;
 	}
 	return (NULL);
 }
-/*
-int	main(void)
-{
-	char	s[] = {0, 1, 2 ,3 ,4 ,5};
-	char	*ptr;
-	char	*ptr2;
-
-	ptr = memchr(s, 2 + 256, 3);
-	ptr2 = ft_memchr(s, 2 + 256, 3);
-	printf("org %s , copy %s\n",ptr,ptr2);
-}
-*/

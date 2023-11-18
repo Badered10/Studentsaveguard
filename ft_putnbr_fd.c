@@ -6,15 +6,31 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 23:20:30 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/17 23:48:40 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/18 13:54:58 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void ft_putnbr_fd(int n, int fd)
+#include "libft.h"
+
+void	ft_putnbr_fd(int n, int fd)
 {
-    
-}
-int main()
-{
-    fd = open(test.txt, O_CREAT | O_RDWR);
+	long	x;
+
+	x = n;
+	if (fd < 0)
+		return ;
+	if (x < 0)
+	{
+		ft_putchar_fd('-', fd);
+		x = -x;
+	}
+	if (x > 9)
+	{
+		ft_putnbr_fd(x / 10, fd);
+		ft_putchar_fd(x % 10 + 48, fd);
+	}
+	else if (x >= 0 && x <= 9)
+	{
+		ft_putchar_fd(x + 48, fd);
+	}
 }

@@ -6,11 +6,12 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 11:28:45 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/17 22:40:50 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/18 17:22:47 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <string.h>
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
@@ -20,6 +21,8 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 
 	i = 0;
 	j = 0;
+	if (!len && !haystack)
+		return (NULL);
 	ocean = (char *)haystack;
 	if (!*needle)
 		return ((char *)haystack);
@@ -37,15 +40,3 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	}
 	return (NULL);
 }
-/*
-int	main(void)
-{
-char	*haystack = "MZIRIBMZIRIBMZE123";
-	char	*needle;
-
-	needle = "sd";
-	char * empty = (char*)"";
-	empty = ft_strnstr(haystack,needle,strlen(haystack));
-	printf("%s",empty);
-}
-*/

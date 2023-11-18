@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 22:47:22 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/17 22:43:33 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/18 18:09:44 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,3 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	}
 	return ((void *)destination);
 }
-/*
-#include <string.h>
-
-int	main(void)
-{
-	char	*src;
-	char	*dest;
-
-   src = "NULL";
-	dest = NULL;
-	//printf("before memove s2 is:%s\n",s2); CDEFGH
-	ft_memmove(dest,src,0);
-	printf("\n\ns2 is:%s\n",dest);
-}
-*/

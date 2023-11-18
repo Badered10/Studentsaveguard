@@ -6,13 +6,15 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 22:53:34 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/17 23:09:18 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/18 17:41:04 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
 
-void ft_putstr_fd(char *s, int fd)
+void	ft_putstr_fd(char *s, int fd)
 {
-    write(fd,s,ft_strlen(s));
+	if ((fd < 0) || !s)
+		return ;
+	write(fd, s, ft_strlen(s));
 }

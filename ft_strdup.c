@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 21:07:53 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/14 11:49:29 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/18 18:07:10 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,3 @@ char	*ft_strdup(const char *s1)
 	ft_strlcpy(copy, s1, lenth + 1);
 	return (copy);
 }
-/*
-int	main(void)
-{
-	char	*copy;
-
-	const char *str= "hello wolrd my name is bader";
-	copy = NULL;
-	copy = ft_strdup(str);
-	printf("copy:%s\t str:%s\n",copy,str);
-	printf("lenth of copy is :%zu \t
-		lenth of str:%zu",ft_strlen(copy),ft_strlen(str));
-	free(copy);
-}
-*/

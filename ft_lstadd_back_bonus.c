@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 11:49:55 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/17 22:37:37 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/18 18:06:13 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,28 +27,3 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	tmp = ft_lstlast(tmp);
 	tmp->next = new;
 }
-
-/*
-int	main(void)
-{
-	t_list	*first;
-	t_list	*second;
-	t_list	*third;
-	t_list	*last;
-	t_list	*tmp;
-
-	first  = ft_lstnew("one");
-	second = ft_lstnew("two");
-	third  = ft_lstnew("three");
-	last   = ft_lstnew("and four");
-	first->next = second;
-	second->next = third;
-	tmp = first;
-	ft_lstadd_back(&first,last);
-	while(tmp)
-	{
-		printf("%s\n",(char*)tmp->content);
-		tmp = tmp->next;
-	}
-}
-*/

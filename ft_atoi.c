@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 17:53:19 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/09 21:56:21 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/18 15:33:41 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,3 @@ int	ft_atoi(const char *str)
 	res *= signe;
 	return (res);
 }
-/*
-int	main(void)
-{
-	int	x;
-
-	const char *str ="2147483647";
-	x = ft_atoi(str);
-	printf("%d",x);
-}
-*/
