@@ -6,7 +6,7 @@
 #    By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/07 17:33:58 by baouragh          #+#    #+#              #
-#    Updated: 2023/11/20 15:06:07 by baouragh         ###   ########.fr        #
+#    Updated: 2023/11/20 15:18:17 by baouragh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ $(NAME):
 	@echo "$(PROCESS)Create part (1 & 2) object files ...$(RESET)"
 	@sleep 1
 	@$(CC) $(CFLAGS) -c $(SRCS)
-	@echo "$(SUCCSSES)Objects files is created!$(RESET)"
+	@echo "$(SUCCSSES)Object files is created!$(RESET)"
 	@echo "$(PROCESS)Create libft.a ...$(RESET)"
 	@ar -rc $(NAME) $(OBJS)
 	@sleep 1
@@ -40,7 +40,7 @@ $(BONUS):
 	@echo "$(PROCESS)Create (bonus part) object files ...$(RESET)"
 	@$(CC) $(CFLAGS) -c $(SRC_B)
 	@sleep 1
-	@echo "$(SUCCSSES)Objects files is created!$(RESET)"
+	@echo "$(SUCCSSES)Object files is created!$(RESET)"
 	@echo "$(PROCESS)Create  libft.a ...$(RESET)"
 	@ar -rc $(NAME) $(BONUS)
 	@sleep 1
@@ -52,10 +52,10 @@ all: $(NAME)
 
 
 clean:
-	@echo "$(PROCESS)Remove all objects files ...$(RESET)"
+	@echo "$(PROCESS)Remove all object files ...$(RESET)"
 	@rm -f $(OBJS) $(BONUS)
 	@sleep 1
-	@echo "$(SUCCSSES)Objects files removed$(RESET)"
+	@echo "$(SUCCSSES)Object files removed$(RESET)"
 
 fclean: clean
 	@echo "$(PROCESS)Remove libft.a ...$(RESET)"
