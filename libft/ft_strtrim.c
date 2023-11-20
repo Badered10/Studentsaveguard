@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 21:29:16 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/18 18:05:43 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/18 21:19:22 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 		return (NULL);
 	ft_bzero(trim, total);
 	if (total != 1)
-		ft_memcpy(trim, s1 + first, total - 1);
+		ft_memmove(trim, s1 + first, total - 1);
 	return (trim);
 }

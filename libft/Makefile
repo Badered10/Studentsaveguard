@@ -6,7 +6,7 @@
 #    By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/07 17:33:58 by baouragh          #+#    #+#              #
-#    Updated: 2023/11/18 18:08:28 by baouragh         ###   ########.fr        #
+#    Updated: 2023/11/20 15:06:07 by baouragh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,37 +26,47 @@ OBJS = $(SRCS:.c=.o)
 BONUS = $(SRC_B:.c=.o)
 NAME = libft.a
 
-$(NAME): $(OBJS)
-	ar -rc $(NAME) $(OBJS)
+$(NAME):
+	@echo "$(PROCESS)Create part (1 & 2) object files ...$(RESET)"
+	@sleep 1
+	@$(CC) $(CFLAGS) -c $(SRCS)
+	@echo "$(SUCCSSES)Objects files is created!$(RESET)"
+	@echo "$(PROCESS)Create libft.a ...$(RESET)"
+	@ar -rc $(NAME) $(OBJS)
+	@sleep 1
+	@echo "$(SUCCSSES)libft.a is created!$(RESET)"
 
-$(BONUS): 
-	$(CC) $(CFLAGS) -c $(SRC_B)
-	ar -rc $(NAME) $(BONUS)
+$(BONUS):
+	@echo "$(PROCESS)Create (bonus part) object files ...$(RESET)"
+	@$(CC) $(CFLAGS) -c $(SRC_B)
+	@sleep 1
+	@echo "$(SUCCSSES)Objects files is created!$(RESET)"
+	@echo "$(PROCESS)Create  libft.a ...$(RESET)"
+	@ar -rc $(NAME) $(BONUS)
+	@sleep 1
+	@echo "$(SUCCSSES)libft.a is created!$(RESET)"
 	
-bonus: all $(BONUS)
+bonus: $(BONUS)
 
 all: $(NAME)
 
 
 clean:
-	@echo "$(PROCESS)remove objects files ...$(RESET)"
-	@rm -f $(OBJS)
-	@rm -f $(BONUS)
+	@echo "$(PROCESS)Remove all objects files ...$(RESET)"
+	@rm -f $(OBJS) $(BONUS)
 	@sleep 1
-	@echo "$(SUCCSSES)objects files removed$(RESET)"
+	@echo "$(SUCCSSES)Objects files removed$(RESET)"
 
 fclean: clean
-	@echo "$(PROCESS)remove libft.a ...$(RESET)"
+	@echo "$(PROCESS)Remove libft.a ...$(RESET)"
 	@rm -rf $(NAME)
 	@sleep 1
 	@echo "$(SUCCSSES)libft.a is removed$(RESET)"
 
 re: fclean all
-	@echo "$(PROCESS)rebuild ...$(RESET)"
-	@sleep 1
-	@echo "$(SUCCSSES)rebuild is Done!$(RESET)"
+	@echo "$(SUCCSSES)Rebuild is done!$(RESET)"
 
-.PHONY: all re fclean clean
+.PHONY: all re clean fclean bonus
 
 SUCCSSES = \033[1;32m
 PROCESS = \033[1;33m
