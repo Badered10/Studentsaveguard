@@ -6,7 +6,7 @@
 #    By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/07 17:33:58 by baouragh          #+#    #+#              #
-#    Updated: 2023/11/20 15:18:17 by baouragh         ###   ########.fr        #
+#    Updated: 2023/11/21 10:16:40 by baouragh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,17 +26,19 @@ OBJS = $(SRCS:.c=.o)
 BONUS = $(SRC_B:.c=.o)
 NAME = libft.a
 
-$(NAME):
-	@echo "$(PROCESS)Create part (1 & 2) object files ...$(RESET)"
-	@sleep 1
-	@$(CC) $(CFLAGS) -c $(SRCS)
-	@echo "$(SUCCSSES)Object files is created!$(RESET)"
+$(NAME): $(OBJS)
 	@echo "$(PROCESS)Create libft.a ...$(RESET)"
 	@ar -rc $(NAME) $(OBJS)
 	@sleep 1
 	@echo "$(SUCCSSES)libft.a is created!$(RESET)"
 
-$(BONUS):
+$(OBJS): $(SRCS)
+	@echo "$(PROCESS)Create part (1 & 2) object files ...$(RESET)"
+	@sleep 1
+	@$(CC) $(CFLAGS) -c $(SRCS)
+	@echo "$(SUCCSSES)Object files is created!$(RESET)"
+	
+$(BONUS): $(SRC_B)
 	@echo "$(PROCESS)Create (bonus part) object files ...$(RESET)"
 	@$(CC) $(CFLAGS) -c $(SRC_B)
 	@sleep 1

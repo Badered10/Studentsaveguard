@@ -6,24 +6,26 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 11:38:18 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/20 16:17:07 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/21 22:11:44 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char *alloc(char *s)
+void my_list(t_list **list,int fd)
 {
-    char *res;
-    int i;
+    
+}
 
-    i = 0;
-    while(s[i] != '\n')
-        i++;
-        
-    res = ft_calloc(sizeof(char) * i);
-    ft_memmove(res,s,i);
-    return (res);
+t_list *new_node(char *s,size_t byets)
+{
+    t_list *new;
+    if (!s)
+    return NULL;
+    new = malloc(sizeof(t_list));
+    new->text = s;
+    new->next = NULL;
+    return (new);
 }
 
 int n_finder(char *s)
@@ -44,19 +46,18 @@ int n_finder(char *s)
 char *get_next_line(int fd)
 {
     static t_list *list;
-    char *data;
-    size_t byets;
+    char * next_line;
         
-    if (fd < 0 )
+    if (fd < 0 || BUFFER_SIZE <= 0 || read(fd,&next_line,0) < 0)
     return NULL;
-    byets = read(fd,data,BUFFER_SIZE);
-    if (byets < 0)
-    return NULL;
-    if(n_finder(data) == 1)
-        return(alloc(data));
+    my_list(&list,fd);
+    
 }
 int main()
 {
     int fd = open("test.txt", O_CREAT | O_RDWR, 0777);
+    char *str;
+    str = get_next_line(fd);
+    printf("%s\n",str);
     close(fd);
 }

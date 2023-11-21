@@ -6,12 +6,12 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 22:47:22 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/18 18:09:44 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/21 10:26:05 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
+#include <stdio.h>
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
 	unsigned char	*destination;
