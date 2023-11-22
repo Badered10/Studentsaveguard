@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 18:52:33 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/21 10:41:32 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/22 10:41:08 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,4 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 		lst = lst->next;
 	}
 	return (new_list);
-}
-
-void *change(void *p)
-{
-	char *str;
-	str = (char*)p;
-	*str -=32;
-	return(p);
 }

@@ -6,13 +6,11 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 17:53:19 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/21 22:27:56 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/22 10:40:28 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
-#include <string.h>
 
 int	ft_atoi(const char *str)
 {
