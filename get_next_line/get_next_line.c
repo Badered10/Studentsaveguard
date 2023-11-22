@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 11:38:18 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/22 10:17:50 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/22 13:39:28 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@ size_t	ft_strlen(const char *s)
 	char	*tmp;
 
 	tmp = (char *)s;
-	while (*s++)
+	while (*s != '\n' || *s != '\0')
 		;
+    if (!*s)
 	s -= 1;
 	return (s - tmp);
 }
@@ -50,12 +51,28 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 
 char *alloc_for_me(t_liat *list)
 {
-    size_t 
+    char *final;
+    size_t i;
+    i  = 0;
+    t_list *tmp;
+    size_t ok;
+    ok  = 0;
+    tmp = list;
+    while(tmp)
+    {
+        i += ft_strlen(tmp->text);
+        tmp = tmp->next;
+    }
+    final = malloc(sizeof(char) * i);
     while(list)
     {
-        ft_strlen(list->text);
+        ft_strlcpy(final + ok,list->text,ft_strlen(list->text))
+        ok += ft_strlen(list->text);
         list = list->next;
     }
+    final[ok] = '\0';
+    return(final);
+    
 }
 
 t_list *last(t_list *node)
@@ -101,10 +118,13 @@ t_list *new_node(char *s,size_t byets_readed)
     return (new);
 }
 
-void my_list(t_list **list,int fd)
+t_list *my_list(t_list **list,int fd)
 {
     char buffer[BUFFER_SIZE];
     size_t byets_readed;
+    t_list *tmp;
+    t_list *rest;
+    size_t count;
     
     while (!n_finder((*list)->text))
     {
@@ -114,6 +134,9 @@ void my_list(t_list **list,int fd)
         *list = new_node(buffer,byets_readed);
         add_back(*list);
     }
+    tmp = last(*list);
+    ft_strlcpy()                                                                                                                                                                                                                                                           
+    
 }
 
 int n_finder(char *s)
@@ -141,6 +164,8 @@ char *get_next_line(int fd)
     if (fd < 0 || BUFFER_SIZE <= 0 || read(fd,&next_line,0) < 0)
     return NULL;
     my_list(&list,fd);
+   next_line = alloc_for_me(list);
+   
     
 }
 int main()
