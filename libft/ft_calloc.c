@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 18:15:36 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/20 14:30:51 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/22 11:58:01 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	*ft_calloc(size_t count, size_t size)
 	size_t	total_bytes;
 	void	*ptr;
 
-	if (count && (SIZE_MAX / count < size))
+	if (size && (count > SIZE_MAX / size))
 		return (NULL);
 	total_bytes = count * size;
 	ptr = (void *)malloc(total_bytes);
