@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 11:38:18 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/23 21:48:58 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/23 23:21:30 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,7 +165,8 @@ void my_list(t_list **list,int fd,size_t size)
         if (!byets_readed)
         return;
         new = new_node(buffer,byets_readed);
-        // printf("2node head before add back'%s'",(*list)->text);
+        if(*list)
+        printf("2-------------------node head before add back'%s'",(*list)->text);
         add_back(&list, new);
         printf("2--------------------new after add back'%s'\n",new->text);
         printf("2--------------------list after add back'%s'\n",(*list)->text);
@@ -216,15 +217,7 @@ char *get_next_line(int fd)
     static t_list *list;
     char * next_line;
     int lenth;
-    if(!list)
-    printf("1---------------------------------i am nulll---------------------------------\n");
-    else
-    {
-        printf("1-----------------------------i am not !---------------------------------\n");
-        printf("1and this is my content'%s'\n",list->text);
-    }
     lenth = 0;
-    list = (NULL);
     if (fd < 0 || BUFFER_SIZE <= 0 || read(fd,&next_line,0) < 0)
     return NULL;
     my_list(&list,fd,BUFFER_SIZE);
@@ -233,7 +226,6 @@ char *get_next_line(int fd)
         next_line = alloc_for_me(list);
     }
    list = ft_clean(&list);
-   printf(" befor end program exctly the rest part'%s'\n",list->text);
    return (next_line);
 }
 
@@ -245,5 +237,8 @@ int main()
     printf("\n\nres :%s\n",str);
     str = get_next_line(fd);
     printf("\n\nres :%s\n",str);
+    str = get_next_line(fd);
+    printf("\n\nres :%s\n",str);
     close(fd);
+    system("leaks a.out");
 }
