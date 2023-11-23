@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 11:38:18 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/23 19:45:35 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/23 21:48:58 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,9 @@ int n_finder(char *s, int byets_readed)
         {
             byets_readed--;
             i++;
-            printf("did search! byets_readed: %d\n",byets_readed);
         }
         if(s[i] == '\n')
-        {
-            printf("BINGO!\n");
         return (1);
-        }
     }
     return (0);
 }
@@ -82,18 +78,21 @@ t_list *ft_last(t_list *node)
 
 
 
-void add_back(t_list **list, t_list *new)
+void add_back(t_list ***list, t_list *new)
 {
     t_list *tmp;
     if (!list || !new)
     return;
-    if (!*list)
+    
+    printf("addres of *(*list) on add back %p\n",*(*list));
+    if (!*(*list))
     {
-        *list = new;
+        printf("-------------------------------------SUS must showed just one time -------------------------------------\n");
+        *(*list) = new;
         return;
     }
-    tmp = (*list);
-    tmp = ft_last(*list);
+    tmp = *(*list);
+    tmp = ft_last(*(*list));
     tmp->next = new;
 }
 
@@ -104,6 +103,7 @@ char *ft_fill(t_list *list,int lenth, char *res)
 
     total = 0;
     i = 0;
+     printf("4---------------------------------------FILL--------------------------------------list->text'%s'\n",list->text);
       while(list)
     {
         while(list->text[i] != '\0')
@@ -135,6 +135,7 @@ char* alloc_for_me(t_list *list)
     total = 0;
     res = NULL;
     tmp = list;
+    printf("3---------------------------------------IMPORTRNT--------------------------------------list->text'%s'\n",list->text);
     while(tmp)
     {
         while(tmp->text[i] != '\0')
@@ -158,18 +159,20 @@ void my_list(t_list **list,int fd,size_t size)
     int byets_readed;
     t_list *new;
     t_list *tmp;
-    
     while(1)
     {
         byets_readed = read(fd,buffer,BUFFER_SIZE);
         if (!byets_readed)
         return;
         new = new_node(buffer,byets_readed);
-        add_back(&(*list), new);
+        // printf("2node head before add back'%s'",(*list)->text);
+        add_back(&list, new);
+        printf("2--------------------new after add back'%s'\n",new->text);
+        printf("2--------------------list after add back'%s'\n",(*list)->text);
         tmp = ft_last(*list);
         if(n_finder(tmp->text,byets_readed) != 0)
         {
-            printf("here!\n");
+            printf("2------------------break mylist loop--------------------!\n");
             break;
         }
     }
@@ -188,8 +191,6 @@ t_list *ft_clean(t_list **list)
 	if (!list || !*list)
 		return (NULL);
     last = ft_last(*list);
-    printf("--------------%p\n",last);
-    printf("--------------'%s'\n",(last)->text);
 	while (*list != last)
 	{
 		tmp = (*list)->next;
@@ -197,23 +198,15 @@ t_list *ft_clean(t_list **list)
         free((*list));
 		*list = tmp;
 	}
-    printf("--------------%p\n",(last));
-    printf("--------------'%s'\n",(last)->text);
     while((last)->text[i])
-    {
-        printf("total %d\n",i);
         i++;
-    }
     while(n_finder((last)->text,i) && ((last)->text[nplace] != '\n'))
-    {
-        printf("total %d\n",nplace);
         nplace++;
-    }
     rest = malloc(sizeof(char) * i + 1);
-    strlcpy(rest,&(last)->text[nplace],i + 1);
-    printf("reste -----------%s\n",rest);
+    strlcpy(rest,&(last)->text[nplace + 1],i + 1);
+    printf("5-----------------------------rest -----------%s\n",rest);
     last = new_node(rest,i + 1);
-    printf("reste -----------%s\n",last->text);
+    printf("5--------------------------last->text -----------%s\n",last->text);
     free(rest);
     return (last);
 }
@@ -223,16 +216,24 @@ char *get_next_line(int fd)
     static t_list *list;
     char * next_line;
     int lenth;
-
+    if(!list)
+    printf("1---------------------------------i am nulll---------------------------------\n");
+    else
+    {
+        printf("1-----------------------------i am not !---------------------------------\n");
+        printf("1and this is my content'%s'\n",list->text);
+    }
     lenth = 0;
     list = (NULL);
     if (fd < 0 || BUFFER_SIZE <= 0 || read(fd,&next_line,0) < 0)
     return NULL;
     my_list(&list,fd,BUFFER_SIZE);
-    
     if(list)
-    next_line = alloc_for_me(list);
+    {
+        next_line = alloc_for_me(list);
+    }
    list = ft_clean(&list);
+   printf(" befor end program exctly the rest part'%s'\n",list->text);
    return (next_line);
 }
 
