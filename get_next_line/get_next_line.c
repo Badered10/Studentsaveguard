@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 11:38:18 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/23 02:18:19 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/23 19:45:35 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,30 +175,47 @@ void my_list(t_list **list,int fd,size_t size)
     }
 }
 
-char *ft_clean(char *res,t_list **list)
+t_list *ft_clean(t_list **list)
 {
     t_list	*tmp;
     t_list *last;
+    char *rest;
     int i;
     int nplace;
 
     i = 0;
+    nplace = 0;
 	if (!list || !*list)
 		return (NULL);
-    last = ft_last(list);
-	while (*list)
+    last = ft_last(*list);
+    printf("--------------%p\n",last);
+    printf("--------------'%s'\n",(last)->text);
+	while (*list != last)
 	{
 		tmp = (*list)->next;
         free((*list)->text);
         free((*list));
 		*list = tmp;
 	}
-    list = last;
-    while(list->text[i])
+    printf("--------------%p\n",(last));
+    printf("--------------'%s'\n",(last)->text);
+    while((last)->text[i])
+    {
+        printf("total %d\n",i);
         i++;
-    while(list->text[nplace]!= '\n' || list->text[nplace]!='\0');
+    }
+    while(n_finder((last)->text,i) && ((last)->text[nplace] != '\n'))
+    {
+        printf("total %d\n",nplace);
         nplace++;
-    
+    }
+    rest = malloc(sizeof(char) * i + 1);
+    strlcpy(rest,&(last)->text[nplace],i + 1);
+    printf("reste -----------%s\n",rest);
+    last = new_node(rest,i + 1);
+    printf("reste -----------%s\n",last->text);
+    free(rest);
+    return (last);
 }
 
 char *get_next_line(int fd)
@@ -215,9 +232,7 @@ char *get_next_line(int fd)
     
     if(list)
     next_line = alloc_for_me(list);
-    
-    
-   ft_clean(next_line,&list);
+   list = ft_clean(&list);
    return (next_line);
 }
 
@@ -226,6 +241,8 @@ int main()
     int fd = open("test.txt", O_CREAT | O_RDWR, 0777);
     char *str;
     str = get_next_line(fd);
-    printf("%s\n",str);
+    printf("\n\nres :%s\n",str);
+    str = get_next_line(fd);
+    printf("\n\nres :%s\n",str);
     close(fd);
 }
