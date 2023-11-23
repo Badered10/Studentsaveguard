@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 11:38:18 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/23 01:26:26 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/23 02:18:19 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,6 @@ int n_finder(char *s, int byets_readed)
         }
     }
     return (0);
-}
-
-size_t	ft_strlen(const char *s)
-{
-	int i;
- 
-    i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
 }
 
 void	ft_strlcpy(char *dst, const char *src, size_t dstsize)
@@ -185,6 +175,31 @@ void my_list(t_list **list,int fd,size_t size)
     }
 }
 
+char *ft_clean(char *res,t_list **list)
+{
+    t_list	*tmp;
+    t_list *last;
+    int i;
+    int nplace;
+
+    i = 0;
+	if (!list || !*list)
+		return (NULL);
+    last = ft_last(list);
+	while (*list)
+	{
+		tmp = (*list)->next;
+        free((*list)->text);
+        free((*list));
+		*list = tmp;
+	}
+    list = last;
+    while(list->text[i])
+        i++;
+    while(list->text[nplace]!= '\n' || list->text[nplace]!='\0');
+        nplace++;
+    
+}
 
 char *get_next_line(int fd)
 {
@@ -198,11 +213,11 @@ char *get_next_line(int fd)
     return NULL;
     my_list(&list,fd,BUFFER_SIZE);
     
-    // if(list)
+    if(list)
     next_line = alloc_for_me(list);
     
     
-//    ft_clean(&list);
+   ft_clean(next_line,&list);
    return (next_line);
 }
 
