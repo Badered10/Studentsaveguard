@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 15:30:10 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/21 14:27:40 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/23 00:25:49 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_H
 
 #ifndef BUFFER_SIZE
-# define BUFFER_SIZE 200
+# define BUFFER_SIZE 1
 #endif
 
 # include <stdio.h>
