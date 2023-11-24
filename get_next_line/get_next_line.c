@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 11:38:18 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/23 23:44:06 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/24 00:50:24 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,7 +186,7 @@ t_list	*ft_clean(t_list **list)
 	{
 		tmp = (*list)->next;
 		free((*list)->text);
-		free((*list));
+        free((*list));
 		*list = tmp;
 	}
 	while ((last)->text[i])
@@ -194,6 +194,8 @@ t_list	*ft_clean(t_list **list)
 	while (n_finder((last)->text, i) && ((last)->text[nplace] != '\n'))
 		nplace++;
 	rest = malloc(sizeof(char) * i + 1);
+    if (!rest)
+    return (NULL);
 	strlcpy(rest, &(last)->text[nplace + 1], i + 1);
 	last = new_node(rest, i + 1);
 	free(rest);
@@ -215,15 +217,21 @@ char	*get_next_line(int fd)
 	return (next_line);
 }
 
-// int main()
-// {
-//     int fd = open("test.txt", O_CREAT | O_RDWR, 0777);
-//     char *str;
-//     str = get_next_line(fd);
-//     printf("%s",str);
-//     str = get_next_line(fd);
-//     printf("%s",str);
-//     str = get_next_line(fd);
-//     printf("%s",str);
-//     close(fd);
-// }
+int main()
+{
+    int fd = open("test.txt", O_CREAT | O_RDWR, 0777);
+    char *str;
+    str = get_next_line(fd);
+    printf("%s",str);
+    str = get_next_line(fd);
+    printf("%s",str);
+    str = get_next_line(fd);
+    printf("%s",str);
+    str = get_next_line(fd);
+    printf("%s",str);
+     str = get_next_line(fd);
+    printf("%s",str);
+     str = get_next_line(fd);
+    printf("%s",str);
+    close(fd);
+}
