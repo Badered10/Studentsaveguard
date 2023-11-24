@@ -6,12 +6,13 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 17:31:16 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/21 22:24:48 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/24 13:13:22 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
+#include <string.h>
+#include <stdio.h>
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
 	unsigned char	*source;
@@ -21,7 +22,7 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	destination = (unsigned char *)dst;
 	if (!destination && !source)
 		return (NULL);
-	if ((destination == source) && n)
+	if (destination == source)
 		return (dst);
 	while (n--)
 		*destination++ = *source++;

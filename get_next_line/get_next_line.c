@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 11:38:18 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/24 11:40:04 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/24 16:09:42 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ t_list	*ft_last(t_list *node)
 	t_list	*res;
 
 	if (!node)
-		return (NULL);
+	return node;
+	// printf("node addres is :%p\n",node);
+	// printf("before fucked up %s\n",node->text);
 	while (node)
 	{
 		res = node;
@@ -60,6 +62,8 @@ void	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	char	*source;
 	int		i;
 
+	if (!dst || !src || !dstsize)
+	return;
 	i = 0;
 	source = (char *)src;
 	dstsize -= 1;
@@ -99,12 +103,35 @@ void	new_node(t_list **list,char *buffer)
 	// printf("---- new->text bufer : %s\n ",new->text);
 	new->next = NULL;
 }
-
-void	ft_clean(t_list **list)
+void	ft_clean(t_list **list, char *rest, t_list *next_node)
 {
-	// printf("i am in ft_clean-----------------------\n");
 	t_list	*tmp;
+
+	// printf("i am not null %s\n",rest);
+	while ((*list) != NULL)
+	{
+		tmp = (*list)->next;
+		free((*list)->text);
+        free((*list));
+		*list = tmp;
+	}
+	// printf("here\n");
+	if(rest[0]== '\0')
+	{
+		free(rest);
+		free(next_node);
+		(*list) = NULL;
+	}
+	else
+	{
+		(*list) = next_node;
+	}
+}
+void 	ft_nextnode(t_list **list)
+{
+		// printf("i am in ft_clean-----------------------\n");
 	t_list	*last;
+	t_list	*next_node;
 	char	*rest;
 	int		i;
 	int		nplace;
@@ -113,36 +140,39 @@ void	ft_clean(t_list **list)
 	nplace = 1;
 	if (!list || !*list)
 		return ;
+
+	next_node = malloc(sizeof(t_list));
 	last = ft_last(*list);
 	// printf("in fclean last->text : %s\n",last->text);
 	if (n_finder(last))
 	{
 	while ((last)->text[i] != '\n' && (last)->text[i] != '\0')
 		i++;
+		// printf("i = %d\n",i);
 		
 	while ((last)->text[nplace + i] != '\n' && (last)->text[nplace + i] != '\0')
 		nplace++;
+		// printf("nplace = %d\n",nplace);
+		
 	}
 	rest = malloc(sizeof(char) * nplace + 1);
     if (!rest)
     return;
 	strlcpy(rest, &(last)->text[i + 1], nplace + 1);
-	while (*list != NULL)
-	{
-		tmp = (*list)->next;
-		free((*list)->text);
-        free((*list));
-		*list = tmp;
-	}
-	// printf("-------------------rest:%s\n",rest);
-	new_node(&(*list),rest);
-	// printf("Last check for text in list to next time : %s\n",(*list)->text);
+	// printf("rest is '%s'\n",rest);
+	next_node->text = rest;
+	next_node->next = NULL;
+	// printf("next_node->text is '%s'\n",next_node->text);
+	ft_clean(&(*list),rest,next_node);
 }
 char	*ft_fill(t_list **list, char *res)
 {
 	// printf("i am in ft_fill-----------------------\n");
 	int	i;
 	int	total;
+
+	if (!(*list))
+	return (NULL);
 
 	total = 0;
 	// printf("text holded by list :%s\n",(*list)->text);
@@ -175,6 +205,9 @@ char	*alloc_for_me(t_list **list)
 	int		total;
 	int		i;
 
+	if (!(*list))
+	return (NULL);
+	
 	total = 0;
 	tmp = (*list);
 	while (tmp)
@@ -200,7 +233,7 @@ char	*alloc_for_me(t_list **list)
 }
 
 
-void	my_list(t_list **list, int fd)
+int	my_list(t_list **list, int fd)
 {
 	char	*buffer;
 	int		byets_readed;
@@ -209,33 +242,38 @@ void	my_list(t_list **list, int fd)
 	{
 		buffer = malloc(sizeof(char) * BUFFER_SIZE + 1);
 		if (!buffer)
-		return;
+		return(-1);
 		byets_readed = read(fd, buffer, BUFFER_SIZE);
 			// printf(" %d\n",byets_readed);
-		if (!byets_readed)
+		if (byets_readed  <= 0)
 		{
 			free(buffer);
-			return ;
+			return(byets_readed);
 		}
 			buffer[byets_readed] = '\0';
 			new_node(&(*list),buffer);
 	}
+	return(byets_readed);
 }
 char	*get_next_line(int fd)
 {
 	static t_list	*list;
 	char			*next_line;
+	int check;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, &next_line, 0) < 0)
+	{
+		// printf("file invalid!\n");
 		return (NULL);
-	my_list(&list, fd);
-    if (!list)
+	}
+	check = my_list(&list, fd);
+    if (!list || check <= 0)
 	{
 		// printf("YESS its me !!!");
     return (NULL);
 	}
 		next_line = alloc_for_me(&list);
-		ft_clean(&list);
+		ft_nextnode(&list);
 	return (next_line);
 }
 // int main()
@@ -244,7 +282,5 @@ char	*get_next_line(int fd)
 //     char *str;
 //     str = get_next_line(fd);
 //     printf("______________finish______%s________\n",str);
-// 	str = get_next_line(fd);
-//      printf("______________finish______%s________\n",str);
 //     close(fd);
 // }
