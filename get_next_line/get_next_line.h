@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 15:30:10 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/25 09:52:56 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/27 16:57:21 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 50
+#  define BUFFER_SIZE 42
 # endif
 
 # include <fcntl.h>
@@ -29,5 +29,12 @@ typedef struct s_list
 	char			*text;
 	struct s_list	*next;
 }					t_list;
+
 char	*get_next_line(int fd);
+void	*ft_memcpy(void *dst, const void *src, size_t n);
+char	*ft_strchr(const char *s, int c);
+char	*ft_strdup(const char *s1);
+char	*ft_strjoin(char const *s1, char const *s2);
+size_t	ft_strlen(const char *s);
+void	*ft_memmove(void *dst, const void *src, size_t len);
 #endif
