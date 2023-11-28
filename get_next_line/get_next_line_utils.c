@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 16:26:03 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/28 13:24:58 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/28 17:06:21 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	return ((void *)destination);
 }
 
-char	*ft_strdup(const char *s1)
+char	*ft_strdup(char *s1)
 {
 	char	*copy;
 	size_t	lenth;
@@ -68,13 +68,15 @@ char	*ft_strdup(const char *s1)
 	lenth = ft_strlen(s1);
 	copy = (char *)malloc(lenth + 1);
 	if (!copy)
+	{
 		return (NULL);
+	}
 	ft_memmove(copy, s1, lenth);
 	copy[lenth] = '\0';
 	return (copy);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*new;
 

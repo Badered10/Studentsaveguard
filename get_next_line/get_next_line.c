@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 18:43:49 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/28 13:37:08 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/28 17:31:27 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ char	*ft_rest(char *store)
 	char *eplace;
 	char *rest;
 	int len;
-
 	
 	len = 0;
 	nplace = ft_strchr(store,'\n');
@@ -69,7 +68,10 @@ char	*ft_rest(char *store)
 	if(!nplace || !eplace)
 		return(free(store),(NULL));
 	len = (eplace - nplace);
+	if(len)
 	rest = malloc(sizeof(char) * len);
+	else
+	return (free(store),(NULL));
 	if (!rest)
 	return (free(store),(NULL));
 	// printf("len = %d\n",len);
@@ -88,19 +90,35 @@ char *get_next_line(int fd)
     int			check;
 
 	check = 1;
-    if (fd < 0 || read(fd,buffer,0) < 0 || BUFFER_SIZE <= 0)
-    return ((NULL));
+    if (fd < 0 || read(fd,buffer,0) < 0)
+	{
+		if (store)
+			free(store);
+		store = NULL;
+		return NULL;	
+	}
     while (check > 0)
     {
         check = read(fd,buffer,BUFFER_SIZE);
+		if (check == 0 &&  ((!store) || (store[0] == '\0')))
+		{
+			if (store)
+			{
+				free(store);
+				store = NULL;
+			}
+			return NULL;
+		}
 		if (check == -1)
 			return (free(store), NULL);
-        res = ft_strdup(store);
-        free(store);
 		buffer[check] = 0;
+        res = ft_strdup(store);
+		if(store)
+        	free(store);
         store = ft_strjoin(res,buffer);
-		if (store[0] == '\0')
+		if (store[0] == '\0' && res)
 			return (free(res),free(store),(NULL));
+		if(res)	
         free (res);
 		if (ft_strchr(store,'\n') != NULL)
 			break;
@@ -115,31 +133,21 @@ char *get_next_line(int fd)
 		// printf("check test %d\n",check);
     res = ft_substr(store,0,check);
 	// printf("%s",res);
-	store = ft_rest(store);
+	store = ft_rest(store); // \n\0
 	// printf("store %s",store);
     return(res);
 }
-int main()
-{
-	char *res;
-	int fd = open("test.txt",O_CREAT | O_RDWR , 0777);
+// int main()
+// {
+// 	char *res;
+// 	int fd = open("test.txt",O_CREAT | O_RDWR , 0777);
+// 	int i  = 0;
 	
-	res = get_next_line(fd);
-	printf("%s",res);
-	res = get_next_line(fd);
-	printf("%s",res);
-	res = get_next_line(fd);
-	printf("%s",res);
-	res = get_next_line(fd);
-	printf("%s",res);
-	res = get_next_line(fd);
-	printf("%s",res);
-	res = get_next_line(fd);
-	printf("%s",res);
-	res = get_next_line(fd);
-	printf("%s",res);
-	res = get_next_line(fd);
-	printf("%s",res);
-	res = get_next_line(fd);
-	printf("%s",res);
-}
+// 	while(i < 9)
+// 	{
+// 	res = get_next_line(fd);
+// 	printf("%s",res);
+// 	i++;
+// 	free(res);
+// 	}
+// }
