@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 16:26:03 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/27 13:27:55 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/28 13:24:58 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,12 @@
 
 size_t	ft_strlen(const char *s)
 {
-	char	*tmp;
+	int  i;
 
-	tmp = (char *)s;
-	while (*s++)
-		;
-	s -= 1;
-	return (s - tmp);
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
@@ -65,7 +64,7 @@ char	*ft_strdup(const char *s1)
 	size_t	lenth;
     
     if (!s1)
-    return(ft_strdup(""));
+    return(NULL);
 	lenth = ft_strlen(s1);
 	copy = (char *)malloc(lenth + 1);
 	if (!copy)
@@ -80,7 +79,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	char	*new;
 
 	if (!s1 && !s2)
-		return (NULL);
+		return (ft_strdup(""));
     if (!s1)
     return(ft_strdup(s2));
     if (!s2)

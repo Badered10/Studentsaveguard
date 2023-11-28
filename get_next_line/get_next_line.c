@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 18:43:49 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/27 16:55:02 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/28 13:37:08 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ char	*ft_strchr(const char *s, int c)
 	int	i;
 
 	i = 0;
-	if(!s)
-	return(NULL);
 	while (s[i] != '\0')
 	{
 		if (s[i] == (char)c)
@@ -29,7 +27,7 @@ char	*ft_strchr(const char *s, int c)
 		return ((char *)s + i);
 	return (NULL);
 }
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char *s, unsigned int start, size_t len)
 {
 	char	*res;
 	size_t	l_total;
@@ -40,112 +38,108 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	l_total = ft_strlen(s);
 	l_sub = l_total - start;
 	if (start > l_total || !len)
-		return (ft_strdup(""));
+		return (ft_strdup("\n"));
 	if (len > l_sub)
 		len = l_sub;
-		if(ft_strchr(s,'\n') != NULL)
+	if(ft_strchr(s,'\n') != NULL && s[0] != '\n' && s[1] != '\0')
 		len += 2;
-		else
+	else
 		len +=1;
 	res = (char *)malloc(sizeof(char) * (len));
+	// printf("malloc check %zu\n",len);
 	if (!res)
-		return (NULL);
+		return (free(s),(NULL));
 	ft_memmove(res, s + start, len);
 	res[len - 1] = '\0';
-	// printf("ressss = %s",res);
+	// printf("res is %s",res);
 	return (res);
 }
 
-char *ft_rest(char *store)
+char	*ft_rest(char *store)
 {
 	char *nplace;
 	char *eplace;
 	char *rest;
 	int len;
 
-	if(!store)
-	return(NULL);
+	
 	len = 0;
 	nplace = ft_strchr(store,'\n');
-	eplace = ft_strchr(nplace,'\0');
-	// printf("n = %s, e = %s", nplace, eplace);
-	len = (eplace - nplace);
+	eplace = ft_strchr(store,'\0');
 	if(!nplace || !eplace)
-	return(NULL);
+		return(free(store),(NULL));
+	len = (eplace - nplace);
 	rest = malloc(sizeof(char) * len);
-	ft_memmove(rest,nplace + 1,len);
-	free(store);
-	// printf("%p\n",rest);
-	return (rest);
+	if (!rest)
+	return (free(store),(NULL));
+	// printf("len = %d\n",len);
+	ft_memmove(rest,nplace + 1, len);
+	rest[len - 1] = '\0';
+	// printf("rest %s",rest);
+	return (free(store),(rest));
 }
 
 
 char *get_next_line(int fd)
 {
     static char *store;
-    char buffer[BUFFER_SIZE + 1];
-    char *res;
-    int check;
+    char		buffer[BUFFER_SIZE + 1];
+    char		*res;
+    int			check;
 
-	// if(store)
-	// printf("'%s'",store);	
 	check = 1;
     if (fd < 0 || read(fd,buffer,0) < 0 || BUFFER_SIZE <= 0)
-    return (NULL);
-
-    while (check != 0)
+    return ((NULL));
+    while (check > 0)
     {
-		// printf("ok\n");
-		// printf("i am here !!\n");
         check = read(fd,buffer,BUFFER_SIZE);
-        if (check <= 0 && !store)
-		{
-			// printf("nothing to read!\n");
-        	return (NULL);
-		}
+		if (check == -1)
+			return (free(store), NULL);
         res = ft_strdup(store);
-		if (!res)
-		return NULL;
-		// printf("\nsotre befor free in main func %s-----",store);
         free(store);
+		buffer[check] = 0;
         store = ft_strjoin(res,buffer);
-		if (!store)
-		{
-			printf("FREEE STORE!\n");
-			free(res);
-			free(store);	
-			return (NULL);
-		}
-		// printf("\nsotre afer join in main func %s------",store);
+		if (store[0] == '\0')
+			return (free(res),free(store),(NULL));
         free (res);
+		if (ft_strchr(store,'\n') != NULL)
+			break;
     }
-	// printf("LOOP EXIT !!!!\n");
+	if (store[0] == '\0')
+		return (free(store),(NULL));
     res = ft_strchr(store,'\n');
-	if(res)
-    check = (res - store);
+	if (res)
+	check = (res - store);
 	else if (ft_strchr(store, '\0') != NULL)
-	{
-		// printf("2");
-	check = ft_strlen(store);
-	}
+		check = ft_strlen(store);
+		// printf("check test %d\n",check);
     res = ft_substr(store,0,check);
+	// printf("%s",res);
 	store = ft_rest(store);
-	// printf("adress at end of store %p\n",store);
+	// printf("store %s",store);
     return(res);
 }
-// int main()
-// {
-// 	char *res;
-// 	int fd = open("test.txt",O_CREAT | O_RDWR , 0777);
+int main()
+{
+	char *res;
+	int fd = open("test.txt",O_CREAT | O_RDWR , 0777);
 	
-// 	res = get_next_line(fd);
-// 	printf("%s",res);
-// 	res = get_next_line(fd);
-// 	printf("%s",res);
-// 	res = get_next_line(fd);
-// 	printf("%s",res);
-// 	res = get_next_line(fd);
-// 	printf("%s",res);
-// 	res = get_next_line(fd);
-// 	printf("%s",res);
-// }
+	res = get_next_line(fd);
+	printf("%s",res);
+	res = get_next_line(fd);
+	printf("%s",res);
+	res = get_next_line(fd);
+	printf("%s",res);
+	res = get_next_line(fd);
+	printf("%s",res);
+	res = get_next_line(fd);
+	printf("%s",res);
+	res = get_next_line(fd);
+	printf("%s",res);
+	res = get_next_line(fd);
+	printf("%s",res);
+	res = get_next_line(fd);
+	printf("%s",res);
+	res = get_next_line(fd);
+	printf("%s",res);
+}
