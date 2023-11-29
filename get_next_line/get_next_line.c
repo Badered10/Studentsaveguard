@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 18:43:49 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/29 10:08:50 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/29 16:59:52 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,4 +152,5 @@ char	*get_next_line(int fd)
 // 	res = get_next_line(fd);
 // 	printf("%s",res);
 // 	free(res);
+// 	system("leaks a.out");
 // }
