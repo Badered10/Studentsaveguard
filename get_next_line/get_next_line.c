@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 18:43:49 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/29 09:07:44 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/29 10:08:50 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,17 +130,26 @@ char	*get_next_line(int fd)
 	store = ft_rest(store);
 	return (res);
 }
+
+// #include <limits.h>
+// OPEN_MAX
 // int main()
 // {
 // 	char *res;
 // 	int fd = open("test.txt",O_CREAT | O_RDWR , 0777);
-// 	int i  = 0;
 
-// 	while(i < 9)
-// 	{
 // 	res = get_next_line(fd);
 // 	printf("%s",res);
-// 	i++;
 // 	free(res);
-// 	}
+
+// 	fd = open("2.txt",O_CREAT | O_RDWR , 0777);
+// 	res = get_next_line(fd);
+// 	printf("%s",res);
+// 	free(res);
+
+// 	fd = open("test.txt",O_CREAT | O_RDWR , 0777);
+
+// 	res = get_next_line(fd);
+// 	printf("%s",res);
+// 	free(res);
 // }
