@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 15:30:10 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/30 13:48:57 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/30 16:09:39 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 4294967295
+#  define BUFFER_SIZE 1337
 # endif
 
 # include <fcntl.h>

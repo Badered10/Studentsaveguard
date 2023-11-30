@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 09:36:59 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/30 12:36:45 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/30 16:04:52 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,37 +83,41 @@ char	*get_store(int fd, char *store, char *res, char *buffer)
 	int	check;
 
 	check = 1;
-	if (fd < 0 || read(fd, buffer, 0) < 0)
-		return (free(store), NULL);
+	if (fd < 0 || read(fd, buffer, 0) < 0 || BUFFER_SIZE <= 0)
+		return (free(store), free(buffer), NULL);
 	while (check > 0)
 	{
 		check = read(fd, buffer, BUFFER_SIZE);
-		if ((check == 0 && (store[0] == '\0')) || check == -1)
-			return (free(store), NULL);
+		if ((check == 0 && ((!store) || store[0] == '\0')) || check == -1)
+			return (free(store), free(buffer), NULL);
 		buffer[check] = 0;
 		res = ft_strdup(store);
 		if (store)
 			free(store);
 		store = ft_strjoin(res, buffer);
 		if (store[0] == '\0' && res)
-			return (free(res), free(store), (NULL));
+			return (free(res), free(store), free(buffer), (NULL));
 		if (res)
 			free(res);
 		if (ft_strchr(store, '\n') != NULL)
 			break ;
 	}
+	free(buffer);
 	return (store);
 }
 
 char	*get_next_line(int fd)
 {
 	static char	*store[OPEN_MAX];
-	char		buffer[BUFFER_SIZE + 1];
+	char		*buffer;
 	char		*res;
 	int			check;
 
 	res = NULL;
 	check = 0;
+	buffer = malloc(sizeof(char) * BUFFER_SIZE + 1);
+	if (!buffer)
+		return (free(store[fd]), NULL);
 	store[fd] = get_store(fd, store[fd], res, buffer);
 	if (store[fd] == '\0')
 		return (free(store[fd]), (NULL));
@@ -129,24 +133,24 @@ char	*get_next_line(int fd)
 
 // #include <limits.h>
 // OPEN_MAX
-int main()
-{
-	char *res;
-	int fd1 = open("test.txt",O_CREAT | O_RDWR , 0777);
+// int main()
+// {
+// 	char *res;
+// 	int fd1 = open("test.txt",O_CREAT | O_RDWR , 0777);
 
-	res = get_next_line(fd1);
-	printf("%s",res);
-	free(res);
+// 	res = get_next_line(fd1);
+// 	printf("%s",res);
+// 	free(res);
 
-	int fd = open("2.txt",O_CREAT | O_RDWR , 0777);
-	res = get_next_line(fd);
-	printf("%s",res);
-	free(res);
+// 	int fd = open("2.txt",O_CREAT | O_RDWR , 0777);
+// 	res = get_next_line(fd);
+// 	printf("%s",res);
+// 	free(res);
 
-	open("test.txt",O_CREAT | O_RDWR , 0777);
+// 	open("test.txt",O_CREAT | O_RDWR , 0777);
 
-	res = get_next_line(fd1);
-	printf("%s",res);
-	free(res);
-	system("leaks a.out");
-}
+// 	res = get_next_line(fd1);
+// 	printf("%s",res);
+// 	free(res);
+// 	system("leaks a.out");
+// }
