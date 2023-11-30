@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/20 15:30:10 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/30 10:00:24 by baouragh         ###   ########.fr       */
+/*   Created: 2023/11/30 09:25:19 by baouragh          #+#    #+#             */
+/*   Updated: 2023/11/30 10:59:56 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42
 # endif
 
 # include <fcntl.h>
+# include <limits.h>
 # include <stddef.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -31,9 +32,11 @@ typedef struct s_list
 }					t_list;
 
 char				*get_next_line(int fd);
+void				*ft_memcpy(void *dst, const void *src, size_t n);
 char				*ft_strchr(const char *s, int c);
 char				*ft_strdup(char *s1);
 char				*ft_strjoin(char *s1, char *s2);
 size_t				ft_strlen(const char *s);
 void				*ft_memmove(void *dst, const void *src, size_t len);
+void				*ft_memset(void *b, int c, size_t len);
 #endif

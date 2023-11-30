@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/26 18:43:49 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/30 10:03:06 by baouragh         ###   ########.fr       */
+/*   Created: 2023/11/30 09:36:59 by baouragh          #+#    #+#             */
+/*   Updated: 2023/11/30 11:09:52 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_strchr(const char *s, int c)
 {
@@ -34,7 +34,7 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 	size_t	l_total;
 	size_t	l_sub;
 
-	if (!s)
+	if (!*s)
 		return (NULL);
 	l_total = ft_strlen(s);
 	l_sub = l_total - start;
@@ -88,9 +88,7 @@ char	*get_store(int fd, char *store, char *res, char *buffer)
 	while (check > 0)
 	{
 		check = read(fd, buffer, BUFFER_SIZE);
-		if (check == 0 && ((!store) || (store[0] == '\0')))
-			return (free(store), NULL);
-		if (check == -1)
+		if ((check == 0 && (store[0] == '\0')) || check == -1)
 			return (free(store), NULL);
 		buffer[check] = 0;
 		res = ft_strdup(store);
@@ -109,48 +107,46 @@ char	*get_store(int fd, char *store, char *res, char *buffer)
 
 char	*get_next_line(int fd)
 {
-	static char	*store;
+	static char	*store[OPEN_MAX];
 	char		buffer[BUFFER_SIZE + 1];
 	char		*res;
 	int			check;
 
 	res = NULL;
 	check = 0;
-	store = get_store(fd, store, res, buffer);
-	if (!store)
-		return (NULL);
-	if (store[0] == '\0')
-		return (free(store), (NULL));
-	res = ft_strchr(store, '\n');
+	store[fd] = get_store(fd, store[fd], res, buffer);
+	if (store[fd] == '\0')
+		return (free(store[fd]), (NULL));
+	res = ft_strchr(store[fd], '\n');
 	if (res)
-		check = (res - store);
-	else if (ft_strchr(store, '\0') != NULL)
-		check = ft_strlen(store);
-	res = ft_substr(store, 0, check);
-	store = ft_rest(store);
+		check = (res - store[fd]);
+	else if (ft_strchr(store[fd], '\0') != NULL)
+		check = ft_strlen(store[fd]);
+	res = ft_substr(store[fd], 0, check);
+	store[fd] = ft_rest(store[fd]);
 	return (res);
 }
 
 // #include <limits.h>
 // OPEN_MAX
-// int main()
-// {
-// 	char *res;
-// 	int fd = open("test.txt",O_CREAT | O_RDWR , 0777);
+int main()
+{
+	char *res;
+	int fd1 = open("test.txt",O_CREAT | O_RDWR , 0777);
 
-// 	res = get_next_line(fd);
-// 	printf("%s",res);
-// 	free(res);
+	res = get_next_line(fd1);
+	printf("%s",res);
+	free(res);
 
-// 	fd = open("2.txt",O_CREAT | O_RDWR , 0777);
-// 	res = get_next_line(fd);
-// 	printf("%s",res);
-// 	free(res);
+	int fd = open("2.txt",O_CREAT | O_RDWR , 0777);
+	res = get_next_line(fd);
+	printf("%s",res);
+	free(res);
 
-// 	fd = open("test.txt",O_CREAT | O_RDWR , 0777);
+	open("test.txt",O_CREAT | O_RDWR , 0777);
 
-// 	res = get_next_line(fd);
-// 	printf("%s",res);
-// 	free(res);
-// 	system("leaks a.out");
-// }
+	res = get_next_line(fd1);
+	printf("%s",res);
+	free(res);
+	system("leaks a.out");
+}

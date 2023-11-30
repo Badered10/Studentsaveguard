@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/20 16:26:03 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/30 10:01:13 by baouragh         ###   ########.fr       */
+/*   Created: 2023/11/30 09:27:58 by baouragh          #+#    #+#             */
+/*   Updated: 2023/11/30 10:59:39 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 size_t	ft_strlen(const char *s)
 {
@@ -84,4 +84,16 @@ char	*ft_strjoin(char *s1, char *s2)
 	ft_memmove(new + ft_strlen(s1), s2, ft_strlen(s2));
 	new[ft_strlen(s1) + ft_strlen(s2)] = '\0';
 	return (new);
+}
+
+void	*ft_memset(void *b, int c, size_t len)
+{
+	unsigned char	*temp;
+	size_t			i;
+
+	temp = (unsigned char *)b;
+	i = 0;
+	while (i < len)
+		temp[i++] = (unsigned char)c;
+	return (b);
 }
