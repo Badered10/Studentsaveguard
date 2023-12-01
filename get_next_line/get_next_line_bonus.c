@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 09:36:59 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/30 16:04:52 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/01 12:58:23 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,23 +92,23 @@ char	*get_store(int fd, char *store, char *res, char *buffer)
 			return (free(store), free(buffer), NULL);
 		buffer[check] = 0;
 		res = ft_strdup(store);
+		if (!res)
+			return (free(store), free(buffer), NULL);
 		if (store)
 			free(store);
 		store = ft_strjoin(res, buffer);
 		if (store[0] == '\0' && res)
-			return (free(res), free(store), free(buffer), (NULL));
-		if (res)
-			free(res);
+			return (free(res), free(store), free(buffer), NULL);
+		free(res);
 		if (ft_strchr(store, '\n') != NULL)
 			break ;
 	}
-	free(buffer);
-	return (store);
+	return (free(buffer), store);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*store[OPEN_MAX];
+	static char	*store[FD_SETSIZE];
 	char		*buffer;
 	char		*res;
 	int			check;
@@ -124,33 +124,9 @@ char	*get_next_line(int fd)
 	res = ft_strchr(store[fd], '\n');
 	if (res)
 		check = (res - store[fd]);
-	else if (ft_strchr(store[fd], '\0') != NULL)
+	else
 		check = ft_strlen(store[fd]);
 	res = ft_substr(store[fd], 0, check);
 	store[fd] = ft_rest(store[fd]);
 	return (res);
 }
-
-// #include <limits.h>
-// OPEN_MAX
-// int main()
-// {
-// 	char *res;
-// 	int fd1 = open("test.txt",O_CREAT | O_RDWR , 0777);
-
-// 	res = get_next_line(fd1);
-// 	printf("%s",res);
-// 	free(res);
-
-// 	int fd = open("2.txt",O_CREAT | O_RDWR , 0777);
-// 	res = get_next_line(fd);
-// 	printf("%s",res);
-// 	free(res);
-
-// 	open("test.txt",O_CREAT | O_RDWR , 0777);
-
-// 	res = get_next_line(fd1);
-// 	printf("%s",res);
-// 	free(res);
-// 	system("leaks a.out");
-// }

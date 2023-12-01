@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 09:25:19 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/30 16:09:34 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/11/30 22:15:33 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # endif
 
 # include <fcntl.h>
-# include <limits.h>
 # include <stddef.h>
 # include <stdio.h>
 # include <stdlib.h>

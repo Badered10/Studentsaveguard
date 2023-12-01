@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 18:43:49 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/30 16:03:24 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/01 12:55:53 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,18 +92,18 @@ char	*get_store(int fd, char *store, char *res, char *buffer)
 			return (free(store), free(buffer), NULL);
 		buffer[check] = 0;
 		res = ft_strdup(store);
+		if (!res)
+			return (free(store), free(buffer), (NULL));
 		if (store)
 			free(store);
 		store = ft_strjoin(res, buffer);
 		if (store[0] == '\0' && res)
 			return (free(res), free(store), free(buffer), (NULL));
-		if (res)
-			free(res);
+		free(res);
 		if (ft_strchr(store, '\n') != NULL)
 			break ;
 	}
-	free(buffer);
-	return (store);
+	return (free(buffer), store);
 }
 
 char	*get_next_line(int fd)
@@ -126,21 +126,9 @@ char	*get_next_line(int fd)
 	res = ft_strchr(store, '\n');
 	if (res)
 		check = (res - store);
-	else if (ft_strchr(store, '\0') != NULL)
+	else
 		check = ft_strlen(store);
 	res = ft_substr(store, 0, check);
 	store = ft_rest(store);
 	return (res);
 }
-
-// int main()
-// {
-// 	char *res;
-// 	int fd1;
-
-// 	fd1 = open("2.txt", O_RDONLY , 0777);
-// 	res = get_next_line(fd1);
-// 	printf("%s",res);
-// 	res = get_next_line(fd1);
-// 	printf("%s",res);
-// }

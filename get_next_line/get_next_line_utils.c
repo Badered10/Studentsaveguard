@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 16:26:03 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/30 10:01:13 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/01 10:37:57 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,11 @@ char	*ft_strdup(char *s1)
 	size_t	lenth;
 
 	if (!s1)
-		return (NULL);
+		return (ft_strdup(""));
 	lenth = ft_strlen(s1);
 	copy = (char *)malloc(lenth + 1);
 	if (!copy)
-	{
 		return (NULL);
-	}
 	ft_memmove(copy, s1, lenth);
 	copy[lenth] = '\0';
 	return (copy);
