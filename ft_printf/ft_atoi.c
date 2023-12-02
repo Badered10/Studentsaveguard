@@ -1,31 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/29 15:31:25 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/02 19:02:37 by baouragh         ###   ########.fr       */
+/*   Created: 2023/11/06 17:53:19 by baouragh          #+#    #+#             */
+/*   Updated: 2023/11/24 16:49:43 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
-int	ft_isdigit(int c)
+#include "libft.h"
+
+int	ft_atoi(const char *str)
 {
-	return ((c >= '0' && c <= '9'));
-}
-// int main()
-// {
-// 	char *string = "123232dasdasd";
-//     string +=3;
-// 	int x = atoi(string);
-// 	printf("%d",x);
-// }
-int main()
-{
-    char* c = "hello";
-   printf("'%5.1s'\n",c);
-    // int c = 999999;
-    // printf("'%09.1d'\n",c);
+	char	*var;
+	int		res;
+	int		signe;
+
+	var = (char *)str;
+	res = 0;
+	signe = 1;
+	while ((*var >= 9 && *var <= 13) || *var == 32)
+		var++;
+	if (*var == '-' || *var == '+')
+	{
+		if (*var == '-')
+			signe *= -1;
+		var++;
+	}
+	while (*var && *var >= '0' && *var <= '9')
+	{
+		res = res * 10 + (*var - '0');
+		var++;
+	}
+	res *= signe;
+	return (res);
 }
