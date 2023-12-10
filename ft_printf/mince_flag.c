@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 18:00:25 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/02 18:57:21 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/10 18:45:10 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 int mince_flag(char *string, va_list args)
 {
     size_t len;
-    int blank;
     int spaces;
     int zeros;
 
@@ -26,10 +25,11 @@ int mince_flag(char *string, va_list args)
             string++;
     while(*string == '0' && *(string + 1))
         string++;
+    len = ft_strlen(ft_itoa(ft_atoi(c)));
     if(ft_isdigit(*string))
     {
         spaces = ft_atoi(string);
-        blank = spaces - len;
+        spaces = spaces - len;
     }
     while(ft_isdigit(*string))
         string++;
