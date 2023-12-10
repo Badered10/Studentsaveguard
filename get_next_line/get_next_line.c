@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 18:43:49 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/01 12:55:53 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/02 22:09:02 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,8 +121,6 @@ char	*get_next_line(int fd)
 	store = get_store(fd, store, res, buffer);
 	if (!store)
 		return (NULL);
-	if (store[0] == '\0')
-		return (free(store), (NULL));
 	res = ft_strchr(store, '\n');
 	if (res)
 		check = (res - store);

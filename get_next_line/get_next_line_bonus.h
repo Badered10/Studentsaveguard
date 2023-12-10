@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 09:25:19 by baouragh          #+#    #+#             */
-/*   Updated: 2023/11/30 22:15:33 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/03 10:31:59 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,6 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
-
-typedef struct s_list
-{
-	char			*text;
-	struct s_list	*next;
-}					t_list;
 
 char				*get_next_line(int fd);
 void				*ft_memcpy(void *dst, const void *src, size_t n);

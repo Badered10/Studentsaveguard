@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 15:31:25 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/02 19:02:37 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/10 18:23:47 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,10 @@ int	ft_isdigit(int c)
 // }
 int main()
 {
-    char* c = "hello";
-   printf("'%5.1s'\n",c);
+    unsigned int c = 423;
+   printf("'%+u'\n",c);
+//     char* k = "3333";
+//    printf("'%5.s'\n",k);
     // int c = 999999;
     // printf("'%09.1d'\n",c);
 }

@@ -1,0 +1,3 @@
+hello world\n
+okeey beeyy\n
+llllll llll    >>>>>>>>>>>>>>>  13  read(fd,buff,13);  >>>>    [hello world\no\0]  ---  static[] 1 NULL ||    
