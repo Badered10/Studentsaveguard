@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 15:09:06 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/02 18:57:06 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/10 21:00:59 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,30 @@
 # include "libft.h"
 int ft_printf(char *string , ...)
 {
-    size_t len;
     int print;
     int count;
     va_list args;
+    char *save;
 
+    save = string;
     count = 0;
     va_start(args,string);
     print = 0;
-    len = ft_strlen(string);
 
-
-
-
-    
     while (*string)
     {
         if(*string == '%')
         {
             if (!*(++string))
                 return 0;
-                if (*string == '-')
-                    mince_flag(string,args);
+            while (*string)
+            {
+                if (*string == 's' || c == 'c'|| c == 'i'|| c == 'd'|| c == 'x'|| c == 'X'|| c == 'u'|| c == 'p' || c == '%')
+                    flags(*string,save,args);
+                string++;
+            }
+                // if (*string == '-')
+                //     mince_flag(string,args);
                 // count += specifier(*string,args);
             // else if (*string == '0')
             // else if (*string == '.')

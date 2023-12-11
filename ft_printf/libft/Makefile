@@ -6,7 +6,7 @@
 #    By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/07 17:33:58 by baouragh          #+#    #+#              #
-#    Updated: 2023/12/11 20:06:23 by baouragh         ###   ########.fr        #
+#    Updated: 2023/11/29 15:34:00 by baouragh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,5 +49,3 @@ fclean: clear
 re: fclean all
 
 .PHONY: all re clean fclean bonus
-
-.SECONDARY : $(OBJS)

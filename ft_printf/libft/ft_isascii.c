@@ -1,35 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/29 15:31:25 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/10 18:44:45 by baouragh         ###   ########.fr       */
+/*   Created: 2023/11/08 12:05:12 by baouragh          #+#    #+#             */
+/*   Updated: 2023/11/18 18:06:04 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
 #include "libft.h"
-#include <string.h>
-int	ft_isdigit(int c)
+
+int	ft_isascii(int c)
 {
-	return ((c >= '0' && c <= '9'));
-}
-// int main()
-// {
-// 	char *string = "123232dasdasd";
-//     string +=3;
-// 	int x = atoi(string);
-// 	printf("%d",x);
-// }
-int main()
-{
-    char *c = "423lasasdasdasdd";
-   printf("'%zu'\n",ft_strlen(ft_itoa(ft_atoi(c))));
-//     char* k = "3333";
-//    printf("'%5.s'\n",k);
-    // int c = 999999;
-    // printf("'%09.1d'\n",c);
+	return ((c >= 0 && c <= 127));
 }
