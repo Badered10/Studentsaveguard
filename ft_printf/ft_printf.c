@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 15:09:06 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/12 21:06:51 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/12 21:16:48 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int ft_printf(char *string , ...)
 }
 int main()
 {
-    printf("org : hello  %-10c \n",'A');
-    int i = ft_printf("mine: hello  %-10c \n",'A');
+    printf("|%---10c||%10c|\n",'A','H');
+    int i = ft_printf("|%---10c||%10c|\n",'A','H');
     printf("\n%d\n",i);
 }

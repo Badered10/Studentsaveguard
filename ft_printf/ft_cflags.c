@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 19:57:29 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/12 21:06:24 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/12 21:17:47 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,13 @@
 
 int ft_cflags(char *string, int x)
 {
-    static f nes;
+    f nes;
+
+    nes.spaces = 0;
+    nes.mince = 0;
     while(*string == '-' && *(string + 1))
     {
-        nes.mince += 1;
+        nes.mince = 1;
         string++;
     }
     nes.d = x;
@@ -34,10 +37,18 @@ int ft_cflags(char *string, int x)
        nes.spaces = 0;
     while(ft_isdigit(*string))
         string++;
-    while (((nes.spaces)-- > 0) && (nes.mince != 1))
+    if (nes.mince == 0)
     {
-        nes.count += write(1," ",1);
+        while (((nes.spaces)-- > 0))
+            nes.count += write(1," ",1);
+            nes.count += ft_putchar_fd(nes.d,1);
+            return (nes.count);
     }
-        nes.count += ft_putchar_fd(nes.d,1);
-        return (nes.count);
+    else
+    {
+            nes.count += ft_putchar_fd(nes.d,1);
+        while (((nes.spaces)-- > 0))
+            nes.count += write(1," ",1);
+            return (nes.count);
+    }
 }
