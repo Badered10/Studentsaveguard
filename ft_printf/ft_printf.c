@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 15:09:06 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/12 18:30:37 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/12 20:29:44 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int ft_printf(char *string , ...)
             {
                 if(ft_strchr(specifiers,*ptr))
                 {
-                    // printf("string'%s'",save_m + 1);
                     t.count += ft_isflag(*(ft_strchr(specifiers,*ptr)),save_m , args);
                     break;
                 }
@@ -48,7 +47,7 @@ int ft_printf(char *string , ...)
 }
 int main()
 {
-    int i = ft_printf("hello %d %-010.4ds sda\n",2123,432);
-    printf("hello %d %-010.4ds sda\n",2123,432);
+    printf("org : hello  %-10c \n",'A');
+    int i = ft_printf("mine: hello  %-10c \n",'A');
     printf("\n%d\n",i);
 }
