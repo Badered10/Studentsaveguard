@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 15:09:45 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/12 09:34:23 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/12 11:01:06 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,9 @@ typedef struct s_flags
 	int		point;
     int     d;
 }               f;
-int ft_printf(char *string , ...);
-int specifier(char c,va_list args);
-int d_flags(char *string, va_list args);
+int     ft_printf(char *string , ...);
+int     specifier(char c,va_list args);
+int     d_flags(char *string, va_list args);
+int    ft_isflag(char *pose ,char *string ,va_list args);
 
 #endif

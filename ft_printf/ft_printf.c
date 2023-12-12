@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 15:09:06 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/12 10:07:55 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/12 11:01:17 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,21 +30,20 @@ int ft_printf(char *string , ...)
                 return 0;
             while (*ptr)
             {
-                ft_strchr(string,)
+                if(ft_strchr(string,*ptr))
+                {
+                    t.count += ft_isflag(ft_strchr(string,*ptr),string,args);
+                    break;
+                }
                 ptr++;
             }
-                // if (*string == '-')
-                //     mince_flag(string,args);
-                // count += specifier(*string,args);
-            // else if (*string == '0')
-            // else if (*string == '.')
         }
         else
-            count += write(1,ptr,1);
+             t.count += write(1,ptr,1);
         ptr++;
     }
     va_end(args);
-    return (count);
+    return (t.count);
 }
 int main()
 {
