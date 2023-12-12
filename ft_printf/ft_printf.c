@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 15:09:06 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/12 16:19:42 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/12 18:30:37 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ int ft_printf(char *string , ...)
             {
                 if(ft_strchr(specifiers,*ptr))
                 {
-                    t.count += ft_dflags(save_m + 1,va_arg(args,int));
+                    // printf("string'%s'",save_m + 1);
+                    t.count += ft_isflag(*(ft_strchr(specifiers,*ptr)),save_m , args);
                     break;
                 }
                 ptr++;

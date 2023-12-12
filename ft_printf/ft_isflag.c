@@ -6,13 +6,13 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 09:56:20 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/12 15:45:49 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/12 18:34:00 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-int ft_isflag(char *pose ,char *string ,va_list args)
+int ft_isflag(char ch , char *save_m ,va_list args)
 {
     f c;
     
@@ -23,10 +23,8 @@ int ft_isflag(char *pose ,char *string ,va_list args)
     //     c.count = ft_sflags(string,args);
     // else if (*pose == 'p')
     //     c.count = ft_pflags(string,args);
-    if (*pose == 'd' || *pose == 'i')
-    {
-        c.count = ft_dflags(string,va_arg(args,int));
-    }
+    if (ch == 'd' || ch == 'i')
+        c.count = ft_dflags(save_m + 1,va_arg(args,int));
     // else if (*pose == 'u')
     //     c.count = ft_uflags(string,args);
     // else if (*pose == 'x' || *pose == 'X')
