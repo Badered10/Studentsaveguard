@@ -6,7 +6,7 @@
 #    By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/29 12:39:30 by baouragh          #+#    #+#              #
-#    Updated: 2023/12/12 11:21:49 by baouragh         ###   ########.fr        #
+#    Updated: 2023/12/12 11:57:29 by baouragh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,19 +18,18 @@ MAKE = make -C /Users/baouragh/Desktop/ALL/ft_printf/libft
 
 SRC_DIR = /Users/baouragh/Desktop/ALL/ft_printf
 
-SRCS = $(SRC_DIR)/ft_dflags.c $(SRC_DIR)/ft_specifier.c
-#$(SRC_DIR)/ft_printf.c 
+SRCS = $(SRC_DIR)/ft_dflags.c $(SRC_DIR)/ft_specifier.c $(SRC_DIR)/ft_printf.c $(SRC_DIR)/ft_isflag.c
 
 OBJS = $(SRCS:.c=.o)
 
-INCLUDES = -I $(SRCS) -I  /Users/baouragh/Desktop/ALL/ft_printf/libft/libft.a
+INCLUDES = -I $(SRCS) -I /Users/baouragh/Desktop/ALL/ft_printf/libft/libft.a
 
 NAME = libftprintf.a
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	ar -rc $(NAME) $(OBJS)
+	ar -rcs $(NAME) $(OBJS) /Users/baouragh/Desktop/ALL/ft_printf/libft/libft.a
 
 $(OBJS): $(SRCS)
 	$(MAKE)

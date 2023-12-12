@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dflag.c                                         :+:      :+:    :+:   */
+/*   ft_dflags.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 18:00:25 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/12 11:18:17 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/12 12:22:16 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-int d_flags(char *string, va_list args)
+int ft_dflags(char *string, va_list args)
 {
     f nes;
 
@@ -57,11 +57,12 @@ int d_flags(char *string, va_list args)
         // nes.width = nes.zeros + nes.spaces;
     }
     else if (nes.zero == 1 && nes.point != 1 && nes.mince != 1)
-            nes.zeros == nes.spaces;
+            nes.zeros = nes.spaces;
         if (nes.zeros == nes.spaces)
             nes.spaces = 0;
     if (nes.mince == 1)
     {
+        printf("1\n");
         while ((nes.zeros)-- > 0)
             nes.count += write(1,"0",1);
         nes.count += ft_putnbr_fd(nes.d,1);
@@ -71,6 +72,7 @@ int d_flags(char *string, va_list args)
     }
     else if (nes.point == 1)
     {
+        printf("2\n");
         while ((nes.spaces)--)
             nes.count += write(1," ",1);
         while ((nes.zeros)--)
@@ -80,6 +82,7 @@ int d_flags(char *string, va_list args)
     }
     else
     {
+        printf("3\n");
         while ((nes.zeros)--)
             nes.count += write(1,"0",1);
         nes.count += ft_putnbr_fd(nes.d,1);

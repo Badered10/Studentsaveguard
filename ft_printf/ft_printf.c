@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 15:09:06 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/12 11:01:17 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/12 12:33:21 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,11 @@ int ft_printf(char *string , ...)
                     t.count += ft_isflag(ft_strchr(string,*ptr),string,args);
                     break;
                 }
-                ptr++;
+                ptr ++;
             }
         }
         else
-             t.count += write(1,ptr,1);
+            t.count += write(1,ptr,1);
         ptr++;
     }
     va_end(args);
@@ -47,6 +47,6 @@ int ft_printf(char *string , ...)
 }
 int main()
 {
-    int i = ft_printf("asa%c",'k');
-    printf("%d\n",i);
+    int i = ft_printf("hello %d sda",23);
+    printf("\n%d\n",i);
 }
