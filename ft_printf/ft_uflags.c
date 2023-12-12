@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 22:13:54 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/12 22:58:00 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/12 23:42:01 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int ft_uflags(char *string, unsigned int x)
         nes.mince = 1;
         string++;
     }
-    nes.len = ft_strlen(ft_itoa(x));
+    nes.len = ft_strlen(ft_uitoa(x));
     if(ft_isdigit(*string))
     {
         nes.spaces = ft_atoi(string);
