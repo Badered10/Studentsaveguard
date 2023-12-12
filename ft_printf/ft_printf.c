@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 15:09:06 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/12 12:33:21 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/12 16:19:42 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int ft_printf(char *string , ...)
     f t;
     char *ptr;
     char *specifiers;
-
+    char *save_m;
     ptr = string;
     specifiers = "cspdiuxX%";
     t.count = 0;
@@ -26,16 +26,16 @@ int ft_printf(char *string , ...)
     {
         if(*ptr == '%')
         {
-            if (!*(++ptr))
-                return 0;
+            save_m = ptr;
+            ptr++;
             while (*ptr)
             {
-                if(ft_strchr(string,*ptr))
+                if(ft_strchr(specifiers,*ptr))
                 {
-                    t.count += ft_isflag(ft_strchr(string,*ptr),string,args);
+                    t.count += ft_dflags(save_m + 1,va_arg(args,int));
                     break;
                 }
-                ptr ++;
+                ptr++;
             }
         }
         else
@@ -47,6 +47,7 @@ int ft_printf(char *string , ...)
 }
 int main()
 {
-    int i = ft_printf("hello %d sda",23);
+    int i = ft_printf("hello %d %-010.4ds sda\n",2123,432);
+    printf("hello %d %-010.4ds sda\n",2123,432);
     printf("\n%d\n",i);
 }
