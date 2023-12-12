@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 15:09:06 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/12 22:11:05 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/12 23:04:47 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int ft_printf(char *string , ...)
 }
 int main()
 {
-   int y = printf("|%-10%%%%%%%%%%%|\n");
-    int i = ft_printf("|%-10%%%%%%%%%%%|\n");
+   int y = printf("or|%-11.12u| |%-010.5d| |%-010c| |%%%%%%|\n",0,12,'l');
+    int i = ft_printf("me|%-11.12u| |%-010.5d| |%-010c| |%%%%%%|\n",0,12,'l');
     printf("\n%d\n%d\n",y,i);
 }

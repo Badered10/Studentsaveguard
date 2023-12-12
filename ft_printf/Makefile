@@ -6,7 +6,7 @@
 #    By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/29 12:39:30 by baouragh          #+#    #+#              #
-#    Updated: 2023/12/12 20:13:00 by baouragh         ###   ########.fr        #
+#    Updated: 2023/12/12 22:28:26 by baouragh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ MAKE = make -C /Users/baouragh/Desktop/ALL/ft_printf/libft
 
 SRC_DIR = /Users/baouragh/Desktop/ALL/ft_printf
 
-SRCS = $(SRC_DIR)/ft_dflags.c $(SRC_DIR)/ft_cflags.c $(SRC_DIR)/ft_specifier.c $(SRC_DIR)/ft_printf.c $(SRC_DIR)/ft_isflag.c
+SRCS = $(SRC_DIR)/ft_dflags.c $(SRC_DIR)/ft_cflags.c $(SRC_DIR)/ft_specifier.c $(SRC_DIR)/ft_printf.c $(SRC_DIR)/ft_isflag.c $(SRC_DIR)/ft_uflags.c
 
 OBJS = $(SRCS:.c=.o)
 

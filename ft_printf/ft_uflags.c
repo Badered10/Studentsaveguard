@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dflags.c                                        :+:      :+:    :+:   */
+/*   ft_uflags.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/02 18:00:25 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/12 22:17:00 by baouragh         ###   ########.fr       */
+/*   Created: 2023/12/12 22:13:54 by baouragh          #+#    #+#             */
+/*   Updated: 2023/12/12 22:58:00 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-int ft_dflags(char *string, int x)
+int ft_uflags(char *string, unsigned int x)
 {
     // printf("taqtaq\n");
     f nes;
@@ -36,9 +36,7 @@ int ft_dflags(char *string, int x)
         nes.mince = 1;
         string++;
     }
-    nes.d = x;
-    nes.len = (int)ft_strlen(ft_itoa(nes.d));
-    // printf("lenth %d\n",nes.len);
+    nes.len = ft_strlen(ft_itoa(x));
     if(ft_isdigit(*string))
     {
         nes.spaces = ft_atoi(string);
@@ -82,7 +80,7 @@ int ft_dflags(char *string, int x)
         // printf("1\n");  to remove  
         while ((nes.zeros)-- > 0)
             nes.count += write(1,"0",1);
-        nes.count += ft_putnbr_fd(nes.d,1);
+        nes.count += ft_putunbr_fd(x,1);
         while ((nes.spaces)-- > 0 )
             nes.count += write(1," ",1);
         return (nes.count);
@@ -94,7 +92,7 @@ int ft_dflags(char *string, int x)
             nes.count += write(1," ",1);
         while ((nes.zeros)--)
             nes.count += write(1,"0",1);
-        nes.count += ft_putnbr_fd(nes.d,1);
+        nes.count += ft_putunbr_fd(x,1);
         return (nes.count);
     }
     else
@@ -102,7 +100,7 @@ int ft_dflags(char *string, int x)
         // printf("3\n"); to remove
         while ((nes.zeros)-- > 0)
             nes.count += write(1,"0",1);
-        nes.count += ft_putnbr_fd(nes.d,1);
+        nes.count += ft_putunbr_fd(x,1);
         return (nes.count);
     }
 }

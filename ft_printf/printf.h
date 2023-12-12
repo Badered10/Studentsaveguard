@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 15:09:45 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/12 22:07:09 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/12 22:32:20 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,6 @@ int     specifier(char c,va_list args);
 int     ft_dflags(char *string, int x);
 int     ft_isflag(char ch , char *save_m ,va_list args);
 int     ft_cflags(char *save_m ,int x);
+int     ft_uflags(char *string, unsigned int x);
 
 #endif
