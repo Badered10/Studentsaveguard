@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 15:31:25 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/11 21:45:00 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/12 10:06:23 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@
 // }
 int main()
 {
-    char c = 'k';
+    char* s = "%";
 //    printf("'%zu'\n",ft_strlen(ft_itoa(ft_atoi(c))));
-//     char* k = "3333";
+    // char* c = "03333";
 //    printf("'%5.s'\n",k);
-    printf("'%15.6p'\n",&c);
+    printf("'%s'\n",s);
 }

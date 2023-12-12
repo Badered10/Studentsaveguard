@@ -6,35 +6,32 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 15:09:06 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/10 21:00:59 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/12 10:07:55 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "printf.h"
-# include "libft.h"
 int ft_printf(char *string , ...)
 {
-    int print;
-    int count;
     va_list args;
-    char *save;
+    f t;
+    char *ptr;
+    char *specifiers;
 
-    save = string;
-    count = 0;
+    ptr = string;
+    specifiers = "cspdiuxX%";
+    t.count = 0;
     va_start(args,string);
-    print = 0;
-
-    while (*string)
+    while (*ptr)
     {
-        if(*string == '%')
+        if(*ptr == '%')
         {
-            if (!*(++string))
+            if (!*(++ptr))
                 return 0;
-            while (*string)
+            while (*ptr)
             {
-                if (*string == 's' || c == 'c'|| c == 'i'|| c == 'd'|| c == 'x'|| c == 'X'|| c == 'u'|| c == 'p' || c == '%')
-                    flags(*string,save,args);
-                string++;
+                ft_strchr(string,)
+                ptr++;
             }
                 // if (*string == '-')
                 //     mince_flag(string,args);
@@ -43,8 +40,8 @@ int ft_printf(char *string , ...)
             // else if (*string == '.')
         }
         else
-            count += write(1,string,1);
-        string++;
+            count += write(1,ptr,1);
+        ptr++;
     }
     va_end(args);
     return (count);

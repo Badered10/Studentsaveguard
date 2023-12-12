@@ -6,7 +6,7 @@
 #    By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/07 17:33:58 by baouragh          #+#    #+#              #
-#    Updated: 2023/11/29 15:34:00 by baouragh         ###   ########.fr        #
+#    Updated: 2023/12/12 09:36:02 by baouragh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,7 @@ bonus: $(BONUS)
 clean:
 	rm -f $(OBJS) $(BONUS)
 
-fclean: clear
+fclean: clean
 	rm -rf $(NAME)
 
 re: fclean all

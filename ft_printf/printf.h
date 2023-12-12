@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 15:09:45 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/11 21:25:58 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/12 09:34:23 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,12 @@
 # include <stddef.h>
 # include <stdarg.h>
 # include <stdlib.h>
+# include "/Users/baouragh/Desktop/ALL/ft_printf/libft/libft.h" 
 
 typedef struct s_flags
 {
-    size_t	len;
     size_t	width;
+    int	    len;
     int	    spaces;
     int	    zeros;
     int     count;
@@ -33,7 +34,6 @@ typedef struct s_flags
 }               f;
 int ft_printf(char *string , ...);
 int specifier(char c,va_list args);
-int ft_putchar(char c);
-int is_specifier(char c);
+int d_flags(char *string, va_list args);
 
 #endif

@@ -17,7 +17,7 @@ int specifier(char c,va_list args)
     int count;
     count = 0;
         if (c == 'c')
-            count += ft_putchar(va_arg(args,int));
+            count += ft_putchar_fd(va_arg(args,int),1);
         // else if (c == 's')
         //     count += ft_putstr(va_arg(args,char*));
         // else if (c == 'd' || c == 'i')
