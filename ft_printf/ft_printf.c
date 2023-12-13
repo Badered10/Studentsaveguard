@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 15:09:06 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/12 23:42:35 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/13 09:48:05 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int ft_printf(char *string , ...)
             {
                 if(ft_strchr(specifiers,*ptr))
                 {
-                    t.count += ft_isflag(*(ft_strchr(specifiers,*ptr)),save_m , args);
+                    t.count += ft_isflag(*(ft_strchr(specifiers,*ptr)),save_m ,args);
                     break;
                 }
                 ptr++;
@@ -45,9 +45,10 @@ int ft_printf(char *string , ...)
     va_end(args);
     return (t.count);
 }
+
 int main()
 {
-   int y = printf("or|%-23.15i||%-11.12u| |%-010.5d| |%-10c| |%%%%%%|\n",765,-1,928727,'C');
-    int i = ft_printf("me|%-23.15i||%-11.12u| |%-010.5d| |%-10c| |%%%%%%|\n",765,-1,928727,'C');
+    int y = printf("|%6.2s| |%6.2d| |%6.2s| |%6.2u| |%6c|\n ","hello", 123, "okey", -231, 'k');
+    int i = ft_printf("|%6.2s| |%6.2d| |%6.2s| |%6.2u| |%6c|\n ","hello", 123, "okey", -231, 'k');
     printf("\n%d\n%d\n",y,i);
 }

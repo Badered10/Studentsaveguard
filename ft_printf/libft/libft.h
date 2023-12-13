@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 15:36:57 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/12 23:00:56 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/13 08:19:22 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ int					ft_putstr_fd(char *s, int fd);
 void				ft_putendl_fd(char *s, int fd);
 int					ft_putnbr_fd(int n, int fd);
 int	    			ft_putunbr_fd(unsigned int n, int fd);
+int					ft_putnstr_fd(char *s, int fd, int n);
 
 typedef struct s_list
 {

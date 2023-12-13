@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 22:13:54 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/12 23:42:01 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/13 08:32:29 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int ft_uflags(char *string, unsigned int x)
         // printf("2\n"); to remove
         while ((nes.spaces)-- > 0)
             nes.count += write(1," ",1);
-        while ((nes.zeros)--)
+        while ((nes.zeros)-- > 0)
             nes.count += write(1,"0",1);
         nes.count += ft_putunbr_fd(x,1);
         return (nes.count);
