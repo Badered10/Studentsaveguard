@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 18:00:25 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/13 08:31:56 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/13 15:25:47 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int ft_dflags(char *string, int x)
 {
-    // printf("taqtaq\n");
+    // printf("taqtaq\n");   save_m + 1 "5d okeey",321; nes.len =3; nes.mince = 1;  nes.zero = 0; nes.spces= 7 nes.point = 1 nes.zeros = 5;
     f nes;
 
     nes.zeros = 0;

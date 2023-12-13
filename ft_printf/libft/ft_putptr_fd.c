@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_main.c                                          :+:      :+:    :+:   */
+/*   ft_putptr_fd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/29 15:31:25 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/13 16:05:57 by baouragh         ###   ########.fr       */
+/*   Created: 2023/12/13 14:31:57 by baouragh          #+#    #+#             */
+/*   Updated: 2023/12/13 14:31:58 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
-#include <string.h>
-int main()
-{
-	char* x = "ssda";
-	printf("|%15p|\n",&x);  // 
-}
-// int main()
-// {
-//     char *s;
-//     s = "123";
-    
-//     printf("%p \n",&s);
-    
+#include "libft.h"
 
-// }
+int	ft_putstr_fd(void *s, int fd,)
+{
+	int count;
+
+	count = 0;
+	if ((fd < 0) || !s)
+		return (-1);
+	count += write(fd, s, ft_strlen(s));
+	return (count);
+}
