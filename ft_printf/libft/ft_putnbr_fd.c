@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 23:20:30 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/13 20:39:05 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/13 21:51:02 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,10 @@ int	ft_putnbr_fd(int n, int fd)
 	if (fd < 0)
 		return -1;
 	if (x < 0)
+	{
+		count += 1;
 		x = -x;
+	}
 	if (x > 9)
 	{
 		count += ft_putnbr_fd(x / 10, fd);
