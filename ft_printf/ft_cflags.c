@@ -6,13 +6,13 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 19:57:29 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/13 15:33:32 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/13 17:36:22 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-int ft_cflags(char *string, int x) "c"
+int ft_cflags(char *string, int x)
 {
     f nes;
 

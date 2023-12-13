@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 15:31:25 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/13 16:05:57 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/13 19:09:25 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,8 @@
 #include <string.h>
 int main()
 {
-	char* x = "ssda";
-	printf("|%15p|\n",&x);  // 
-}
-// int main()
-// {
-//     char *s;
-//     s = "123";
-    
-//     printf("%p \n",&s);
-    
 
-// }
+	int x = ft_printf("|%.5d|\n",6);
+	// int y = ft_printf("|%-mmd|",132);
+	printf("%d\n",x);
+}

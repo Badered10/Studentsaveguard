@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 18:00:25 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/13 15:25:47 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/13 19:06:27 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ int ft_dflags(char *string, int x)
     // printf("taqtaq\n");   save_m + 1 "5d okeey",321; nes.len =3; nes.mince = 1;  nes.zero = 0; nes.spces= 7 nes.point = 1 nes.zeros = 5;
     f nes;
 
-    nes.zeros = 0;
     nes.zero = 0;
-    nes.spaces = 0;
-    nes.point = 0;
     nes.mince = 0;
+    nes.point = 0;
+    nes.spaces = 0;
+    nes.zeros = 0;
     nes.count = 0;
     // printf("string is'%s'\n",string);
     while(*string == '0' && *(string + 1))
@@ -42,7 +42,7 @@ int ft_dflags(char *string, int x)
     if(ft_isdigit(*string))
     {
         nes.spaces = ft_atoi(string);
-        //  printf("\t  first set spaces : %d,\n",nes.spaces);
+        //  printf("\t  first set spaces : %d,\n",nes.spaces);   "5d"  int d = 234; zero = 0 , mince = 1; len= 3; sp = 7, point = 1 zeros = 2; 
         if (nes.spaces > nes.len)
         nes.spaces = nes.spaces - nes.len;
         else 
@@ -90,6 +90,8 @@ int ft_dflags(char *string, int x)
     else if (nes.point == 1)
     {
         // printf("2\n"); to remove
+        if(nes.d < 0)
+            nes.count += write(1,"-",1);
         while ((nes.spaces)-- > 0)
             nes.count += write(1," ",1);
         while ((nes.zeros)-- > 0)

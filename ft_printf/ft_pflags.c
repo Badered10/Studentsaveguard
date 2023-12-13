@@ -6,13 +6,13 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 10:40:40 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/13 16:04:29 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/13 17:35:32 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-int ft_pflags(char *string, unsigned long res)
+int ft_pflags(char *string, void* res)    // "%-010p"
 {
     f nes;  "%-10p"
 
@@ -24,7 +24,7 @@ int ft_pflags(char *string, unsigned long res)
         nes.mince = 1;
         string++;
     }
-    nes.num = res;
+    nes.num = (unsigned long)res;
     if(ft_isdigit(*string))
     {
         nes.spaces = ft_atoi(string);
