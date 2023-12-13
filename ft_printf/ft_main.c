@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 15:31:25 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/13 19:09:25 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/13 20:55:52 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int main()
 {
 
-	int x = ft_printf("|%.5d|\n",6);
-	// int y = ft_printf("|%-mmd|",132);
-	printf("%d\n",x);
+	int x = ft_printf("|%-10.5d| |%010.5d||%-10.5d|\n",6, 34,-23);
+	int y = printf("|%-10.5d| |%010.5d||%-10.5d|\n",6, 34,-23);
+	printf("%d , %d\n",x,y);
 }

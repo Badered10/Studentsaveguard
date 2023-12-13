@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 18:00:25 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/13 19:06:27 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/13 20:54:54 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ int ft_dflags(char *string, int x)
     }
     nes.d = x;
     nes.len = (int)ft_strlen(ft_itoa(nes.d));
+    if (nes.d < 0)
+        nes.len -=1;
     // printf("lenth %d\n",nes.len);
     if(ft_isdigit(*string))
     {
@@ -64,7 +66,10 @@ int ft_dflags(char *string, int x)
             nes.zeros = nes.zeros - nes.len;
             else
             nes.zeros = 0;
-            nes.spaces = nes.spaces - nes.zeros;
+            if(nes.d > 0)
+            nes.spaces -= nes.zeros;
+            else
+            nes.spaces -= nes.zeros + 1;
         }
         // nes.width = nes.zeros + nes.spaces; to remove
     }
@@ -79,7 +84,9 @@ int ft_dflags(char *string, int x)
     // printf("\tzeros : %d, sp%d\n",nes.zeros , nes.spaces);
     if (nes.mince == 1)
     {
-        // printf("1\n");  to remove  
+        // printf("1\n");  to remove 
+        if(nes.d < 0)
+            write(1,"-",1); 
         while ((nes.zeros)-- > 0)
             nes.count += write(1,"0",1);
         nes.count += ft_putnbr_fd(nes.d,1);
@@ -89,11 +96,10 @@ int ft_dflags(char *string, int x)
     }
     else if (nes.point == 1)
     {
-        // printf("2\n"); to remove
-        if(nes.d < 0)
-            nes.count += write(1,"-",1);
         while ((nes.spaces)-- > 0)
             nes.count += write(1," ",1);
+        if(nes.d < 0)
+            write(1,"-",1);
         while ((nes.zeros)-- > 0)
             nes.count += write(1,"0",1);
         nes.count += ft_putnbr_fd(nes.d,1);
@@ -102,6 +108,8 @@ int ft_dflags(char *string, int x)
     else
     {
         // printf("3\n"); to remove
+        if(nes.d < 0)
+            write(1,"-",1); 
         while ((nes.zeros)-- > 0)
             nes.count += write(1,"0",1);
         nes.count += ft_putnbr_fd(nes.d,1);
