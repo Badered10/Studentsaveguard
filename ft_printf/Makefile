@@ -6,7 +6,7 @@
 #    By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/29 12:39:30 by baouragh          #+#    #+#              #
-#    Updated: 2023/12/13 08:50:03 by baouragh         ###   ########.fr        #
+#    Updated: 2023/12/13 10:45:55 by baouragh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRC_DIR = /Users/baouragh/Desktop/ALL/ft_printf
 
 SRCS = $(SRC_DIR)/ft_dflags.c $(SRC_DIR)/ft_cflags.c $(SRC_DIR)/ft_specifier.c \
 		$(SRC_DIR)/ft_printf.c $(SRC_DIR)/ft_isflag.c $(SRC_DIR)/ft_uflags.c\
-		$(SRC_DIR)/ft_sflags.c
+		$(SRC_DIR)/ft_sflags.c $(SRC_DIR)/ft_pflags.c
 
 OBJS = $(SRCS:.c=.o)
 

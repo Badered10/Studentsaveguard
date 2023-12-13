@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 15:09:06 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/13 09:48:05 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/13 11:58:43 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,10 @@ int ft_printf(char *string , ...)
 
 int main()
 {
-    int y = printf("|%6.2s| |%6.2d| |%6.2s| |%6.2u| |%6c|\n ","hello", 123, "okey", -231, 'k');
-    int i = ft_printf("|%6.2s| |%6.2d| |%6.2s| |%6.2u| |%6c|\n ","hello", 123, "okey", -231, 'k');
+    char * x = NULL;
+    char *str;
+    str = "|%6.2s| |%6.2d| |%6.2s| |%6.2u| |%6c| |%7.6s|\n ";
+    int y = printf(str,"hello", 123, "okey", -231, 'k',x);
+    int i = ft_printf(str,"hello", 123, "okey", -231, 'k',x);
     printf("\n%d\n%d\n",y,i);
 }

@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 08:23:07 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/13 08:23:17 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/13 11:40:06 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,11 @@ int	ft_putnstr_fd(char *s, int fd, int n)
 	int count;
 
 	count = 0;
-	if ((fd < 0) || !s)
+	if ((fd < 0))
 		return (-1);
+	if(s)
 	count += write(fd, s, n);
+	else
+	count += write(fd, "(null)", n);
 	return (count);
 }
