@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 18:00:25 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/14 12:59:46 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/14 18:19:18 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,48 +25,33 @@ int ft_dflags(char *string, int x)
     nes.count = 0;
     nes.space = 0;
     nes.plus = 0;
-    // printf("string is'%s'\n",string);
-    while (*string == '+' && *(string + 1))
+    
+       while(ft_isdigit_nz(*string) != 1 && *string != '.')
     {
-        nes.plus = 1;
-        nes.space = 0;
-        string++;
-    }
-    while (*string == ' ' && *(string + 1))
-    {
-        if(nes.plus == 0)
-        nes.space = 1;
-        string++;
-    }
-    while(*string == '0' && *(string + 1))
-    {
-        nes.zero = 1;
-        string++;
-    }
-    while (*string == ' ' && *(string + 1))
-    {
-        if(nes.plus == 0)
-        nes.space = 1;
-        string++;
-    }
-    while(*string == '-' && *(string + 1))
-    {
-        // printf("hahaha");
-        nes.zero = 0;
-        nes.mince = 1;
-        string++;
-    }
-    while (*string == ' ' && *(string + 1))
-    {
-        if(nes.plus == 0)
-        nes.space = 1;
-        string++;
-    }
-    while (*string == '+' && *(string + 1))
-    {
-        nes.plus = 1;
-        nes.space = 0;
-        string++;
+        while (*string == '+' && *(string + 1))
+        {
+            nes.plus = 1;
+            nes.space = 0;
+            string++;
+        }
+        while (*string == ' ' && *(string + 1))
+            {
+                if (nes.plus == 0)
+                    nes.space = 1;
+                string++;
+            }
+        while(*string == '0' && *(string + 1))
+            {
+                if(nes.mince == 0)
+                nes.zero = 1;
+                string++;
+            }
+        while(*string == '-' && *(string + 1))
+        {
+            nes.zero = 0;
+            nes.mince = 1;
+            string++;
+        }
     }
     nes.d = x;
     nes.len = (int)ft_strlen(ft_itoa(nes.d));
@@ -82,19 +67,10 @@ int ft_dflags(char *string, int x)
         else 
         nes.spaces = 0;
     }
-    else if (*string == ' ' && nes.plus == 0)
-    {
-        while (*string == ' ' && *(string + 1))
-        {
-            nes.space = 1;
-            string++;
-        }
-    }
     else
     nes.spaces = 0;
     while(ft_isdigit(*string))
         string++;
-    // printf("\tzero : %d, point %d, mince %d \n",nes.zero , nes.point , nes.mince);
     if (*string == '.' && *(string + 1))
     {
         nes.point = 1;
@@ -121,12 +97,23 @@ int ft_dflags(char *string, int x)
         if (nes.zeros == nes.spaces)
             nes.spaces = 0;
 
+    // printf("\t 0: %d, .:%d, -:%d , ' ':%d, +:%d\n",nes.zero , nes.point , nes.mince , nes.space, nes.plus);
     // printf("\tzeros : %d, sp%d\n",nes.zeros , nes.spaces);
     if (nes.mince == 1)
     {
+        if (nes.space == 1 && nes.d > 0)
+        {
+            nes.count += write(1," ",1);
+            nes.spaces--;
+        }
+        else if (nes.plus == 1 && nes.d > 0)
+            nes.count += write(1,"+",1);
         // printf("1\n");  to remove 
         if(nes.d < 0)
-            write(1,"-",1); 
+        {
+            write(1,"-",1);
+            nes.spaces--;
+        }
         while ((nes.zeros)-- > 0)
             nes.count += write(1,"0",1);
         nes.count += ft_putnbr_fd(nes.d,1);
@@ -136,6 +123,18 @@ int ft_dflags(char *string, int x)
     }
     else if (nes.point == 1)
     {
+       if(nes.plus == 1 || nes.d < 0 )
+            nes.spaces --;
+        else if (nes.space == 1 && nes.plus == 0 && nes.d > 0)
+        {
+            nes.count += write(1," ",1);
+            nes.spaces --;
+        }
+        else if (nes.space == 1 && nes.plus == 0 && nes.d < 0)
+        {
+            nes.count += write(1," ",1);
+            nes.spaces -=2;
+        }
         while ((nes.spaces)-- > 0)
             nes.count += write(1," ",1);
             
@@ -146,13 +145,53 @@ int ft_dflags(char *string, int x)
         nes.count += ft_putnbr_fd(nes.d,1);
         return (nes.count);
     }
-    else
+    else if (nes.zero == 1)
     {
-        // printf("3\n"); to remove
-        if(nes.d < 0)
-            write(1,"-",1); 
+       // printf("3\n"); to remove
+       if(nes.d < 0 && (nes.plus == 1 || nes.space == 1))
+            write(1,"-",1);
+        if (nes.plus == 1 && nes.d > 0)
+            nes.count += write(1,"+",1);
+        if(nes.plus == 1 || nes.d < 0 )
+            nes.zeros --;
+        else if (nes.space == 1 && nes.plus == 0 && nes.d > 0)
+        {
+            nes.count += write(1," ",1);
+            nes.zeros --;
+        }
+        else if (nes.space == 1 && nes.plus == 0 && nes.d < 0)
+        {
+            nes.count += write(1," ",1);
+            nes.zeros -=2;
+        }
         while ((nes.zeros)-- > 0)
             nes.count += write(1,"0",1);
+        nes.count += ft_putnbr_fd(nes.d,1);
+        return (nes.count);
+    }
+    else
+    {
+         // printf("3\n"); to remove
+        if(nes.plus == 1 || nes.d < 0 )
+            nes.spaces --;
+        else if (nes.space == 1 && nes.plus == 0 && nes.d > 0)
+        {
+            nes.count += write(1," ",1);
+            nes.spaces --;
+        }
+        else if (nes.space == 1 && nes.plus == 0 && nes.d < 0)
+        {
+            nes.count += write(1," ",1);
+            nes.spaces -=2;
+        }
+        while ((nes.spaces)-- > 0)
+            nes.count += write(1," ",1);
+        if(nes.d < 0 && nes.plus == 0)
+            write(1,"-",1);
+        else if (nes.plus == 1 && nes.d > 0)
+            nes.count += write(1,"+",1);
+        else if(nes.d < 0 && nes.plus == 1)
+            write(1,"-",1);
         nes.count += ft_putnbr_fd(nes.d,1);
         return (nes.count);
     }

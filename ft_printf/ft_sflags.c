@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 08:27:32 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/13 11:59:22 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/14 18:30:14 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int ft_sflags(char *string, char *res)
         else if (nes.len == 0 && nes.zero == 1)
         while ((nes.spaces)-- > 0 )
             nes.count += write(1,"0",1);
-            else
+        else
             while ((nes.spaces)-- > 0 )
             nes.count += write(1," ",1);
          nes.count += ft_putnstr_fd(res,1,nes.display);
