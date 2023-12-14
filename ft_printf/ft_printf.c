@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 15:09:06 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/13 21:45:34 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/14 09:25:14 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int ft_printf(char *string , ...)
                 }
                 if(ft_strchr(flags,*ptr) == NULL && ft_isdigit(*ptr) == 0)
                 {
+                    // printf("oh hell no !\n");
                     t.count += write(1,ptr,1);
                     break;
                 }
@@ -47,7 +48,10 @@ int ft_printf(char *string , ...)
             }
         }
         else
+        {
+            // printf("oh hell no !\n");
             t.count += write(1,ptr,1);
+        }
         ptr++;
     }
     printf("tcount is %d\n",t.count);
