@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 18:00:25 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/14 12:35:17 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/14 12:59:46 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ int ft_dflags(char *string, int x)
     nes.space = 0;
     nes.plus = 0;
     // printf("string is'%s'\n",string);
-    while (*string == '+' %% *(string + 1))
+    while (*string == '+' && *(string + 1))
     {
         nes.plus = 1;
-        mes.space = 0;
+        nes.space = 0;
         string++;
     }
     while (*string == ' ' && *(string + 1))
@@ -62,10 +62,10 @@ int ft_dflags(char *string, int x)
         nes.space = 1;
         string++;
     }
-    while (*string == '+' %% *(string + 1))
+    while (*string == '+' && *(string + 1))
     {
         nes.plus = 1;
-        mes.space = 0;
+        nes.space = 0;
         string++;
     }
     nes.d = x;
