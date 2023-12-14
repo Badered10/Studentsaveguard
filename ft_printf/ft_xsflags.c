@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:18:51 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/14 13:30:43 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/14 15:21:58 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,32 +35,34 @@ int ft_xsflags(char *string, unsigned int x , char c)
     nes.count = 0;
     nes.hashtag = 0;
     // printf("string is'%s'\n",string);
-     while (*string == '#' && *(string + 1))
+    
+    while(ft_isdigit_nz(*string) != 1 && *string != '.')
     {
-        nes.hashtag = 1;
-        string++;
-    }
-    while(*string == '0' && *(string + 1))
-    {
-        nes.zero = 1;
-        string++;
-    }
-    while (*string == '#' && *(string + 1))
-    {
-        nes.hashtag = 1;
-        string++;
-    }
-    while(*string == '-' && *(string + 1))
-    {
-        // printf("hahaha");
-        nes.zero = 0;
-        nes.mince = 1;
-        string++;
-    }
-    while (*string == '#' && *(string + 1))
-    {
-        nes.hashtag = 1;
-        string++;
+         while (*string == '#' && *(string + 1))
+        {
+            nes.hashtag = 1;
+            string++;
+        }
+         if(nes.mince == 0)
+        {
+            while(*string == '0' && *(string + 1))
+            {
+                nes.zero = 1;
+                string++;
+            }
+        }
+         else if (nes.mince == 1 && *string == '0')
+        {
+            while(*string == '0' && *(string + 1))
+                string++;
+        }
+        while(*string == '-' && *(string + 1))
+        {
+            // printf("hahaha");
+            nes.zero = 0;
+            nes.mince = 1;
+            string++;
+        }
     }
     nes.len += hexalenth(x);
     // printf("lenth %d\n",nes.len);
@@ -91,7 +93,7 @@ int ft_xsflags(char *string, unsigned int x , char c)
             else
             nes.zeros = 0;
             nes.spaces -= nes.zeros;
-            printf("zeros %d, spaces %d \n",nes.zeros,nes.spaces);
+            // printf("zeros %d, spaces %d \n",nes.zeros,nes.spaces);
         }
         // nes.width = nes.zeros + nes.spaces; to remove
     }
@@ -102,11 +104,11 @@ int ft_xsflags(char *string, unsigned int x , char c)
     }
         if (nes.zeros == nes.spaces && x != 0)
         {
-            printf("sheesh\n");
+            // printf("sheesh\n");
             nes.spaces = 0;
         }
 
-    printf("\t flags  #:%d, -:%d , 0:%d, .:%d \n",nes.hashtag , nes.mince , nes.zero,nes.point);
+    // printf("\t flags  #:%d, -:%d , 0:%d, .:%d \n",nes.hashtag , nes.mince , nes.zero,nes.point);
     if (nes.mince == 1)
     {
         if (nes.hashtag == 1)
@@ -114,12 +116,12 @@ int ft_xsflags(char *string, unsigned int x , char c)
             if (x > 0)
             {
                 nes.count += write(1,"0x",2);
-                nes.zeros -=2;
+                nes.spaces -=2;
             }
            else
            {
                 nes.count += write(1,"0",1);
-                nes.zeros --;
+                nes.spaces --;
            }
         }
         while ((nes.zeros)-- > 0)

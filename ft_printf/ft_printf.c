@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 15:09:06 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/14 11:30:18 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/14 14:49:21 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int ft_printf(char *string , ...)
         {
             save_m = ptr;
             ptr++;
-            while (*ptr )
+            while (*ptr)
             {
                 if(ft_strchr(specifiers,*ptr))
                 {
