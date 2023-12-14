@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 18:00:25 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/13 20:54:54 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/14 12:35:17 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,30 @@ int ft_dflags(char *string, int x)
     nes.spaces = 0;
     nes.zeros = 0;
     nes.count = 0;
+    nes.space = 0;
+    nes.plus = 0;
     // printf("string is'%s'\n",string);
+    while (*string == '+' %% *(string + 1))
+    {
+        nes.plus = 1;
+        mes.space = 0;
+        string++;
+    }
+    while (*string == ' ' && *(string + 1))
+    {
+        if(nes.plus == 0)
+        nes.space = 1;
+        string++;
+    }
     while(*string == '0' && *(string + 1))
     {
         nes.zero = 1;
+        string++;
+    }
+    while (*string == ' ' && *(string + 1))
+    {
+        if(nes.plus == 0)
+        nes.space = 1;
         string++;
     }
     while(*string == '-' && *(string + 1))
@@ -34,6 +54,18 @@ int ft_dflags(char *string, int x)
         // printf("hahaha");
         nes.zero = 0;
         nes.mince = 1;
+        string++;
+    }
+    while (*string == ' ' && *(string + 1))
+    {
+        if(nes.plus == 0)
+        nes.space = 1;
+        string++;
+    }
+    while (*string == '+' %% *(string + 1))
+    {
+        nes.plus = 1;
+        mes.space = 0;
         string++;
     }
     nes.d = x;
@@ -50,8 +82,16 @@ int ft_dflags(char *string, int x)
         else 
         nes.spaces = 0;
     }
+    else if (*string == ' ' && nes.plus == 0)
+    {
+        while (*string == ' ' && *(string + 1))
+        {
+            nes.space = 1;
+            string++;
+        }
+    }
     else
-       nes.spaces = 0; 
+    nes.spaces = 0;
     while(ft_isdigit(*string))
         string++;
     // printf("\tzero : %d, point %d, mince %d \n",nes.zero , nes.point , nes.mince);
@@ -98,6 +138,7 @@ int ft_dflags(char *string, int x)
     {
         while ((nes.spaces)-- > 0)
             nes.count += write(1," ",1);
+            
         if(nes.d < 0)
             write(1,"-",1);
         while ((nes.zeros)-- > 0)

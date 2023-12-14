@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 15:09:45 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/14 11:09:38 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/14 12:32:45 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ typedef struct s_flags
     int             display;
     int	            len;
     // flags
+    int             plus;
+    int             space;
     int		        mince;
 	int		        zero;
 	int		        point;
