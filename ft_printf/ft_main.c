@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 15:31:25 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/14 11:00:19 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/14 12:14:00 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int main()
 	// int d = 6;
 	
 
-	int x = ft_printf("me|%21.20x|\n",-2);
-	int y = printf("me|%21.20x|\n",-2);
+	int x = ft_printf("me|%-#49.30x|\n",-2);
+	int y = printf("or|%-#49.30x|\n",-2);
 	printf("%d , %d\n",x,y);
 }

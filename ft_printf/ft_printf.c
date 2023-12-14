@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 15:09:06 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/14 09:25:14 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/14 11:30:18 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ int ft_printf(char *string , ...)
         }
         ptr++;
     }
-    printf("tcount is %d\n",t.count);
     va_end(args);
     return (t.count);
 }
