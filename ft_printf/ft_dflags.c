@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 18:00:25 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/15 09:33:28 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/15 11:28:00 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int ft_dflags(char *string, int x)
     nes.zeros = 0;
     nes.count = 0;
     
-       while(ft_isdigit_nz(*string) != 1 && *string != '.')
+       while(ft_isdigit_nz(*string) != 1 && *string != '.' && *string != 'd')
     {
         while (*string == '+' && *(string + 1))
         {
@@ -66,8 +66,8 @@ int ft_dflags(char *string, int x)
         else 
         nes.spaces = 0;
     }
-    else
-    nes.spaces = 0;
+        else
+            nes.spaces = 0;
     while(ft_isdigit(*string))
         string++;
     if (*string == '.' && *(string + 1))
@@ -81,84 +81,66 @@ int ft_dflags(char *string, int x)
             nes.zeros = nes.zeros - nes.len;
             else
             nes.zeros = 0;
-            if(nes.d > 0)
             nes.spaces -= nes.zeros;
-            else
-            nes.spaces -= nes.zeros + 1;
         }
         // nes.width = nes.zeros + nes.spaces; to remove
     }
-    else if (nes.zero == 1 && nes.point != 1 && nes.mince != 1)
+        else if (nes.zero == 1 && nes.point != 1 && nes.mince != 1)
             nes.zeros = nes.spaces;
-        if (nes.zeros == nes.spaces)
-            nes.spaces = 0;
+    if (nes.zeros == nes.spaces)
+        nes.spaces = 0;
     // printf("\t 0: %d, .:%d, -:%d , ' ':%d, +:%d\n",nes.zero , nes.point , nes.mince , nes.space, nes.plus);
     // printf("\tzeros : %d, sp%d\n",nes.zeros , nes.spaces);
     if (nes.mince == 1)
     {
-        if (nes.space == 1 && nes.d > 0)
-        {
-            nes.count += write(1," ",1);
-            nes.spaces--;
-        }
-        else if (nes.plus == 1 && nes.d > 0)
-            nes.count += write(1,"+",1);
-        // printf("1\n");  to remove 
+        if (nes.d < 0)    
+                nes.spaces --;
+            else if (!nes.d)
+                nes.zeros ++;
+        if (nes.space == 1 && nes.d >= 0)
+                nes.count += write(1," ",1);
         if(nes.d < 0)
-        {
             write(1,"-",1);
-            nes.spaces--;
-        }
-        while ((nes.zeros)-- > 0)
-            nes.count += write(1,"0",1);
-        nes.count += ft_putnbr_fd(nes.d,1);
+            else if(nes.d >= 0 && nes.plus == 1)
+                nes.count += write(1,"+",1);
+        while((nes.zeros)-- > 0)
+            nes.count += write(1,"0",1); 
+         if (nes.d != 0)
+            nes.count += ft_putnbr_fd(nes.d,1);
         while ((nes.spaces)-- > 0 )
             nes.count += write(1," ",1);
         return (nes.count);
     }
     else if (nes.point == 1)
     {
-       if(nes.plus == 1 || nes.d < 0 )
+         if (nes.d < 0)
             nes.spaces --;
-        else if (nes.space == 1 && nes.plus == 0 && nes.d > 0)
-        {
+            else if (!nes.d)
+                nes.zeros ++;
+        if (nes.space == 1 && nes.d >= 0)
             nes.count += write(1," ",1);
-            nes.spaces --;
-        }
-        else if (nes.space == 1 && nes.plus == 0 && nes.d < 0)
-        {
-            nes.count += write(1," ",1);
-            nes.spaces -=2;
-        }
         while ((nes.spaces)-- > 0)
             nes.count += write(1," ",1);
-            
-        if(nes.d < 0)
+        if(nes.d >= 0 && nes.plus == 1)
+            nes.count += write(1,"+",1);
+        if(nes.d < 0 || nes.plus == 1)
             write(1,"-",1);
-        while ((nes.zeros)-- > 0)
-            nes.count += write(1,"0",1);
-        nes.count += ft_putnbr_fd(nes.d,1);
+        if (nes.d != 0)
+            while ((nes.zeros)-- > 0)
+                nes.count += write(1,"0",1);
+        if (nes.d != 0)
+            nes.count += ft_putnbr_fd(nes.d,1);
         return (nes.count);
     }
     else if (nes.zero == 1)
-    {
-       // printf("3\n"); to remove
-       if(nes.d < 0 && (nes.plus == 1 || nes.space == 1))
+    {     
+            nes.zeros --;
+        if(nes.d < 0 && (nes.plus == 1 || nes.space == 1))
             write(1,"-",1);
-        if (nes.plus == 1 && nes.d > 0)
-            nes.count += write(1,"+",1);
-        if(nes.plus == 1 || nes.d < 0 )
-            nes.zeros --;
-        else if (nes.space == 1 && nes.plus == 0 && nes.d > 0)
-        {
-            nes.count += write(1," ",1);
-            nes.zeros --;
-        }
-        else if (nes.space == 1 && nes.plus == 0 && nes.d < 0)
-        {
-            nes.count += write(1," ",1);
-            nes.zeros -=2;
-        }
+            else if (nes.plus == 1 && nes.d > 0)
+                nes.count += write(1,"+",1);
+                else if (nes.space == 1 && nes.d >= 0)
+                    nes.count += write(1," ",1);
         while ((nes.zeros)-- > 0)
             nes.count += write(1,"0",1);
         nes.count += ft_putnbr_fd(nes.d,1);
@@ -167,18 +149,10 @@ int ft_dflags(char *string, int x)
     else
     {
          // printf("3\n"); to remove
-        if(nes.plus == 1 || nes.d < 0 )
+        if (nes.d < 0)     
             nes.spaces --;
-        else if (nes.space == 1 && nes.plus == 0 && nes.d > 0)
-        {
+        if (nes.space == 1 && nes.plus == 0 && nes.d >= 0)
             nes.count += write(1," ",1);
-            nes.spaces --;
-        }
-        else if (nes.space == 1 && nes.plus == 0 && nes.d < 0)
-        {
-            nes.count += write(1," ",1);
-            nes.spaces -=2;
-        }
         while ((nes.spaces)-- > 0)
             nes.count += write(1," ",1);
         if(nes.d < 0 && nes.plus == 0)
