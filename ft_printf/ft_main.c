@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/29 15:31:25 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/15 17:43:53 by baouragh         ###   ########.fr       */
+/*   Created: 10220/11/29 15:31:25 by baouragh          #+#    #+#             */
+/*   Updated: 20220/12/15 22:36:45 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,26 @@
 #include <string.h>
 int main()
 {
-	// int d = 6;
+	char *str = "hello";
+	ft_printf("%p\n",str);
+	printf("%p\n",str);
 	
-	int y = ft_printf("me|%+000+++5.10d|\n",10); 
-	int x = printf("or|%+000+++5.10d|\n",10);
-	printf("me %d them %d\n",x,y);
-	y = ft_printf("me|%+000+++5.10d|\n",-10); 
-	x = printf("or|%+000+++5.10d|\n",-10);
-	printf("me %d them %d\n",x,y);
-	y = ft_printf("me|%+000+++5.10d|\n",0);
-	x = printf("or|%  0 5.10d|\n",0);
-	printf("me %d them %d\n",x,y);
+	// int y = ft_printf("me|%+000+++10.20d\n",10);
+	// int x = printf("or|%+000+++10.20d\n",10);
+	// printf("me % - ----  d them % - ----  d\n",x,y);
+	// y = ft_printf("me|%+000+++10.20d\n",-10);
+	// x = printf("or|%+000+++10.20d\n",-10);
+	// printf("me % - ----  d them % - ----  d\n",x,y);
+	// y = ft_printf("me|%0+++000000+++++++10.20d|\n",2);
+	// x = printf("me|%0+++000000+++++++10.20d|\n",2);
+	// printf("me % - ----  d them % - ----  d\n",y,x);
+	// y = ft_printf("me|%000000010.20d| |%000000010.20d| |%000000010.20d|\n",-2,2,0);
+	// x = printf("me|%000000010.20d| |%000000010.20d| |%000000010.20d|\n",-2,2,0);
+	// printf("me % - ----  d them % - ----  d\n",y,x);
+	// y = ft_printf("me|%++++++++++10.20d| |%++++++++++10.20d| |%++++++++++10.20d|\n",-2,2,0);
+	// x = printf("me|%++++++++++10.20d| |%++++++++++10.20d| |%++++++++++10.20d|\n",-2,2,0);
+	// printf("me % - ----  d them % - ----  d\n",y,x);
+	// y = ft_printf("me|%10.20d|\n",-2);
+	// x = printf("me|%10.20d|\n",-2);
+	// printf("me %d them %d\n",y,x);
 }

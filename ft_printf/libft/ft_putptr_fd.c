@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int	ft_putptr_fd(unsigned int res , int fd ,char ch)
+int	ft_putptr_fd(unsigned long res , int fd ,char ch)
 {
 	int count;
 	char *str;
@@ -23,7 +23,7 @@ int	ft_putptr_fd(unsigned int res , int fd ,char ch)
 	str = ft_itohexa(res, ch);
 	if(!str)
 	return 0;
-	count += write(1,"0x7ffe",6);
+	count += write(1,"0x",2);
 	count += write(fd, str, ft_strlen(str));
 	return (count);
 }

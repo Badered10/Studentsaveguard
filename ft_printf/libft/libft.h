@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 15:36:57 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/14 15:17:47 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/15 22:48:53 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int					ft_putnbr_fd(int n, int fd);
 int	    			ft_putunbr_fd(unsigned int n, int fd);
 int					ft_putnstr_fd(char *s, int fd, int n);
 char				*ft_itohexa(unsigned long n , char c);
-int					ft_putptr_fd(unsigned int res , int fd ,char ch);
+int					ft_putptr_fd(unsigned long res , int fd ,char ch);
 int					ft_puthexa_fd(unsigned int res , int fd ,char ch);
 
 typedef struct s_list

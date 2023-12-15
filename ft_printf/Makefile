@@ -6,7 +6,7 @@
 #    By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/29 12:39:30 by baouragh          #+#    #+#              #
-#    Updated: 2023/12/14 10:42:53 by baouragh         ###   ########.fr        #
+#    Updated: 2023/12/15 22:54:42 by baouragh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,15 +26,18 @@ OBJS = $(SRCS:.c=.o)
 
 INCLUDES = -I $(SRCS) -I /Users/baouragh/Desktop/ALL/ft_printf/libft/libft.a
 
+CP = cp /Users/baouragh/Desktop/ALL/ft_printf/libft/libft.a /Users/baouragh/Desktop/ALL/ft_printf
+
 NAME = libftprintf.a
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	ar -rcs $(NAME) $(OBJS) /Users/baouragh/Desktop/ALL/ft_printf/libft/libft.a
+	ar -rcs $(NAME) $(OBJS) 
 
 $(OBJS): $(SRCS)
 	$(MAKE)
+	$(CP)
 	$(CC) $(CFLAGS) $(INCLUDES) -c $(SRCS)
 
 clean:
@@ -43,6 +46,7 @@ clean:
 
 fclean: clean
 	$(MAKE) fclean
+	rm -rf libft.a
 	rm -rf $(NAME)
 
 re: fclean all
