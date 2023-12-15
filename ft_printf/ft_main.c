@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 15:31:25 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/15 11:25:57 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/15 16:03:43 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@ int main()
 {
 	// int d = 6;
 	
-	int y = ft_printf("me|%5.d|\n",10); 
-	int x = printf("or|%5.d|\n",10);
-	printf("me %d them %d\n",x,y);
-	y = ft_printf("me|%5.d|\n",-10); 
-	x = printf("or|%5.d|\n",-10);
-	printf("me %d them %d\n",x,y);
-	y = ft_printf("me|%5.d|\n",0); 
-	x = printf("or|%5.d|\n",0);
+	// int y = ft_printf("me|%5.d|\n",10); 
+	// int x = printf("or|%5.d|\n",10);
+	// printf("me %d them %d\n",x,y);
+	// y = ft_printf("me|%5.d|\n",-10); 
+	// x = printf("or|%5.d|\n",-10);
+	// printf("me %d them %d\n",x,y);
+	int y = ft_printf("me|%5.d|\n",0);
+	int x = printf("or|%5.d|\n",0);
 	printf("me %d them %d\n",x,y);
 	
 	// x = ft_printf("me|%-30d|\n",20);
@@ -32,8 +32,8 @@ int main()
 	// x = ft_printf("me|%-30d|\n",-20);
 	// y = printf("or|%-30d|\n",-20);
 	// printf("me %d them %d\n",x,y);
-	// x = ft_printf("me|%-30d|\n",0);
-	// y = printf("or|%-30d|\n",0);
+	// x = ft_printf("me|%1d|\n",0);
+	// y = printf("or|%1d|\n",0);
 	// printf("me %d them %d\n",x,y);
 	
 	// x = ft_printf("me|%0+30.20d|\n",30);
@@ -42,8 +42,8 @@ int main()
 	// x = ft_printf("me|% 030d|\n",-30);
 	// y = printf("or|% 030d|\n",-30);
 	// printf("me %d them %d\n",x,y);
-	// x = ft_printf("me|% 030d|\n",0);
-	// y = printf("or|% 030d|\n",0);
+	// x = ft_printf("me|% 01d|\n",0);
+	// y = printf("or|% 01d|\n",0);
 	// printf("me %d them %d\n",x,y);
 	
 	// x = ft_printf("me|%30d|\n",40);
@@ -51,9 +51,9 @@ int main()
 	// printf("me %d them %d\n",x,y);
 	// x = ft_printf("me|%30d|\n",-40);
 	// y = printf("or|%30d|\n",-40);
-	// printf("me %d them %d\n",x,y);
-	// x = ft_printf("me|%30d|\n",0);
-	// y = printf("or|%30d|\n",0);
+	// // printf("me %d them %d\n",x,y);
+	// x = ft_printf("me|%3d|\n",0);
+	// y = printf("or|%3d|\n",0);
 	// printf("me %d them %d\n",x,y);
 
 	// x = ft_printf("me|%0+30.20d|\n",50);

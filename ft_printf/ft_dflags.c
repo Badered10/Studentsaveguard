@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 18:00:25 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/15 11:28:00 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/15 16:04:31 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,10 @@ int ft_dflags(char *string, int x)
     }
     nes.d = x;
     nes.len = ft_strlen(ft_itoa(nes.d));
-    if (nes.d < 0)
-        nes.len -=1;
+    // if (nes.d == 0)
+    //     nes.len --;
+    // else if (nes.d < 0)
+    //     nes.len --;
     // printf("lenth %d\n",nes.len);
     if(ft_isdigit(*string))
     {
@@ -81,21 +83,23 @@ int ft_dflags(char *string, int x)
             nes.zeros = nes.zeros - nes.len;
             else
             nes.zeros = 0;
-            nes.spaces -= nes.zeros;
+            nes.spaces -= nes.zeros - 1;
         }
         // nes.width = nes.zeros + nes.spaces; to remove
     }
-        else if (nes.zero == 1 && nes.point != 1 && nes.mince != 1)
+        else if (nes.zero == 1)
             nes.zeros = nes.spaces;
+            // else if (nes.d == 0 && nes.zero == 0)
+            // nes.spaces = 0;
     if (nes.zeros == nes.spaces)
         nes.spaces = 0;
-    // printf("\t 0: %d, .:%d, -:%d , ' ':%d, +:%d\n",nes.zero , nes.point , nes.mince , nes.space, nes.plus);
-    // printf("\tzeros : %d, sp%d\n",nes.zeros , nes.spaces);
+        if(nes.plus == 1)
+            nes.spaces --;
+    printf("\t 0: %d, .:%d, -:%d , ' ':%d, +:%d\n",nes.zero , nes.point , nes.mince , nes.space, nes.plus);
+    printf("\tzeros : %d, sp%d\n",nes.zeros , nes.spaces);
     if (nes.mince == 1)
     {
-        if (nes.d < 0)    
-                nes.spaces --;
-            else if (!nes.d)
+            if (!nes.d)
                 nes.zeros ++;
         if (nes.space == 1 && nes.d >= 0)
                 nes.count += write(1," ",1);
@@ -111,36 +115,35 @@ int ft_dflags(char *string, int x)
             nes.count += write(1," ",1);
         return (nes.count);
     }
-    else if (nes.point == 1)
+    else if (nes.point == 1)  //|. + 0 ' ' flags |
     {
-         if (nes.d < 0)
-            nes.spaces --;
-            else if (!nes.d)
-                nes.zeros ++;
         if (nes.space == 1 && nes.d >= 0)
             nes.count += write(1," ",1);
         while ((nes.spaces)-- > 0)
             nes.count += write(1," ",1);
         if(nes.d >= 0 && nes.plus == 1)
             nes.count += write(1,"+",1);
-        if(nes.d < 0 || nes.plus == 1)
+        if((nes.d < 0 && nes.plus == 1))
             write(1,"-",1);
-        if (nes.d != 0)
+            else if (nes.d < 0)
+                write(1,"-",1);
             while ((nes.zeros)-- > 0)
                 nes.count += write(1,"0",1);
-        if (nes.d != 0)
-            nes.count += ft_putnbr_fd(nes.d,1);
+                if (nes.d != 0)
+                    nes.count += ft_putnbr_fd(nes.d,1);
         return (nes.count);
     }
     else if (nes.zero == 1)
     {     
-            nes.zeros --;
         if(nes.d < 0 && (nes.plus == 1 || nes.space == 1))
             write(1,"-",1);
             else if (nes.plus == 1 && nes.d > 0)
                 nes.count += write(1,"+",1);
                 else if (nes.space == 1 && nes.d >= 0)
+                {
                     nes.count += write(1," ",1);
+                    nes.zeros --;
+                }
         while ((nes.zeros)-- > 0)
             nes.count += write(1,"0",1);
         nes.count += ft_putnbr_fd(nes.d,1);
@@ -149,8 +152,6 @@ int ft_dflags(char *string, int x)
     else
     {
          // printf("3\n"); to remove
-        if (nes.d < 0)     
-            nes.spaces --;
         if (nes.space == 1 && nes.plus == 0 && nes.d >= 0)
             nes.count += write(1," ",1);
         while ((nes.spaces)-- > 0)
