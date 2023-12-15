@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:18:51 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/14 15:21:58 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/15 09:32:25 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,14 @@ int ft_xsflags(char *string, unsigned int x , char c)
     // printf("taqtaq\n");   save_m + 1 "5d okeey",321; nes.len =3; nes.mince = 1;  nes.zero = 0; nes.spces= 7 nes.point = 1 nes.zeros = 5;
     f nes;
 
-    nes.zero = 0;
     nes.mince = 0;
+    nes.zero = 0;
+    nes.hashtag = 0;
     nes.point = 0;
-    nes.spaces = 0;
     nes.zeros = 0;
     nes.count = 0;
-    nes.hashtag = 0;
     // printf("string is'%s'\n",string);
-    
-    while(ft_isdigit_nz(*string) != 1 && *string != '.')
+    while(ft_isdigit_nz(*string) != 1 && *string != '.' && *string != 'x')    // "%x"
     {
          while (*string == '#' && *(string + 1))
         {
@@ -45,6 +43,7 @@ int ft_xsflags(char *string, unsigned int x , char c)
         }
          if(nes.mince == 0)
         {
+            
             while(*string == '0' && *(string + 1))
             {
                 nes.zero = 1;
@@ -71,9 +70,9 @@ int ft_xsflags(char *string, unsigned int x , char c)
         nes.spaces = ft_atoi(string);
         //  printf("\t  first set spaces : %d,\n",nes.spaces);   "5d"  int d = 234; zero = 0 , mince = 1; len= 3; sp = 7, point = 1 zeros = 2; 
         if (nes.spaces > nes.len)
-        nes.spaces = nes.spaces - nes.len;
+            nes.spaces = nes.spaces - nes.len;
         else 
-        nes.spaces = 0;
+            nes.spaces = 0;
     }
     else
        nes.spaces = 0; 
@@ -93,7 +92,7 @@ int ft_xsflags(char *string, unsigned int x , char c)
             else
             nes.zeros = 0;
             nes.spaces -= nes.zeros;
-            // printf("zeros %d, spaces %d \n",nes.zeros,nes.spaces);
+            printf("zeros %d, spaces %d \n",nes.zeros,nes.spaces);
         }
         // nes.width = nes.zeros + nes.spaces; to remove
     }
@@ -103,11 +102,7 @@ int ft_xsflags(char *string, unsigned int x , char c)
             nes.zeros = nes.spaces;
     }
         if (nes.zeros == nes.spaces && x != 0)
-        {
-            // printf("sheesh\n");
             nes.spaces = 0;
-        }
-
     // printf("\t flags  #:%d, -:%d , 0:%d, .:%d \n",nes.hashtag , nes.mince , nes.zero,nes.point);
     if (nes.mince == 1)
     {
@@ -146,11 +141,8 @@ int ft_xsflags(char *string, unsigned int x , char c)
     }
     else if (nes.hashtag == 1 && nes.zero == 1)
     {
-        if (nes.hashtag == 1)
-        {
            nes.count += write(1,"0x",2);  
            nes.zeros -=2;
-        }
         while ((nes.zeros)-- > 0)
             nes.count += write(1,"0",1);
         nes.count += ft_puthexa_fd(x,1 ,c);
@@ -165,7 +157,6 @@ int ft_xsflags(char *string, unsigned int x , char c)
     }
     else if (nes.hashtag == 1)
     {
-        
         if (x == 0)
             nes.spaces --;
         else

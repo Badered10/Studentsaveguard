@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 10:40:40 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/14 10:58:59 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/15 09:30:52 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int ft_pflags(char *string, void* res, char c)
 {
     f nes;
 
-    nes.spaces = 0;
     nes.mince = 0;
     nes.count = 0;
     nes.len = 6;

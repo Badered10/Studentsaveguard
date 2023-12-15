@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 18:00:25 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/14 18:19:18 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/15 09:33:28 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,13 @@ int ft_dflags(char *string, int x)
     // printf("taqtaq\n");   save_m + 1 "5d okeey",321; nes.len =3; nes.mince = 1;  nes.zero = 0; nes.spces= 7 nes.point = 1 nes.zeros = 5;
     f nes;
 
-    nes.zero = 0;
+    nes.plus = 0;
+    nes.space = 0;
     nes.mince = 0;
+    nes.zero = 0;
     nes.point = 0;
-    nes.spaces = 0;
     nes.zeros = 0;
     nes.count = 0;
-    nes.space = 0;
-    nes.plus = 0;
     
        while(ft_isdigit_nz(*string) != 1 && *string != '.')
     {
@@ -54,7 +53,7 @@ int ft_dflags(char *string, int x)
         }
     }
     nes.d = x;
-    nes.len = (int)ft_strlen(ft_itoa(nes.d));
+    nes.len = ft_strlen(ft_itoa(nes.d));
     if (nes.d < 0)
         nes.len -=1;
     // printf("lenth %d\n",nes.len);
@@ -90,13 +89,9 @@ int ft_dflags(char *string, int x)
         // nes.width = nes.zeros + nes.spaces; to remove
     }
     else if (nes.zero == 1 && nes.point != 1 && nes.mince != 1)
-    {
-        // printf("done dude!\n");
             nes.zeros = nes.spaces;
-    }
         if (nes.zeros == nes.spaces)
             nes.spaces = 0;
-
     // printf("\t 0: %d, .:%d, -:%d , ' ':%d, +:%d\n",nes.zero , nes.point , nes.mince , nes.space, nes.plus);
     // printf("\tzeros : %d, sp%d\n",nes.zeros , nes.spaces);
     if (nes.mince == 1)

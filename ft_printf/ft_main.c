@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 15:31:25 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/14 18:48:52 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/15 09:30:02 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,10 @@ int main()
 {
 	// int d = 6;
 	
-	char *str = "%s %";
 	// int x = ft_printf(str,"hello");
-	int x = ft_printf(str,"hello");
-	printf("me %d \n",x);
-	// x = ft_printf("me|%30d|\n",10);
-	// y = printf("or|%30d|\n",10);
-	// printf("me %d them %d\n",y,x);
+	int y = ft_printf("me|%-10.1000s|\n","hello, world!!");  //sp = 40; zeros = 0; len = 10; sp = 0  zr = 30 ->> sp >> zr >> nb , zr >> nbr >> sp
+	int x = printf("me|%-10.1000s|\n","hello, world!!");
+	printf("me %d them %d\n",y,x);
 	
 	// x = ft_printf("me|%-30d|\n",20);
 	// y = printf("or|%-30d|\n",20);

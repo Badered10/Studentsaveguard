@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 22:13:54 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/13 08:32:29 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/15 09:10:36 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int ft_uflags(char *string, unsigned int x)
     }
     while(*string == '-' && *(string + 1))
     {
-        // printf("hahaha");
         nes.zero = 0;
         nes.mince = 1;
         string++;
@@ -67,13 +66,9 @@ int ft_uflags(char *string, unsigned int x)
         // nes.width = nes.zeros + nes.spaces; to remove
     }
     else if (nes.zero == 1 && nes.point != 1 && nes.mince != 1)
-    {
-        // printf("done dude!\n");
             nes.zeros = nes.spaces;
-    }
         if (nes.zeros == nes.spaces)
             nes.spaces = 0;
-
     // printf("\tzeros : %d, sp%d\n",nes.zeros , nes.spaces);
     if (nes.mince == 1)
     {
