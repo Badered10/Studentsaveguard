@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pflags.c                                        :+:      :+:    :+:   */
+/*   ft_pflags_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 10:40:40 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/15 09:30:52 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/16 15:29:50 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
-static int	hexalenth(unsigned long n)
+static unsigned long    hexalenth(unsigned long n)
 {
 	int	res;
 		res = 0;
@@ -29,14 +29,17 @@ int ft_pflags(char *string, void* res, char c)
 
     nes.mince = 0;
     nes.count = 0;
-    nes.len = 6;
+    nes.len = 2;
     while(*string == '-' && *(string + 1))
     {
         nes.mince = 1;
         string++;
     }
     nes.num = (unsigned long)res;
-    nes.len += hexalenth((unsigned int)res);
+     if (nes.num == 0)
+        nes.len = 3;
+        else
+            nes.len += hexalenth(nes.num);
     if(ft_isdigit(*string))
     {
         nes.spaces = ft_atoi(string);

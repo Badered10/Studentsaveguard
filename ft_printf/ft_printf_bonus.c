@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 15:09:06 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/14 18:50:33 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/16 11:37:05 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ int ft_printf(char *string , ...)
                 }
                 if(*(ptr + 1))
                     ptr++;
+                else
+                    break;
             }
         }
         else

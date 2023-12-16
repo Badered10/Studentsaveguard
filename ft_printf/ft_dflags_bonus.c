@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dflags.c                                        :+:      :+:    :+:   */
+/*   ft_dflags_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 18:00:25 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/16 10:51:15 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/16 16:18:40 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int ft_dflags(char *string, int x)
     char *str;
     // nes.display = 1;
     
-       while(ft_isdigit_nz(*string) != 1 && *string != '.' && *string != 'd')
+       while(ft_isdigit_nz(*string) != 1 && *string != '.' && *string != 'd' && *string != 'i')
     {
         while (*string == '+' && *(string + 1))
         {
@@ -68,9 +68,9 @@ int ft_dflags(char *string, int x)
         nes.spaces = ft_atoi(string);
         //  printf("\t  first set spaces : %d,\n",nes.spaces);   "5d"  int d = 234; zero = 0 , mince = 1; len= 3; sp = 7, point = 1 zeros = 2; 
         if (nes.spaces > nes.len)
-        nes.spaces = nes.spaces - nes.len;
-        else 
-        nes.spaces = 0;
+                nes.spaces -= nes.len;
+            else 
+                nes.spaces = 0;
     }
         else
             nes.spaces = 0;
@@ -84,17 +84,22 @@ int ft_dflags(char *string, int x)
         {                      
             nes.zeros = ft_atoi(string);   
             if (nes.zeros > nes.len)
-            nes.zeros = nes.zeros - nes.len;
+            {
+                if (nes.d >= 0)
+                nes.zeros -= nes.len ;
+                else
+                    nes.zeros -= nes.len - 1;
+            }
             else
             nes.zeros = 0;
             // if (nes.zero == 1)
             //     nes.zeros = nes.spaces; 
             nes.spaces -= nes.zeros ;
-            if (nes.d < 0)
-            {
-                nes.zeros++;
-                nes.spaces --;
-            }
+            // if (nes.d < 0)
+            // {
+            //     // nes.zeros++;
+            //     // nes.spaces --;
+            // }
         }
         // nes.width = nes.zeros + nes.spaces; to remove
     }
@@ -143,13 +148,17 @@ int ft_dflags(char *string, int x)
     }
     else if (nes.point == 1)  //|. + 0 ' ' flags |
     {
-        if (nes.space == 1 && nes.d > 0 && nes.zero == 1)
+        if (nes.space == 1 && nes.d >= 0 )
         {
+            if (nes.spaces >= nes.zeros)
+                nes.spaces --;
+            else
+                nes.zeros --;
             nes.count += write(1," ",1);
-            nes.zero --;
+            //   printf("\tzeros : %d, sp%d\n",nes.zeros , nes.spaces);
         }
-        else if (nes.space == 1 && nes.d < 0 && nes.zero == 1)
-            nes.zeros ++;
+        // else if (nes.space == 1 && nes.d < 0)
+        //     nes.zeros ++;
             // else if (nes.space == 1 && nes.d == 0 && nes.zero == 1)
             //     nes.count += write(1," ",1);
                 // printf("sp : %d\n",nes.spaces);
@@ -168,7 +177,6 @@ int ft_dflags(char *string, int x)
                 write(1,"-",1);
             while ((nes.zeros)-- > 0)
                 nes.count += write(1,"0",1);
-                if (nes.zero != 0 || nes.d == 0 ||nes.d != 0 )
                     nes.count += ft_putnbr_fd(nes.d,1);
         return (nes.count);
     }
@@ -200,9 +208,16 @@ int ft_dflags(char *string, int x)
     else
     {
          // printf("3\n"); to remove
-        if (nes.space == 1 && nes.d >= 0)
+        if (nes.space == 1 && nes.d >= 0 )
+        {
+            if (nes.spaces >= nes.zeros)
+                nes.spaces --;
+            else
+                nes.zeros --;
             nes.count += write(1," ",1);
-            if (nes.plus == 1 && nes.d < 0)
+            //   printf("\tzeros : %d, sp%d\n",nes.zeros , nes.spaces);
+        }
+        else if (nes.plus == 1 && nes.d < 0)
                 nes.spaces++;
         while ((nes.spaces)-- > 0)
             nes.count += write(1," ",1);

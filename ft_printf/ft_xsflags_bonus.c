@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:18:51 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/15 09:32:25 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/16 12:44:16 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,9 @@ int ft_xsflags(char *string, unsigned int x , char c)
     nes.point = 0;
     nes.zeros = 0;
     nes.count = 0;
+    nes.len = 0;
     // printf("string is'%s'\n",string);
-    while(ft_isdigit_nz(*string) != 1 && *string != '.' && *string != 'x')    // "%x"
+    while(ft_isdigit_nz(*string) != 1 && *string != '.' && *string != 'x' && *string != 'X')    // "%x"
     {
          while (*string == '#' && *(string + 1))
         {
@@ -92,7 +93,7 @@ int ft_xsflags(char *string, unsigned int x , char c)
             else
             nes.zeros = 0;
             nes.spaces -= nes.zeros;
-            printf("zeros %d, spaces %d \n",nes.zeros,nes.spaces);
+            // printf("zeros %d, spaces %d \n",nes.zeros,nes.spaces);
         }
         // nes.width = nes.zeros + nes.spaces; to remove
     }

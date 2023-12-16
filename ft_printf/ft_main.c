@@ -12,11 +12,12 @@
 
 #include "printf.h"
 #include <string.h>
+#include <limits.h>
 int main()
 {
-	char *str = NULL;
-	ft_printf("me%s\n",str);
-	printf("them%s\n",str);
+	// char *str = NULL;
+	ft_printf("42% 54d42\n",10);
+	printf("42% 54d42\n",10);
 	// system("leaks a.out");
 	
 	// int y = ft_printf("me|%+000+++10.20d\n",10);
