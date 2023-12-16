@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 19:57:29 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/15 09:42:07 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/16 10:39:32 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int ft_cflags(char *string, int x)
 {
     f nes;
-    
+    // printf("ok x: %d\n",x);
     nes.mince = 0;
     nes.count = 0;
     while(*string == '-' && *(string + 1))

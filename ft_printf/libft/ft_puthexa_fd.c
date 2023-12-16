@@ -24,5 +24,6 @@ int	ft_puthexa_fd(unsigned int res , int fd ,char ch)
 	if(!str)
 	return 0;
 	count += write(fd, str, ft_strlen(str));
+	free(str);
 	return (count);
 }

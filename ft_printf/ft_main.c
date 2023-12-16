@@ -14,9 +14,10 @@
 #include <string.h>
 int main()
 {
-	char *str = "hello";
-	ft_printf("%p\n",str);
-	printf("%p\n",str);
+	char *str = NULL;
+	ft_printf("me%s\n",str);
+	printf("them%s\n",str);
+	// system("leaks a.out");
 	
 	// int y = ft_printf("me|%+000+++10.20d\n",10);
 	// int x = printf("or|%+000+++10.20d\n",10);

@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 22:13:54 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/15 09:10:36 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/16 11:04:03 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int ft_uflags(char *string, unsigned int x)
     nes.point = 0;
     nes.mince = 0;
     nes.count = 0;
+    char *str;
     // printf("string is'%s'\n",string);
     while(*string == '0' && *(string + 1))
     {
@@ -35,7 +36,16 @@ int ft_uflags(char *string, unsigned int x)
         nes.mince = 1;
         string++;
     }
-    nes.len = ft_strlen(ft_uitoa(x));
+    str = ft_uitoa(x);
+    if(str)
+    {
+        nes.len = ft_strlen(str);
+        free(str);
+    }
+    else
+        return(-1);
+        
+    
     if(ft_isdigit(*string))
     {
         nes.spaces = ft_atoi(string);

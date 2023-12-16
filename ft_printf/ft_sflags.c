@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 08:27:32 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/15 09:29:14 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/16 10:53:51 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int ft_sflags(char *string, char *res)
         string++;
     }
     if(res)
-        nes.len = (int)ft_strlen(res);
+        nes.len = ft_strlen(res);
         else
             nes.len = 0;
     if(ft_isdigit(*string))

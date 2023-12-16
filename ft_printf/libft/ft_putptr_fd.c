@@ -25,5 +25,6 @@ int	ft_putptr_fd(unsigned long res , int fd ,char ch)
 	return 0;
 	count += write(1,"0x",2);
 	count += write(fd, str, ft_strlen(str));
+	free(str);
 	return (count);
 }

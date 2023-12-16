@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 09:56:20 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/15 08:45:38 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/16 10:39:06 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int ft_isflag(char ch , char *save_m ,va_list args)
         if(ch == 'c')
         c.count = ft_cflags(save_m + 1,va_arg(args,int));
         else
-            c.count = ft_cflags(save_m + 1,(va_arg(args,int) * 0) + 37);
+            c.count = ft_cflags(save_m + 1,37);
     }
     else if (ch == 's')
         c.count = ft_sflags(save_m + 1,va_arg(args,char *));

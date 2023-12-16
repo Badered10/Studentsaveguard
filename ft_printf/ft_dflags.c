@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 18:00:25 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/15 22:33:48 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/16 10:51:15 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int ft_dflags(char *string, int x)
     nes.point = 0;
     nes.zeros = 0;
     nes.count = 0;
+    char *str;
     // nes.display = 1;
     
        while(ft_isdigit_nz(*string) != 1 && *string != '.' && *string != 'd')
@@ -54,7 +55,9 @@ int ft_dflags(char *string, int x)
         }
     }
     nes.d = x;
-    nes.len = ft_strlen(ft_itoa(nes.d));
+    str = ft_itoa(nes.d);
+    nes.len = ft_strlen(str);
+    free(str);
     // if (nes.d == 0)
     //     nes.len --;
     // else if (nes.d < 0)
