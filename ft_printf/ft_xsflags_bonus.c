@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:18:51 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/17 09:43:54 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/17 10:54:21 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int ft_xsflags(char *string, unsigned int x , char c)
     nes.zeros = 0;
     nes.count = 0;
     nes.len = 0;
+    nes.tmp = -999999999;
     
     while(ft_isdigit_nz(*string) != 1 && *string != '.' && *string != 'x' && *string != 'X') 
     {
@@ -60,7 +61,6 @@ int ft_xsflags(char *string, unsigned int x , char c)
         }
         while(*string == '-' && *(string + 1))
         {
-            // printf("hahaha");
             nes.zero = 0;
             nes.mince = 1;
             string++;
@@ -71,7 +71,7 @@ int ft_xsflags(char *string, unsigned int x , char c)
     if(ft_isdigit(*string))
     {
         nes.spaces = ft_atoi(string);
-        if (nes.spaces > nes.len)          //sp  = 16 - 1 = 15 
+        if (nes.spaces > nes.len)          
                 nes.spaces -= nes.len;
             else 
                 nes.spaces = 0;
@@ -96,10 +96,18 @@ int ft_xsflags(char *string, unsigned int x , char c)
     }
         else if (nes.zero == 1)
             nes.zeros = nes.spaces;
-            
         nes.spaces -= nes.zeros;
-        // printf("spaces : %d\n",nes.spaces);
-        
+    if (nes.hashtag == 1 && x)
+        {
+            if (((nes.mince == 1 && x ) || (nes.zero && !nes.point )) && c == 'x')
+                nes.count += write(1,"0x",2);
+                else if (((nes.mince == 1 && x ) || (nes.zero && !nes.point )) && c !='x')
+                    nes.count += write(1,"0X",2);
+           if ((nes.zero == 1 && nes.tmp <= nes.len) || nes.tmp == -999999999)
+                nes.zeros-=2;
+            if (nes.tmp != -999999999 || nes.point == 0)
+                nes.spaces-=2;
+        }
     if (nes.mince == 1)
     {
         while ((nes.zeros)-- > 0)
@@ -113,13 +121,10 @@ int ft_xsflags(char *string, unsigned int x , char c)
     {
         while ((nes.spaces)-- > 0)
             nes.count += write(1," ",1);
-        while ((nes.zeros)-- > 0)
-            nes.count += write(1,"0",1);
-        nes.count += ft_puthexa_fd(x,1 ,c);
-        return (nes.count);
-    }
-    else if (nes.hashtag == 1 && nes.zero == 1)
-    {
+        if (nes.hashtag == 1 && x && c == 'x')
+            nes.count += write(1,"0x",2);
+            else if (nes.hashtag == 1 && x && c != 'x')
+                nes.count += write(1,"0X",2);
         while ((nes.zeros)-- > 0)
             nes.count += write(1,"0",1);
         nes.count += ft_puthexa_fd(x,1 ,c);
@@ -132,17 +137,14 @@ int ft_xsflags(char *string, unsigned int x , char c)
         nes.count += ft_puthexa_fd(x,1 ,c);
         return (nes.count);
     }
-    else if (nes.hashtag == 1)
-    {
-        while ((nes.spaces)-- > 0)
-            nes.count += write(1," ",1);
-        nes.count += ft_puthexa_fd(x,1 ,c);
-        return (nes.count);
-    }
     else
     {
         while ((nes.spaces)-- > 0)
             nes.count += write(1," ",1);
+        if (nes.hashtag == 1 && x && c == 'x')
+            nes.count += write(1,"0x",2);
+            else if (nes.hashtag == 1 && x && c != 'x')
+                nes.count += write(1,"0X",2);
         nes.count += ft_puthexa_fd(x,1 ,c);
         return (nes.count);
     }

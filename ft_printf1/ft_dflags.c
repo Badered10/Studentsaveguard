@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 18:00:25 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/17 09:26:28 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/17 10:23:48 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int ft_dflags(char *string, int x)
         
         if (nes.space == 1 && nes.d >= 0)
         {
-            nes.count = write(1," ",1);
+            nes.count += write(1," ",1);
             // printf(" zr %d \n",nes.zeros);
             if ((nes.zero == 1 && nes.tmp <= nes.len) || nes.tmp == -999999999)
                 nes.zeros--;
@@ -104,7 +104,7 @@ int ft_dflags(char *string, int x)
         else if (nes.plus == 1 && nes.d >= 0)
         {
             if (nes.mince == 1 || (nes.zero && !nes.point))
-                nes.count = write(1,"+",1);
+                nes.count += write(1,"+",1);
            if ((nes.zero == 1 && nes.tmp <= nes.len) || nes.tmp == -999999999)
                 nes.zeros--;
             if (nes.tmp != -999999999 || nes.point == 0)
