@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 09:08:42 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/14 09:08:57 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/17 09:55:52 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 static int	lenth(unsigned long n)
 {
 	int	res;
-		res = -1;
+		res = 1;
+		if (n > 0)
+			res = 0;
 	while (n != 0)
 	{
 		n /= 16;
@@ -44,7 +46,8 @@ static void	fill(char *str, int num, unsigned long n , char c)
 	else
 		base = "0123456789ABCDEF";
 
-	str[num + 1] = '\0';
+	str[num] = '\0';
+		num--;
 		while (num >= 0)
 		{
 			str[num] = base[n%16];

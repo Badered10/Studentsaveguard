@@ -23,10 +23,7 @@ int	ft_putptr_fd(unsigned long res , int fd ,char ch)
 	str = ft_itohexa(res, ch);
 	if(!str)
 	return 0;
-	if (res!= 0)
 		count += write(1,"0x",2);
-		else
-			count += write(1,"0x0",3);
 	count += write(fd, str, ft_strlen(str));
 	free(str);
 	return (count);

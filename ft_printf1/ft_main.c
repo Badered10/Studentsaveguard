@@ -16,8 +16,8 @@
 int main()
 {
 	// char *str = NULL;
-	ft_printf(":4%%dS%c}uq;M2<DR%pan;bGBb*Dk%X&\v+.enIo%i3=@h""c\n", -1558030672, (void *)8127015533579448876, -1936704655, -607347526,-1762560024);
-	printf(":4%%dS%c}uq;M2<DR%pan;bGBb*Dk%X&\v+.enIo%i3=@h""c\n", -1558030672, (void *)8127015533579448876, -1936704655, -607347526,-1762560024);
+	ft_printf("|%62.48x|\n",0);
+	printf("|%62.48x|\n", 0);
 	// system("leaks a.out");
 	
 	// int y = ft_printf("me|%+000+++10.20d\n",10);

@@ -38,12 +38,12 @@ int main()
 	// printf("-----------------------------\n\n");
 
 
-	// ft_printf("me|%010.20d|\n",391876567);
-	// printf("or|%010.20d|\n",391876567);
-	// ft_printf("me|%010.20d|\n",-391876567);
-	// printf("or|%010.20d|\n",-391876567);
-	int x = ft_printf("me|%#42x|\n",0);
-	int y = printf("or|%#42x|\n",0);
+	// ft_printf("me|%16x|\n",391876567);
+	// printf("or|%16x|\n",391876567);
+	// ft_printf("me|%16x|\n",-391876567);
+	// printf("or|%16x|\n",-391876567);
+	int x = ft_printf("me|%14p|\n",(void*)23);
+	int y = printf("or|%14p|\n",(void*)23);
 
 	printf("me%d, them %d\n",x,y);
 	// printf("------------- +  and  - flags ----------------\n\n");

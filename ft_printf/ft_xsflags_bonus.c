@@ -6,14 +6,17 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:18:51 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/17 09:17:44 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/17 09:43:54 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 static int	hexalenth(unsigned long n)
 {
-	int	res;
+	int res;
+    
+    res = 1;
+	if (n > 0)
 		res = 0;
 	while (n != 0)
 	{
@@ -68,17 +71,15 @@ int ft_xsflags(char *string, unsigned int x , char c)
     if(ft_isdigit(*string))
     {
         nes.spaces = ft_atoi(string);
-        if (nes.spaces > nes.len)
-            nes.spaces = nes.spaces - nes.len;
-        else 
-            nes.spaces = 0;
+        if (nes.spaces > nes.len)          //sp  = 16 - 1 = 15 
+                nes.spaces -= nes.len;
+            else 
+                nes.spaces = 0;
     }
-    else
-       nes.spaces = 0; 
-       
+        else
+            nes.spaces = 0;
     while(ft_isdigit(*string))
         string++;
-        
     if (*string == '.' && *(string + 1))
     {
         nes.point = 1;
@@ -86,15 +87,18 @@ int ft_xsflags(char *string, unsigned int x , char c)
         if(ft_isdigit(*string))
         {                      
             nes.zeros = ft_atoi(string);
+            nes.tmp = nes.zeros;
             if (nes.zeros > nes.len)
-            nes.zeros = nes.zeros - nes.len;
-            else
-            nes.zeros = 0;
-            nes.spaces -= nes.zeros;
+                nes.zeros -= nes.len;
+                 else
+                     nes.zeros = 0;
         }
     }
-        else if (nes.zero == 1 && nes.point != 1 && nes.mince != 1)
-                nes.zeros = nes.spaces;
+        else if (nes.zero == 1)
+            nes.zeros = nes.spaces;
+            
+        nes.spaces -= nes.zeros;
+        // printf("spaces : %d\n",nes.spaces);
         
     if (nes.mince == 1)
     {
