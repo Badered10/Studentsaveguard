@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 15:09:45 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/17 11:24:45 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/17 21:52:26 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,6 @@ int     ft_uflags(char *string, unsigned int x);
 int     ft_sflags(char *string, char *res);
 int     ft_pflags(char *string, void* res, char c);
 int     ft_xsflags(char *string, unsigned int x , char c);
-void    ft_search(f* nes,char **string, char c, char d);
+// void    ft_search(f* nes,char **string, char c, char d);
 
 #endif

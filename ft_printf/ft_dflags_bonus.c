@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 18:00:25 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/17 18:29:50 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/17 22:23:10 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static void ft_checkplus_space(f *nes)
     if (nes->space == 1 && nes->d >= 0)
         {
             nes->count = write(1," ",1);
-            if ((nes->zero == 1 && nes->tmp <= nes->len) || nes->tmp == -999999999)
+            if ((nes->zero == 1 && nes->tmp <= nes->len) || nes->tmp == -999999999)     
                 nes->zeros--;
                 if (nes->tmp != -999999999 ||nes->point == 0)
                     nes->spaces--;
@@ -88,7 +88,7 @@ static void ft_checkpoint(char **string, f *nes)
     {
         nes->point = 1;
         if (*(*string))
-            string++;
+            (*string)++;
         if(ft_isdigit(*(*string)))
         {                      
             nes->zeros = ft_atoi(*string);
@@ -119,7 +119,7 @@ static void ft_checkspaces(char **string, f *nes)
         else
             nes->spaces = 0;
             while(ft_isdigit(*(*string)))
-            (*string)++;
+                (*string)++;
 }
 static void ft_initialize(f *nes , int x, char *string)
 {
@@ -140,7 +140,7 @@ static void ft_initialize(f *nes , int x, char *string)
     free(str);
 }
 
-void ft_search(f *nes,char **string)
+static void ft_search(f *nes,char **string)
 {
      while(ft_isdigit_nz(*(*string)) != 1 && *(*string) != '.' && *(*string) != 'd' && *(*string) != 'i' && *(*(string)))
     {
