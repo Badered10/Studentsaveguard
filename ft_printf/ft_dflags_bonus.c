@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 18:00:25 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/16 23:50:53 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/17 08:58:17 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int ft_dflags(char *string, int x)
     nes.point = 0;
     nes.zeros = 0;
     nes.count = 0;
-    nes.tmp = 20;
+    nes.tmp = -999999999;
        while(ft_isdigit_nz(*string) != 1 && *string != '.' && *string != 'd' && *string != 'i')
     {
         while (*string == '+' && *(string + 1))
@@ -88,24 +88,27 @@ int ft_dflags(char *string, int x)
         if (((nes.zeros  > 0) || (nes.len == nes.tmp)) && (nes.d < 0 && nes.point == 1)) 
 		    nes.zeros ++;
         nes.spaces -= nes.zeros;
+
+        
         if (nes.space == 1 && nes.d >= 0)
         {
             nes.count = write(1," ",1);
             // printf(" zr %d \n",nes.zeros);
-            if (nes.zero == 1 && nes.d < 0)
+            if ((nes.zero == 1 && nes.tmp <= nes.len) || nes.tmp == -999999999)
                 nes.zeros--;
-                else
+                if (nes.tmp != -999999999 ||nes.point == 0)
                     nes.spaces--;
                     // printf(" zr %d \n",nes.zeros);
+                    // nes.zeros++;
         }
         else if (nes.plus == 1 && nes.d >= 0)
         {
-            if (nes.mince == 1 || nes.zero == 1)
+            if (nes.mince == 1 || (nes.zero && !nes.point))
                 nes.count = write(1,"+",1);
-            if (nes.zero == 1 && nes.d < 0)
+           if ((nes.zero == 1 && nes.tmp <= nes.len) || nes.tmp == -999999999)
                 nes.zeros--;
-                else
-                    nes.spaces--;
+            if (nes.tmp != -999999999 || nes.point == 0)
+                nes.spaces--;
         }
         
             
@@ -130,6 +133,8 @@ int ft_dflags(char *string, int x)
                 write(1,"-",1);
             while ((nes.zeros)-- > 0)
                 nes.count += write(1,"0",1);
+                // printf("tmp %d,",nes.tmp);
+                if (nes.tmp != -999999999)
                     nes.count += ft_putnbr_fd(nes.d,1);
         return (nes.count);
     }

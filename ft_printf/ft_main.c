@@ -42,8 +42,8 @@ int main()
 	// printf("or|%010.20d|\n",391876567);
 	// ft_printf("me|%010.20d|\n",-391876567);
 	// printf("or|%010.20d|\n",-391876567);
-	int x = ft_printf("me|% 048.d|\n",0);
-	int y = printf("or|% 048.d|\n",0);
+	int x = ft_printf("me|%#42x|\n",0);
+	int y = printf("or|%#42x|\n",0);
 
 	printf("me%d, them %d\n",x,y);
 	// printf("------------- +  and  - flags ----------------\n\n");
