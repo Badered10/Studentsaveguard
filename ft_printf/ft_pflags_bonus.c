@@ -6,11 +6,41 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 10:40:40 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/17 11:05:25 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/17 16:40:34 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
+static void ft_checkspaces(char *string ,f *nes)
+{
+    if(ft_isdigit(*string))
+    {
+        nes->spaces = ft_atoi(string);
+        if (nes->spaces > nes->len)
+        nes->spaces = nes->spaces - nes->len ;
+        else 
+        nes->spaces = 0;
+    }
+    else
+       nes->spaces = 0;
+    while(ft_isdigit(*string))
+        string++;
+}
+static void ft_print(f *nes,char c)
+{
+    if (nes->mince == 0)
+    {
+        while (((nes->spaces)-- > 0))
+            nes->count += write(1," ",1);
+        nes->count += ft_putptr_fd(nes->num,1,c);
+    }
+    else
+    {
+        nes->count += ft_putptr_fd(nes->num,1,c);
+        while (((nes->spaces)-- > 0))
+            nes->count += write(1," ",1);
+    }
+}
 static unsigned long    hexalenth(unsigned long n)
 {
 	int	res;
@@ -22,7 +52,6 @@ static unsigned long    hexalenth(unsigned long n)
 	}
     return (res);
 }
-
 int ft_pflags(char *string, void* res, char c)  
 {
     f nes;
@@ -40,30 +69,20 @@ int ft_pflags(char *string, void* res, char c)
         nes.len = 3;
         else
             nes.len += hexalenth(nes.num);
-    if(ft_isdigit(*string))
-    {
-        nes.spaces = ft_atoi(string);
-        if (nes.spaces > nes.len)
-        nes.spaces = nes.spaces - nes.len ;
-        else 
-        nes.spaces = 0;
-    }
-    else
-       nes.spaces = 0;
-    while(ft_isdigit(*string))
-        string++;
-    if (nes.mince == 0)
-    {
-        while (((nes.spaces)-- > 0))
-            nes.count += write(1," ",1);
-        nes.count += ft_putptr_fd(nes.num,1,c);
-        return (nes.count);
-    }
-    else
-    {
-        nes.count += ft_putptr_fd(nes.num,1,c);
-        while (((nes.spaces)-- > 0))
-            nes.count += write(1," ",1);
-        return (nes.count);
-    }
+    ft_checkspaces(string ,&nes);
+    ft_print(&nes,c);
+    return(nes.count);
 }
+
+    // if(ft_isdigit(*string))
+    // {
+    //     nes.spaces = ft_atoi(string);
+    //     if (nes.spaces > nes.len)
+    //     nes.spaces = nes.spaces - nes.len ;
+    //     else 
+    //     nes.spaces = 0;
+    // }
+    // else
+    //    nes.spaces = 0;
+    // while(ft_isdigit(*string))
+    //     string++;

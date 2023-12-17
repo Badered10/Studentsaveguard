@@ -6,11 +6,13 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 08:27:32 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/16 15:24:12 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/17 16:43:43 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
+
+static void check_spaces()
 
 int ft_sflags(char *string, char *res)
 {
@@ -49,7 +51,6 @@ int ft_sflags(char *string, char *res)
                     nes.spaces -= nes.display;
                     else 
                         nes.spaces = 0;
-                        // printf("%d\n",nes.spaces);
         }
     }
         else if (nes.point != 1)

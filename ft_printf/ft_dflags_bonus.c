@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 18:00:25 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/17 14:59:05 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/17 15:01:16 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,25 +184,3 @@ int ft_dflags(char *string, int x)
         return(ze_print(&nes),nes.count);
     
 }
-
-
-    // else if (nes.zero == 1 )
-    // {     
-    //     if (nes.d < 0)
-    //         write(1,"-",1);
-    //     while ((nes.zeros)-- > 0)
-    //         nes.count += write(1,"0",1);
-    //     nes.count += ft_putnbr_fd(nes.d,1);
-    //     return (nes.count);
-    // }
-    // else
-    // {
-    //     while ((nes.spaces)-- > 0)
-    //         nes.count += write(1," ",1);
-    //         if (nes.plus == 1 && nes.d >= 0)
-    //         nes.count += write(1,"+",1);
-    //     if (nes.d < 0)
-    //         write(1,"-",1);
-    //     nes.count += ft_putnbr_fd(nes.d,1);
-    //     return (nes.count);
-    // }
