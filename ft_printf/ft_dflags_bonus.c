@@ -6,14 +6,17 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 18:00:25 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/17 12:13:53 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/17 12:58:56 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-static void ft_initialize(f *nes)
+static void ft_initialize(f *nes , int x, char *string)
 {
+    char *str;
+
+    nes->d = x;
     nes->plus = 0;
     nes->space = 0;
     nes->mince = 0;
@@ -22,6 +25,10 @@ static void ft_initialize(f *nes)
     nes->zeros = 0;
     nes->count = 0;
     nes->tmp = -999999999;
+    
+    str = ft_itoa(nes->d);
+    nes->len = ft_strlen(str);
+    free(str);
 }
 
 void ft_search(f *nes,char **string, char c, char d)
@@ -57,16 +64,12 @@ int ft_dflags(char *string, int x)
     f nes;
     char *str;
 
-    ft_initialize(&nes);
+    ft_initialize(&nes,x,string);
     ft_search(&nes,&string,'d','i');
-    nes.d = x;
-    str = ft_itoa(nes.d);
-    nes.len = ft_strlen(str);
-    free(str);
     if(ft_isdigit(*string))
     {
         nes.spaces = ft_atoi(string);
-        if (nes.spaces > nes.len)          //sp  = 47 
+        if (nes.spaces > nes.len) 
                 nes.spaces -= nes.len;
             else 
                 nes.spaces = 0;
