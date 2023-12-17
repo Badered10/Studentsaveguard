@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 18:00:25 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/17 15:01:16 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/17 18:29:50 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,9 +140,9 @@ static void ft_initialize(f *nes , int x, char *string)
     free(str);
 }
 
-void ft_search(f *nes,char **string, char c, char d)
+void ft_search(f *nes,char **string)
 {
-     while(ft_isdigit_nz(*(*string)) != 1 && *(*string) != '.' && *(*string) != c && *(*string) != d && *(*(string)))
+     while(ft_isdigit_nz(*(*string)) != 1 && *(*string) != '.' && *(*string) != 'd' && *(*string) != 'i' && *(*(string)))
     {
         if (*(*string) == '+')
         {
@@ -174,13 +174,13 @@ int ft_dflags(char *string, int x)
     char *str;
 
     ft_initialize(&nes,x,string);
-    ft_search(&nes,&string,'d','i');
+    ft_search(&nes,&string);
     ft_checkspaces(&string, &nes);
     ft_checkpoint(&string, &nes);
     ft_checkplus_space(&nes);
     if (nes.mince == 1 || nes.point == 1)
-        return(mp_print(&nes),nes.count);
+        mp_print(&nes);
     else
-        return(ze_print(&nes),nes.count);
-    
+        ze_print(&nes);
+    return(nes.count);    
 }

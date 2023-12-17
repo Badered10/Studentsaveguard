@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 15:09:06 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/17 13:33:13 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/17 17:48:23 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,41 +55,3 @@ int ft_printf(char *string , ...)
     va_end(args);
     return (t.count);
 }
-
-    // while (*ptr)
-    // {
-    //     if(*ptr == '%')
-    //     {
-    //         save_m = ptr;
-    //         if(*ptr)
-    //             ptr++;
-    //         while (*ptr)
-    //         {
-    //             if(ft_strchr(specifiers,*ptr))
-    //             {
-    //                 t.count += ft_isflag(*(ft_strchr(specifiers,*ptr)),save_m ,args);
-    //                 break;
-    //             }
-    //             if(*(ptr + 1))
-    //                 ptr++;
-    //             else
-    //                 break;
-    //         }
-    //     }
-    //     else
-    //         t.count += write(1,ptr,1);
-    //     if(!*ptr)
-    //         break;
-    //         ptr++;
-    // }
-// int main()
-// {
-//     int y = printf("","hello", 123, "okey", -231, 'k',x);
-//     int i = ft_printf("%-010.2s %-010.3d","hello", 123, "okey", -231, 'k',x);
-//     printf("\n%d\n%d\n",y,i);
-// }
-                // if(ft_strchr(flags,*ptr) == NULL && ft_isdigit(*ptr) == 0)
-                // {
-                //     t.count += write(1,ptr,1);
-                //     break;
-                // }

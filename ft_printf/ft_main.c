@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 15:31:02 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/17 16:34:46 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/17 18:21:57 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,9 +108,9 @@ int main()
 	// printf("or42%56.2d42\n",-391876567);
 	// system("leaks a.out");
 	
-	y = ft_printf("me|%p",(void*)1);
+	y = ft_printf("me|%x",-999999999);
 	printf("\n");
-	x = printf("or|%p",(void*)1);
+	x = printf("or|%x",-999999999);
 	printf("\n");
 	printf("me % - ----  d them % - ----  d\n",x,y);
 	// y = ft_printf("me|%000+10.20d\n",-391876567);

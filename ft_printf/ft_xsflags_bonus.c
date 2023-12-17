@@ -6,11 +6,49 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:18:51 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/17 10:54:21 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/17 18:35:01 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
+
+static void ft_checkspaces()
+{
+    if(ft_isdigit(*string))
+    {
+        nes.spaces = ft_atoi(string);
+        if (nes.spaces > nes.len)          
+                nes.spaces -= nes.len;
+            else 
+                nes.spaces = 0;
+    }
+        else
+            nes.spaces = 0;
+    while(ft_isdigit(*string))
+        string++;
+}
+
+static void ft_search()
+{
+       while(ft_isdigit_nz(*(*string)) != 1 && *(*string) != '.' 
+       && *(*string) != 'x' && *(*string) != 'X' && *(*(string))) 
+    {
+        if (*(*string) == '#')
+            nes.hashtag = 1;
+        else if(*(*string) == '0')
+            {
+                if(nes->mince == 0)
+                nes->zero = 1;
+            }
+        else if(*(*string) == '-')
+        {
+            nes->zero = 0;
+            nes->mince = 1;
+        }
+        (*string)++;
+    }
+}
+
 static int	hexalenth(unsigned long n)
 {
 	int res;
@@ -38,48 +76,22 @@ int ft_xsflags(char *string, unsigned int x , char c)
     nes.len = 0;
     nes.tmp = -999999999;
     
-    while(ft_isdigit_nz(*string) != 1 && *string != '.' && *string != 'x' && *string != 'X') 
-    {
-         while (*string == '#' && *(string + 1))
-        {
-            nes.hashtag = 1;
-            string++;
-        }
-         if(nes.mince == 0)
-        {
-            
-            while(*string == '0' && *(string + 1))
-            {
-                nes.zero = 1;
-                string++;
-            }
-        }
-         else if (nes.mince == 1 && *string == '0')
-        {
-            while(*string == '0' && *(string + 1))
-                string++;
-        }
-        while(*string == '-' && *(string + 1))
-        {
-            nes.zero = 0;
-            nes.mince = 1;
-            string++;
-        }
-    }
     nes.len += hexalenth(x);
+
     
-    if(ft_isdigit(*string))
-    {
-        nes.spaces = ft_atoi(string);
-        if (nes.spaces > nes.len)          
-                nes.spaces -= nes.len;
-            else 
-                nes.spaces = 0;
-    }
-        else
-            nes.spaces = 0;
-    while(ft_isdigit(*string))
-        string++;
+    
+    // if(ft_isdigit(*string))
+    // {
+    //     nes.spaces = ft_atoi(string);
+    //     if (nes.spaces > nes.len)          
+    //             nes.spaces -= nes.len;
+    //         else 
+    //             nes.spaces = 0;
+    // }
+    //     else
+    //         nes.spaces = 0;
+    // while(ft_isdigit(*string))
+    //     string++;
     if (*string == '.' && *(string + 1))
     {
         nes.point = 1;
