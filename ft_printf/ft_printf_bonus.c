@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_printf_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 15:09:06 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/16 11:37:05 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/17 12:18:24 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int ft_printf(char *string , ...)
                 }
                 if(ft_strchr(flags,*ptr) == NULL && ft_isdigit(*ptr) == 0)
                 {
-                    // printf("oh hell no !\n");
                     t.count += write(1,ptr,1);
                     break;
                 }
@@ -52,10 +51,7 @@ int ft_printf(char *string , ...)
             }
         }
         else
-        {
-            // printf("oh hell no !\n");
             t.count += write(1,ptr,1);
-        }
         if(!*ptr)
             break;
             ptr++;

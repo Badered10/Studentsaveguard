@@ -6,7 +6,7 @@
 #    By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/29 12:39:30 by baouragh          #+#    #+#              #
-#    Updated: 2023/12/17 09:23:22 by baouragh         ###   ########.fr        #
+#    Updated: 2023/12/17 11:07:37 by baouragh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,9 +25,10 @@ SRCS1 =	ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_strl
 		ft_strtrim.c ft_split.c ft_itoa.c ft_strmapi.c ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c\
 		ft_putunbr_fd.c ft_uitoa.c ft_putnstr_fd.c ft_itohexa.c ft_putptr_fd.c ft_puthexa_fd.c ft_isdigit_nz.c
 
-SRCS2 = ft_dflags.c ft_cflags.c ft_specifier.c \
-		ft_printf.c ft_isflag.c ft_uflags.c\
-		ft_sflags.c ft_pflags.c ft_xsflags.c
+SRCS2 = ft_dflags.c ft_cflags.c ft_printf.c \
+ 		ft_isflag.c ft_uflags.c ft_sflags.c \
+ 		ft_pflags.c ft_xsflags.c
+		
 # BONUS_S = ft_dflags_bonus.c ft_cflags_bonus.c ft_specifier_bonus.c \
 # 		ft_printf_bonus.c ft_isflag_bonus.c ft_uflags_bonus.c\
 #  		ft_sflags_bonus.c ft_pflags_bonus.c ft_xsflags_bonus.c

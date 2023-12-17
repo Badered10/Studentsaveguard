@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 15:31:02 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/17 10:48:54 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/17 12:20:09 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,44 +40,44 @@ int main()
 	// ft_printf("me|%-10.20d|\n",0);
 	// printf("or|%-10.20d|\n",0);
 
-	printf("------------   #   -----------------\n\n");
+	// printf("------------   #   -----------------\n\n");
 
 
-	x = ft_printf("me|%#32.32X|\n",1927970300);
-	y = printf("or|%#32.32X|\n",1927970300);
-	printf("%d , %d \n",x,y);
-	x = ft_printf("me|%#16x|\n",-391876567);
-	y = printf("or|%#16x|\n",-391876567);
-	printf("%d , %d \n",x,y);
-	x = ft_printf("me|%16x|\n",0);
-	y = printf("or|%16x|\n",0);
-	printf("%d , %d \n",x,y);
+	// x = ft_printf("me|%#32.32X|\n",1927970300);
+	// y = printf("or|%#32.32X|\n",1927970300);
+	// printf("%d , %d \n",x,y);
+	// x = ft_printf("me|%#16x|\n",-391876567);
+	// y = printf("or|%#16x|\n",-391876567);
+	// printf("%d , %d \n",x,y);
+	// x = ft_printf("me|%16x|\n",0);
+	// y = printf("or|%16x|\n",0);
+	// printf("%d , %d \n",x,y);
 	
-	printf("------------- #  and  - flags ----------------\n\n");
+	// printf("------------- #  and  - flags ----------------\n\n");
 
 
-	x = ft_printf("me|%#-15x|\n",391876567);
-	y = printf("or|%#-15x|\n",391876567);  
-	printf("%d , %d \n",x,y); 
-	x = ft_printf("me|%#-15x|\n",-391876567);
-	y = printf("or|%#-15x|\n",-391876567);
-	printf("%d , %d \n",x,y);
-	x = ft_printf("me|%#-15x|\n",0);
-	y = printf("or|%#-15x|\n",0);
-	printf("%d , %d \n",x,y);
+	// x = ft_printf("me|%#-15x|\n",391876567);
+	// y = printf("or|%#-15x|\n",391876567);  
+	// printf("%d , %d \n",x,y); 
+	// x = ft_printf("me|%#-15x|\n",-391876567);
+	// y = printf("or|%#-15x|\n",-391876567);
+	// printf("%d , %d \n",x,y);
+	// x = ft_printf("me|%#-15x|\n",0);
+	// y = printf("or|%#-15x|\n",0);
+	// printf("%d , %d \n",x,y);
 
 
 
-	printf("------------- #  and  0 flags ----------------\n\n");
+	// printf("------------- #  and  0 flags ----------------\n\n");
 
-	x = ft_printf("me|%#015x|\n",391876567);
-	y = printf("or|%#015x|\n",391876567);
-	printf("%d , %d \n",x,y);
-	x = ft_printf("me|%#015x|\n",-391876567);
-	y = printf("or|%#015x|\n",-391876567);
-	printf("%d , %d \n",x,y);
-	x = ft_printf("me|%#015x|\n",0);
-	y = printf("or|%#015x|\n",0);
+	// x = ft_printf("me|%#015x|\n",391876567);
+	// y = printf("or|%#015x|\n",391876567);
+	// printf("%d , %d \n",x,y);
+	// x = ft_printf("me|%#015x|\n",-391876567);
+	// y = printf("or|%#015x|\n",-391876567);
+	// printf("%d , %d \n",x,y);
+	// x = ft_printf("me|%#015x|\n",0);
+	// y = printf("or|%#015x|\n",0);
 	// printf("%d , %d \n",x,y);
 
 
@@ -108,22 +108,24 @@ int main()
 	// printf("or42%56.2d42\n",-391876567);
 	// system("leaks a.out");
 	
-	// int y = ft_printf("me|%#000#-391876567.20d\n",-391876567);
-	// int x = printf("or|%#000#-391876567.20d\n",-391876567);
+	y = ft_printf("me|%00l0+23.20d|%%",-391876567);
+	printf("\n");
+	x = printf("or|%00l0+23.20d|%%",-391876567);
+	printf("\n");
+	printf("me % - ----  d them % - ----  d\n",x,y);
+	// y = ft_printf("me|%000+10.20d\n",-391876567);
+	// x = printf("or|%000+10.20d\n",-391876567);
 	// printf("me % - ----  d them % - ----  d\n",x,y);
-	// y = ft_printf("me|%#000#-391876567.20d\n",-391876567);
-	// x = printf("or|%#000#-391876567.20d\n",-391876567);
-	// printf("me % - ----  d them % - ----  d\n",x,y);
-	// y = ft_printf("me|%0#000000#-391876567.20d|\n",2);
-	// x = printf("me|%0#000000#-391876567.20d|\n",2);
+	// y = ft_printf("me|%0+000000+10.20d|\n",2);
+	// x = printf("me|%0+000000+10.20d|\n",2);
 	// printf("me % - ----  d them % - ----  d\n",y,x);
-	// y = ft_printf("me|%0000000-391876567.20d| |%0000000-391876567.20d| |%0000000-391876567.20d|\n",-2,2,0);
-	// x = printf("me|%0000000-391876567.20d| |%0000000-391876567.20d| |%0000000-391876567.20d|\n",-2,2,0);
+	// y = ft_printf("me|%00  00  00032.20d| |%00 00 00 32.20d| |%0 000 00032.20d|\n",-2,2,0);
+	// x = printf("me|%00  00  00  032.20d| |%0000  00 032.20d| |% 000 000032.20d|\n",-2,2,0);
 	// printf("me % - ----  d them % - ----  d\n",y,x);
-	// y = ft_printf("me|%#-391876567.20d| |%#-391876567.20d| |%#-391876567.20d|\n",-2,2,0);
-	// x = printf("me|%#-391876567.20d| |%#-391876567.20d| |%#-391876567.20d|\n",-2,2,0);
+	// y = ft_printf("me|%+-32.20d| |%+-32.20d| |%+-32.20d|\n",-2,2,0);
+	// x = printf("me|%+-32.20d| |%+-32.20d| |%+-32.20d|\n",-2,2,0);
 	// printf("me % - ----  d them % - ----  d\n",y,x);
-	// y = ft_printf("me|%-391876567.20d|\n",-2);
-	// x = printf("me|%-391876567.20d|\n",-2);
+	// y = ft_printf("me|%-32.20d|\n",-2);
+	// x = printf("me|%-32.20d|\n",-2);
 	// printf("me %d them %d\n",y,x);
 }

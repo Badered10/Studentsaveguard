@@ -6,53 +6,59 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 18:00:25 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/17 08:58:17 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/17 12:13:53 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
+static void ft_initialize(f *nes)
+{
+    nes->plus = 0;
+    nes->space = 0;
+    nes->mince = 0;
+    nes->zero = 0;
+    nes->point = 0;
+    nes->zeros = 0;
+    nes->count = 0;
+    nes->tmp = -999999999;
+}
+
+void ft_search(f *nes,char **string, char c, char d)
+{
+     while(ft_isdigit_nz(*(*string)) != 1 && *(*string) != '.' && *(*string) != c && *(*string) != d && *(*(string)))
+    {
+        if (*(*string) == '+')
+        {
+            nes->plus = 1;
+            nes->space = 0;
+        }
+        else if (*(*string) == ' ')
+            {
+                if (nes->plus == 0)
+                    nes->space = 1;
+            }
+        else if(*(*string) == '0')
+            {
+                if(nes->mince == 0)
+                nes->zero = 1;
+            }
+        else if(*(*string) == '-')
+        {
+            nes->zero = 0;
+            nes->mince = 1;
+        }
+        (*string)++;
+    }
+}
+
 int ft_dflags(char *string, int x)
 {
-    // printf("taqtaq\n");   save_m + 1 "5d okeey",321; nes.len =3; nes.mince = 1;  nes.zero = 0; nes.spces= 7 nes.point = 1 nes.zeros = 5;
     f nes;
     char *str;
 
-    nes.plus = 0;
-    nes.space = 0;
-    nes.mince = 0;
-    nes.zero = 0;
-    nes.point = 0;
-    nes.zeros = 0;
-    nes.count = 0;
-    nes.tmp = -999999999;
-       while(ft_isdigit_nz(*string) != 1 && *string != '.' && *string != 'd' && *string != 'i')
-    {
-        while (*string == '+' && *(string + 1))
-        {
-            nes.plus = 1;
-            nes.space = 0;
-            string++;
-        }
-        while (*string == ' ' && *(string + 1))
-            {
-                if (nes.plus == 0)
-                    nes.space = 1;
-                string++;
-            }
-        while(*string == '0' && *(string + 1))
-            {
-                if(nes.mince == 0)
-                nes.zero = 1;
-                string++;
-            }
-        while(*string == '-' && *(string + 1))
-        {
-            nes.zero = 0;
-            nes.mince = 1;
-            string++;
-        }
-    }
+    ft_initialize(&nes);
+    ft_search(&nes,&string,'d','i');
     nes.d = x;
     str = ft_itoa(nes.d);
     nes.len = ft_strlen(str);
@@ -88,18 +94,13 @@ int ft_dflags(char *string, int x)
         if (((nes.zeros  > 0) || (nes.len == nes.tmp)) && (nes.d < 0 && nes.point == 1)) 
 		    nes.zeros ++;
         nes.spaces -= nes.zeros;
-
-        
         if (nes.space == 1 && nes.d >= 0)
         {
             nes.count = write(1," ",1);
-            // printf(" zr %d \n",nes.zeros);
             if ((nes.zero == 1 && nes.tmp <= nes.len) || nes.tmp == -999999999)
                 nes.zeros--;
                 if (nes.tmp != -999999999 ||nes.point == 0)
                     nes.spaces--;
-                    // printf(" zr %d \n",nes.zeros);
-                    // nes.zeros++;
         }
         else if (nes.plus == 1 && nes.d >= 0)
         {
@@ -110,8 +111,6 @@ int ft_dflags(char *string, int x)
             if (nes.tmp != -999999999 || nes.point == 0)
                 nes.spaces--;
         }
-        
-            
     if (nes.mince == 1)
     {
         if(nes.d < 0)
