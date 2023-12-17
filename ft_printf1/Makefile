@@ -6,7 +6,7 @@
 #    By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/29 12:39:30 by baouragh          #+#    #+#              #
-#    Updated: 2023/12/17 09:19:43 by baouragh         ###   ########.fr        #
+#    Updated: 2023/12/17 09:23:22 by baouragh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ OBJS2 = $(SRCS2:.c=.o)
 # BONUS_O = $(BONUS_S:.c=.o)
 #INCLUDES = -I $(SRCS2)
 
-CP = cp /Users/baouragh/Desktop/ALL/ft_printf/libft/libft.a /Users/baouragh/Desktop/ALL/ft_printf
+CP = cp /Users/baouragh/Desktop/ALL/ft_printf1/libft/libft.a /Users/baouragh/Desktop/ALL/ft_printf1
 
 NAME = libftprintf.a
 

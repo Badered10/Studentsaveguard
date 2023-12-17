@@ -6,11 +6,12 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 15:09:06 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/16 11:37:05 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/17 09:27:29 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "printf.h"
+
 int ft_printf(char *string , ...)
 {
     va_list args;

@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 08:27:32 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/16 10:53:51 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/17 09:27:46 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int ft_sflags(char *string, char *res)
     if(res)
         nes.len = ft_strlen(res);
         else
-            nes.len = 0;
+            nes.len = 6;
     if(ft_isdigit(*string))
         nes.spaces = ft_atoi(string);
         else
@@ -42,11 +42,14 @@ int ft_sflags(char *string, char *res)
         {                      
             nes.display = ft_atoi(string);
             if (nes.display > nes.len)
-            nes.display = nes.len;
-            if (nes.spaces > nes.display)
+                nes.display = nes.len;
+            if ((nes.spaces > nes.display) && res) 
                 nes.spaces -= nes.display;
-            else
-                nes.spaces = 0;
+                else if(!res)
+                    nes.spaces -= nes.display;
+                    else 
+                        nes.spaces = 0;
+                        // printf("%d\n",nes.spaces);
         }
     }
         else if (nes.point != 1)
@@ -54,8 +57,6 @@ int ft_sflags(char *string, char *res)
         nes.display = nes.len;
         nes.spaces -= nes.display; 
     }
-            if (nes.display == nes.spaces)
-                nes.spaces = 0;
     if (nes.mince == 1)
     {
         nes.count += ft_putnstr_fd(res,1,nes.display);

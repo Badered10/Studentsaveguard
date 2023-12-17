@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 10:40:40 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/16 11:54:08 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/17 09:27:11 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int ft_pflags(char *string, void* res, char c)
 
     nes.mince = 0;
     nes.count = 0;
+    nes.len = 2;
     while(*string == '-' && *(string + 1))
     {
         nes.mince = 1;
