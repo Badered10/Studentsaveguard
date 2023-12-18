@@ -6,13 +6,13 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 10:40:40 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/18 14:26:58 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/18 21:23:55 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-static void	ft_print(f *nes, char c)
+static void	ft_print(t_f *nes, char c)
 {
 	if (nes->mince == 0)
 	{
@@ -27,6 +27,7 @@ static void	ft_print(f *nes, char c)
 			nes->count += write(1, " ", 1);
 	}
 }
+
 static unsigned long	hexalenth(unsigned long n)
 {
 	int	res;
@@ -39,9 +40,10 @@ static unsigned long	hexalenth(unsigned long n)
 	}
 	return (res);
 }
+
 int	ft_pflags(char *string, void *res, char c)
 {
-	f	nes;
+	t_f	nes;
 
 	nes.mince = 0;
 	nes.count = 0;

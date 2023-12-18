@@ -6,13 +6,13 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 14:13:25 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/18 15:32:40 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/18 21:23:35 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-void	ft_d_initialize(f *nes, int x)
+void	ft_d_initialize(t_f *nes, int x)
 {
 	char	*str;
 
@@ -31,7 +31,7 @@ void	ft_d_initialize(f *nes, int x)
 	free(str);
 }
 
-void	ft_d_search(f *nes, char **string)
+void	ft_d_search(t_f *nes, char **string)
 {
 	while (ft_isdigit_nz(*(*string)) != 1 && *(*string) != '.'
 		&& *(*string) != 'd' && *(*string) != 'i' && *(*(string)))
@@ -59,7 +59,8 @@ void	ft_d_search(f *nes, char **string)
 		(*string)++;
 	}
 }
-void	ft_checkspaces(char **string, f *nes)
+
+void	ft_checkspaces(char **string, t_f *nes)
 {
 	if (ft_isdigit(*(*string)))
 	{
@@ -70,14 +71,13 @@ void	ft_checkspaces(char **string, f *nes)
 		else
 			nes->spaces = 0;
 	}
-		else
-			nes->spaces = 0;
+	else
+		nes->spaces = 0;
 	while (ft_isdigit(*(*string)))
 		(*string)++;
 }
 
-
-void	ft_checkpoint(char *string, f *nes, unsigned int x)
+void	ft_checkpoint(char *string, t_f *nes, unsigned int x)
 {
 	if (*string == '.')
 	{
@@ -98,12 +98,13 @@ void	ft_checkpoint(char *string, f *nes, unsigned int x)
 	}
 	else if (nes->zero == 1)
 		nes->zeros = nes->spaces;
-		if (((nes->zeros > 0) || (nes->len == nes->tmp)) && (nes->d < 0
+	if (((nes->zeros > 0) || (nes->len == nes->tmp)) && (nes->d < 0
 			&& nes->point == 1))
-				nes->zeros++;
-				nes->spaces -= nes->zeros;
+		nes->zeros++;
+	nes->spaces -= nes->zeros;
 }
-void	ft_dcheckpoint(char **string, f *nes, int x)
+
+void	ft_dcheckpoint(char **string, t_f *nes, int x)
 {
 	if (*(*string) == '.')
 	{

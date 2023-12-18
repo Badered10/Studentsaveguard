@@ -6,7 +6,7 @@
 #    By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/29 12:39:30 by baouragh          #+#    #+#              #
-#    Updated: 2023/12/18 15:06:37 by baouragh         ###   ########.fr        #
+#    Updated: 2023/12/18 20:34:30 by baouragh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,11 +18,11 @@ MAKE = make -C libft
 
 SRCS = ft_dflags.c ft_cflags.c ft_printf.c \
 		ft_isflag.c ft_uflags.c ft_sflags.c \
-		ft_pflags.c ft_xsflags.c ft_tools1.c
+		ft_pflags.c ft_xsflags.c ft_tools1.c ft_tools2.c
 		
 BONUS_S = ft_dflags_bonus.c ft_cflags_bonus.c ft_printf_bonus.c \
 		ft_isflag_bonus.c ft_uflags_bonus.c ft_sflags_bonus.c \
-		ft_pflags_bonus.c ft_xsflags_bonus.c ft_tools1_bonus.c
+		ft_pflags_bonus.c ft_xsflags_bonus.c ft_tools1_bonus.c ft_tools2_bonus.c
 
 OBJS = $(SRCS:.c=.o)
 
