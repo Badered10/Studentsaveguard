@@ -15,12 +15,12 @@
 int	ft_putnbr_fd(int n, int fd)
 {
 	long	x;
-	int count;
+	int		count;
 
 	count = 0;
 	x = n;
 	if (fd < 0)
-		return -1;
+		return (-1);
 	if (x < 0)
 	{
 		count += 1;

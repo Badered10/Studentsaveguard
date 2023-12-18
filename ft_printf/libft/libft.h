@@ -16,9 +16,9 @@
 # include <fcntl.h>
 # include <stddef.h>
 # include <stdint.h>
+# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdio.h>
 
 int					ft_atoi(const char *str);
 void				ft_bzero(void *b, size_t n);
@@ -58,11 +58,11 @@ int					ft_putchar_fd(char c, int fd);
 int					ft_putstr_fd(char *s, int fd);
 void				ft_putendl_fd(char *s, int fd);
 int					ft_putnbr_fd(int n, int fd);
-int	    			ft_putunbr_fd(unsigned int n, int fd);
+int					ft_putunbr_fd(unsigned int n, int fd);
 int					ft_putnstr_fd(char *s, int fd, int n);
-char				*ft_itohexa(unsigned long n , char c);
-int					ft_putptr_fd(unsigned long res , int fd ,char ch);
-int					ft_puthexa_fd(unsigned int res , int fd ,char ch);
+char				*ft_itohexa(unsigned long n, char c);
+int					ft_putptr_fd(unsigned long res, int fd, char ch);
+int					ft_puthexa_fd(unsigned int res, int fd, char ch);
 
 typedef struct s_list
 {

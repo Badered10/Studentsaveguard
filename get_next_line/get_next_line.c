@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 18:43:49 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/02 22:09:02 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/18 15:51:03 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,4 +129,17 @@ char	*get_next_line(int fd)
 	res = ft_substr(store, 0, check);
 	store = ft_rest(store);
 	return (res);
+}
+int main()
+{
+	int fd = open("text.txt",O_RDONLY | O_CREAT);
+
+	char *str;
+	str = get_next_line(fd);
+	printf("%s",str);
+	free(str);
+	str = get_next_line(fd);
+	printf("%s",str);
+	free(str);
+	system("leaks a.out");
 }

@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:18:51 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/17 22:21:09 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/18 15:19:43 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static void	check_hashtag(f *nes, unsigned int x, char c)
 	}
 }
 
-static void	checkpoint(char *string, f *nes)
+static void	check_x_point(char *string, f *nes)
 {
 	if (*string == '.' && *(string + 1))
 	{
@@ -91,22 +91,6 @@ static void	checkpoint(char *string, f *nes)
 	else if (nes->zero == 1)
 		nes->zeros = nes->spaces;
 	nes->spaces -= nes->zeros;
-}
-
-static void	ft_checkspaces(char **string, f *nes)
-{
-	if (ft_isdigit(*(*string)))
-	{
-		nes->spaces = ft_atoi(*string);
-		if (nes->spaces > nes->len)
-			nes->spaces -= nes->len;
-		else
-			nes->spaces = 0;
-	}
-	else
-		nes->spaces = 0;
-	while (ft_isdigit(*(*string)))
-		(*string)++;
 }
 
 static void	ft_search(char **string, f *nes)
@@ -159,7 +143,7 @@ int	ft_xsflags(char *string, unsigned int x, char c)
 	nes.len += hexalenth(x);
 	ft_search(&string, &nes);
 	ft_checkspaces(&string, &nes);
-	checkpoint(string, &nes);
+	check_x_point(string, &nes);
 	check_hashtag(&nes, x, c);
 	if (nes.mince == 1 || nes.point == 1)
 		mp_print(&nes, x, c);

@@ -14,7 +14,7 @@
 
 int	ft_putchar_fd(char c, int fd)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	if (fd < 0)

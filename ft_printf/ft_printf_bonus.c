@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 15:09:06 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/17 22:44:25 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/18 14:27:26 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,11 @@ static void	ft_scanstring(char *ptr, char *save_m, f *t, va_list args)
 							save_m, args);
 					break ;
 				}
-                if(ft_strchr("-0. #+",*ptr) == NULL && ft_isdigit(*ptr) == 0)
-                {
-                    // printf("oh hell no !\n");
-                    t->count += write(1,ptr,1);
-                    break;
-                }
+				if (ft_strchr("-0. #+", *ptr) == NULL && ft_isdigit(*ptr) == 0)
+				{
+					t->count += write(1, ptr, 1);
+					break ;
+				}
 				else if (!*ptr)
 					break ;
 				ptr++;

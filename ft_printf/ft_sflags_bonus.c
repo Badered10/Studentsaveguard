@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 08:27:32 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/17 17:46:01 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/18 14:03:28 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	ft_print(f *nes, char *res)
 	}
 }
 
-static void	check_spaces(char *string, f *nes, char *res)
+static void	check_s_spaces(char *string, f *nes, char *res)
 {
 	while (ft_isdigit(*string))
 		string++;
@@ -76,7 +76,7 @@ int	ft_sflags(char *string, char *res)
 		nes.spaces = ft_atoi(string);
 	else
 		nes.spaces = 0;
-	check_spaces(string, &nes, res);
+	check_s_spaces(string, &nes, res);
 	ft_print(&nes, res);
 	return (nes.count);
 }

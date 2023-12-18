@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 15:31:02 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/17 22:47:39 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/18 15:20:56 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	main(void)
 	int	x;
 	int	y;
 
+	// int	x;
+	// int	y;
 	// char *str = NULL;
 	// printf("--------- # flag -----------------|%10.20d|
 	// x = ft_printf("me|% -10d|\n",391876567);
@@ -86,11 +88,34 @@ int	main(void)
 	// ft_printf("me42%56.2d42\n",-391876567);
 	// printf("or42%56.2d42\n",-391876567);
 	// system("leaks a.out");
-	y = ft_printf("me|%# + - 04m|");
+	// ft_printf("%-3i", 0)
+	// ft_printf("%8.5i", 0)
+	// ft_printf("%-8.5i", 0)
+	// ft_printf("%08.5i", 0)
+	// ft_printf("%-3d", 0)
+	x = ft_printf("%0168.128u%0054.92x%30.171s", 2620195206u, 1771128939u,NULL);
+	printf("\n"); // if( !nes.tmp == 0 || !nes.tmp == -9999999999 && x == 0 )
+		// ->> not print
+	y = printf("%0168.128u%0054.92x%30.171s", 2620195206u, 1771128939u, NULL);
 	printf("\n");
-	x = printf("me|%# + -|");
-	printf("\n");
-	printf("me % - ----  d them % - ----  d\n", x, y);
+	printf("-----my %d-------there %d--------\n", x, y);
+	// x = ft_printf("|%.u|\n", 0);
+	// y = printf("|%.u|\n", 0);
+	// printf("-----my %d-------there %d--------\n",x,y);
+	// x = ft_printf("|%5.0u|\n", 0);
+	// y = printf("|%5.0u|\n", 0);
+	// printf("-----my %d-------there %d--------\n",x,y);
+	// x = ft_printf("|%5.u|\n", 0);
+	// y = printf("|%5.u|\n", 0);
+	// printf("-----my %d-------there %d--------\n",x,y);
+	// x = ft_printf("|%-5.0u|\n", 0);
+	// y = printf("|%-5.0u|\n", 0);
+	// printf("-----my %d-------there %d--------\n",x,y);
+	// x = ft_printf("|%-3.2s|\n", NULL);
+	// y = printf("|%-3.2s|\n", NULL);
+	// printf("-----my %d-------there %d--------\n",x,y);
+	// ft_printf("|%-3d|\n", 0);
+	// printf("|%-3d|\n", 0);
 	// y = ft_printf("me|%000+10.20d\n",-391876567);
 	// x = printf("or|%000+10.20d\n",-391876567);
 	// printf("me % - ----  d them % - ----  d\n",x,y);

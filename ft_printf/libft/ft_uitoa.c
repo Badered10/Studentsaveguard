@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_uitoa.c                                          :+:      :+:    :+:   */
+/*   ft_uitoa.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 11:50:37 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/12 23:00:29 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/18 13:58:40 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static char	*alloc(unsigned int res)
 
 static void	fill(char *str, int num, unsigned int n)
 {
-	unsigned int x;
+	unsigned int	x;
 
 	x = n;
 	num -= 1;
@@ -55,7 +55,7 @@ static void	fill(char *str, int num, unsigned int n)
 char	*ft_uitoa(unsigned int n)
 {
 	char	*res;
-	int	num;
+	int		num;
 
 	num = lenth(n);
 	res = alloc(num);

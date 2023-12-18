@@ -14,13 +14,13 @@
 
 int	ft_putunbr_fd(unsigned int n, int fd)
 {
-	unsigned int    x;
-	int count;
+	unsigned int	x;
+	int				count;
 
 	count = 0;
 	x = n;
 	if (fd < 0)
-		return -1;
+		return (-1);
 	if (x < 0)
 	{
 		count += ft_putchar_fd('-', fd);

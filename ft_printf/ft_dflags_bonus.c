@@ -6,7 +6,7 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 18:00:25 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/18 09:36:05 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/18 15:14:05 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,26 @@ static void	ze_print(f *nes)
 		nes->count += ft_putnbr_fd(nes->d, 1);
 	}
 }
+static void	d_p_print(f *nes, int x)
+{
+	if (nes->point == 1)
+		{
+			while ((nes->spaces)-- > 0)
+				nes->count += write(1, " ", 1);
+			if (nes->plus == 1 && nes->d >= 0)
+				nes->count += write(1, "+", 1);
+			if (nes->d < 0)
+				write(1, "-", 1);
+			while ((nes->zeros)-- > 0)
+				nes->count += write(1, "0", 1);
+			if (x)
+				nes->count += ft_putnbr_fd(nes->d, 1);
+			else if (nes->tmp > 0)
+				nes->count += ft_putnbr_fd(nes->d, 1);
+	}
+}
 
-static void	mp_print(f *nes)
+static void	d_m_print(f *nes, int x)
 {
 	if (nes->mince == 1)
 	{
@@ -42,22 +60,17 @@ static void	mp_print(f *nes)
 			write(1, "-", 1);
 		while ((nes->zeros)-- > 0)
 			nes->count += write(1, "0", 1);
-		nes->count += ft_putnbr_fd(nes->d, 1);
-		while ((nes->spaces)-- > 0)
-			nes->count += write(1, " ", 1);
-	}
-	else if (nes->point == 1)
-	{
-		while ((nes->spaces)-- > 0)
-			nes->count += write(1, " ", 1);
-		if (nes->plus == 1 && nes->d >= 0)
-			nes->count += write(1, "+", 1);
-		if (nes->d < 0)
-			write(1, "-", 1);ƒ
-		while ((nes->zeros)-- > 0)
-			nes->count += write(1, "0", 1);
-		if (nes->tmp != -999999999)
+		if (nes->point == 1)
+		{
+			if (!x && nes->tmp <= 0)
+				;
+			else
+				nes->count += ft_putnbr_fd(nes->d, 1);
+		}
+		else
 			nes->count += ft_putnbr_fd(nes->d, 1);
+		while ((nes->spaces)-- > 0)
+			nes->count += write(1, " ", 1);
 	}
 }
 
@@ -66,120 +79,36 @@ static void	ft_checkplus_space(f *nes)
 	if (nes->space == 1 && nes->d >= 0)
 	{
 		nes->count = write(1, " ", 1);
-		if ((nes->zero == 1 && nes->tmp <= nes->len) || nes->tmp == -999999999)
+		if ((nes->zero == 1 && nes->tmp <= nes->len) || nes->tmp < 0)
 			nes->zeros--;
-		if (nes->tmp != -999999999 || nes->point == 0)
+		if (nes->tmp >= 0 || nes->point == 0)
 			nes->spaces--;
 	}
 	else if (nes->plus == 1 && nes->d >= 0)
 	{
 		if (nes->mince == 1 || (nes->zero && !nes->point))
 			nes->count = write(1, "+", 1);
-		if ((nes->zero == 1 && nes->tmp <= nes->len) || nes->tmp == -999999999)
+		if ((nes->zero == 1 && nes->tmp <= nes->len) || nes->tmp < 0)
 			nes->zeros--;
-		if (nes->tmp != -999999999 || nes->point == 0)
+		if (nes->tmp >= 0 || nes->point == 0)
 			nes->spaces--;
 	}
 }
 
-static void	ft_checkpoint(char **string, f *nes)
-{
-	if (*(*string) == '.')
-	{
-		nes->point = 1;
-		if (*(*string))
-			(*string)++;
-		if (ft_isdigit(*(*string)))
-		{
-			nes->zeros = ft_atoi(*string);
-			nes->tmp = nes->zeros;
-			if (nes->zeros > nes->len)
-				nes->zeros -= nes->len;
-			else
-				nes->zeros = 0;
-		}
-	}
-	else if (nes->zero == 1)
-		nes->zeros = nes->spaces;
-	if (((nes->zeros > 0) || (nes->len == nes->tmp)) && (nes->d < 0
-			&& nes->point == 1))
-		nes->zeros++;
-	nes->spaces -= nes->zeros;
-}
-
-static void	ft_checkspaces(char **string, f *nes)
-{
-	if (ft_isdigit(*(*string)))
-	{
-		nes->spaces = ft_atoi(*string);
-		if (nes->spaces > nes->len)
-			nes->spaces -= nes->len;
-		else
-			nes->spaces = 0;
-	}
-	else
-		nes->spaces = 0;
-	while (ft_isdigit(*(*string)))
-		(*string)++;
-}
-static void	ft_initialize(f *nes, int x)
-{
-	char	*str;
-
-	nes->d = x;
-	nes->plus = 0;
-	nes->space = 0;
-	nes->mince = 0;
-	nes->zero = 0;
-	nes->point = 0;
-	nes->zeros = 0;
-	nes->count = 0;
-	nes->tmp = -999999999;
-	str = ft_itoa(nes->d);
-	nes->len = ft_strlen(str);
-	free(str);
-}
-
-static void	ft_search(f *nes, char **string)
-{
-	while (ft_isdigit_nz(*(*string)) != 1 && *(*string) != '.'
-		&& *(*string) != 'd' && *(*string) != 'i' && *(*(string)))
-	{
-		if (*(*string) == '+')
-		{
-			nes->plus = 1;
-			nes->space = 0;
-		}
-		else if (*(*string) == ' ')
-		{
-			if (nes->plus == 0)
-				nes->space = 1;
-		}
-		else if (*(*string) == '0')
-		{
-			if (nes->mince == 0)
-				nes->zero = 1;
-		}
-		else if (*(*string) == '-')
-		{
-			nes->zero = 0;
-			nes->mince = 1;
-		}
-		(*string)++;
-	}
-}
 
 int	ft_dflags(char *string, int x)
 {
 	f	nes;
 
-	ft_initialize(&nes, x);
-	ft_search(&nes, &string);
+	ft_d_initialize(&nes, x);
+	ft_d_search(&nes, &string);
 	ft_checkspaces(&string, &nes);
-	ft_checkpoint(&string, &nes);
+	ft_dcheckpoint(&string, &nes, x);
 	ft_checkplus_space(&nes);
-	if (nes.mince == 1 || nes.point == 1)
-		mp_print(&nes);
+	if (nes.mince == 1)
+		d_m_print(&nes, x);
+	else if(nes.point == 1)
+		d_p_print(&nes, x);
 	else
 		ze_print(&nes);
 	return (nes.count);

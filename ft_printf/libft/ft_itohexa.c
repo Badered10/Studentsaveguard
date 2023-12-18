@@ -15,9 +15,10 @@
 static int	lenth(unsigned long n)
 {
 	int	res;
-		res = 1;
-		if (n > 0)
-			res = 0;
+
+	res = 1;
+	if (n > 0)
+		res = 0;
 	while (n != 0)
 	{
 		n /= 16;
@@ -37,26 +38,25 @@ static char	*alloc(int res)
 	return (str);
 }
 
-static void	fill(char *str, int num, unsigned long n , char c)
+static void	fill(char *str, int num, unsigned long n, char c)
 {
-	char *base;
+	char	*base;
 
-	if (c =='x')
+	if (c == 'x')
 		base = "0123456789abcdef";
 	else
 		base = "0123456789ABCDEF";
-
 	str[num] = '\0';
+	num--;
+	while (num >= 0)
+	{
+		str[num] = base[n % 16];
+		n /= 16;
 		num--;
-		while (num >= 0)
-		{
-			str[num] = base[n%16];
-			n/=16;
-			num--;
-		}
+	}
 }
 
-char	*ft_itohexa(unsigned long n , char c)
+char	*ft_itohexa(unsigned long n, char c)
 {
 	char	*res;
 	int		num;
