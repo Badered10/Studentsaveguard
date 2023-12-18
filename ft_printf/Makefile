@@ -6,7 +6,7 @@
 #    By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/29 12:39:30 by baouragh          #+#    #+#              #
-#    Updated: 2023/12/17 11:44:32 by baouragh         ###   ########.fr        #
+#    Updated: 2023/12/17 22:26:49 by baouragh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,8 +47,7 @@ $(NAME): $(OBJS2) $(OBJS1)
 	ar -rcs $(NAME) $(OBJS2) $(OBJS1)
 
 $(OBJS2): $(SRCS2)
-	$(CC) -c $(SRCS2) 
-#$(CFLAGS) 
+	$(CC) $(CFLAGS) -c $(SRCS2) 
 
 $(OBJS1):
 	$(MAKE)
@@ -59,8 +58,7 @@ $(OBJS1):
 bonus: $(BONUS_O)
 
 $(BONUS_O): $(BONUS_S) $(OBJS1)
-	$(CC) -c $(BONUS_S)
-#$(CFLAGS) 
+	$(CC) $(CFLAGS) -c $(BONUS_S) 
 	ar -rcs $(NAME) $(BONUS_O) $(OBJS1)
 clean:
 	$(MAKE) clean

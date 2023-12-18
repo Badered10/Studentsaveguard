@@ -6,39 +6,39 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 18:00:25 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/17 12:09:22 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/17 23:52:07 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-void ft_search(f* nes,char **string, char c, char d)
-{
-     while(ft_isdigit_nz(*(*string)) != 1 && *(*string) != '.' && *(*string) != c && *(*string) != d && *(*(string + 1)))
-    {
-        if (*(*string) == '+')
-        {
-            nes->plus = 1;
-            nes->space = 0;
-        }
-        else if (*(*string) == ' ')
-            {
-                if (nes->plus == 0)
-                    nes->space = 1;
-            }
-        else if(*(*string) == '0')
-            {
-                if(nes->mince == 0)
-                nes->zero = 1;
-            }
-        else if(*(*string) == '-')
-        {
-            nes->zero = 0;
-            nes->mince = 1;
-        }
-        *string++;  // "10.29d"
-    }
-}
+// void ft_search(f* nes,char **string, char c, char d)
+// {
+//      while(ft_isdigit_nz(*(*string)) != 1 && *(*string) != '.' && *(*string) != c && *(*string) != d && *(*(string + 1)))
+//     {
+//         if (*(*string) == '+')
+//         {
+//             nes->plus = 1;
+//             nes->space = 0;
+//         }
+//         else if (*(*string) == ' ')
+//             {
+//                 if (nes->plus == 0)
+//                     nes->space = 1;
+//             }
+//         else if(*(*string) == '0')
+//             {
+//                 if(nes->mince == 0)
+//                 nes->zero = 1;
+//             }
+//         else if(*(*string) == '-')
+//         {
+//             nes->zero = 0;
+//             nes->mince = 1;
+//         }
+//         *string++;  // "10.29d"
+//     }
+// }
 
 
 int ft_dflags(char *string, int x)
@@ -55,34 +55,34 @@ int ft_dflags(char *string, int x)
     nes.zeros = 0;
     nes.count = 0;
     nes.tmp = -999999999;
-    //    while(ft_isdigit_nz(*string) != 1 && *string != '.' && *string != 'd' && *string != 'i')
-    // {
-    //     while (*string == '+' && *(string + 1))
-    //     {
-    //         nes.plus = 1;
-    //         nes.space = 0;
-    //         string++;
-    //     }
-    //     while (*string == ' ' && *(string + 1))
-    //         {
-    //             if (nes.plus == 0)
-    //                 nes.space = 1;
-    //             string++;
-    //         }
-    //     while(*string == '0' && *(string + 1))
-    //         {
-    //             if(nes.mince == 0)
-    //             nes.zero = 1;
-    //             string++;
-    //         }
-    //     while(*string == '-' && *(string + 1))
-    //     {
-    //         nes.zero = 0;
-    //         nes.mince = 1;
-    //         string++;
-    //     }
-    // }
-    ft_search(&nes,&string,'d','i');
+       while(ft_isdigit_nz(*string) != 1 && *string != '.' && *string != 'd' && *string != 'i')
+    {
+        while (*string == '+' && *(string + 1))
+        {
+            nes.plus = 1;
+            nes.space = 0;
+            string++;
+        }
+        while (*string == ' ' && *(string + 1))
+            {
+                if (nes.plus == 0)
+                    nes.space = 1;
+                string++;
+            }
+        while(*string == '0' && *(string + 1))
+            {
+                if(nes.mince == 0)
+                nes.zero = 1;
+                string++;
+            }
+        while(*string == '-' && *(string + 1))
+        {
+            nes.zero = 0;
+            nes.mince = 1;
+            string++;
+        }
+    }
+    // ft_search(&nes,&string,'d','i');
     nes.d = x;
     str = ft_itoa(nes.d);
     nes.len = ft_strlen(str);
