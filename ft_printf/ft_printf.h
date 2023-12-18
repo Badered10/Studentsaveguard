@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.h                                           :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 15:09:45 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/18 21:45:22 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/18 21:52:27 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ typedef struct t_flags
 	int				hashtag;
 }	t_f;
 
-int					ft_printf(char *string, ...);
+int					ft_printf(const char *string, ...);
 int					ft_dflags(char *string, int x);
 int					ft_isflag(char ch, char *save_m, va_list args);
 int					ft_cflags(char *save_m, int x);

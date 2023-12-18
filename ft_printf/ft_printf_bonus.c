@@ -6,11 +6,11 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 15:09:06 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/18 21:23:49 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/18 23:30:21 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 static void	ft_scanstring(char *ptr, char *save_m, t_f *t, va_list args)
 {
@@ -41,7 +41,7 @@ static void	ft_scanstring(char *ptr, char *save_m, t_f *t, va_list args)
 	}
 }
 
-int	ft_printf(char *string, ...)
+int	ft_printf(const char *string, ...)
 {
 	va_list	args;
 	t_f		t;
@@ -49,7 +49,7 @@ int	ft_printf(char *string, ...)
 	char	*save_m;
 
 	save_m = NULL;
-	ptr = string;
+	ptr = (char *)string;
 	t.count = 0;
 	va_start(args, string);
 	ft_scanstring(ptr, save_m, &t, args);

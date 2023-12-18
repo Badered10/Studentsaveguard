@@ -6,11 +6,11 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 20:30:44 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/18 21:35:41 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/18 23:29:51 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 void	p_x_print(t_f *nes, unsigned int x, char c)
 {
@@ -64,6 +64,7 @@ void	check_hashtag(t_f *nes, unsigned int x, char c)
 			nes->spaces -= 2;
 	}
 }
+
 void	ft_check_u_point(char *string, t_f *nes, unsigned int x)
 {
 	if (*string == '.')

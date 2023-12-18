@@ -6,11 +6,11 @@
 /*   By: baouragh <baouragh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 08:27:32 by baouragh          #+#    #+#             */
-/*   Updated: 2023/12/18 21:23:43 by baouragh         ###   ########.fr       */
+/*   Updated: 2023/12/18 21:47:51 by baouragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 static void	ft_print(t_f *nes, char *res)
 {
